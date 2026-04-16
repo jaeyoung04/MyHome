@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Solution Architect | Samsung DX</title>
+    <meta name="description" content="Samsung Electronics DX Portfolio - Bento Grid Composition">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Mermaid.js for interactive diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js"></script>
+    <script>
+        // Separate function to allow re-render on theme toggle
+        function initMermaid(isLight = false) {
+            const theme = isLight ? 'default' : 'dark';
+            mermaid.initialize({ 
+                startOnLoad: false, 
+                theme: theme,
+                securityLevel: 'loose',
+                flowchart: { useMaxWidth: false, htmlLabels: true }
+            });
+            mermaid.run();
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            initMermaid(savedTheme === 'light');
+        });
+    </script>
+    
+    <style>
+        /* =========================================
+           BENTO GRID DASHBOARD AESTHETICS (SAMSUNG DX)
+           ========================================= */
+        :root {
+            /* Default Dark Mode (Samsung Deep Blue) */
+            --bg-base: #030712;
+            --bg-bento: rgba(17, 24, 39, 0.6);
+            --bg-bento-hover: rgba(31, 41, 55, 0.8);
+            --border-bento: rgba(59, 130, 246, 0.2);
+            --border-highlight: rgba(59, 130, 246, 0.6);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --gap: 1.2rem;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.light-mode {
+            --bg-base: #f8fafc;
+            --bg-bento: rgba(255, 255, 255, 0.8);
+            --bg-bento-hover: rgba(255, 255, 255, 1);
+            --border-bento: rgba(203, 213, 225, 0.5);
+            --border-highlight: rgba(59, 130, 246, 0.4);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-glow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        body.light-mode .mermaid-container { background: white; border: 1px solid var(--border-bento); }
+        body.light-mode .youtube-card { background: #f1f5f9; }
+        body.light-mode .board-input { background: white; color: black; border-color: #cbd5e1; }
+        body.light-mode .contact-link { color: #475569; }
+        body.light-mode .navbar { border-bottom: 1px solid rgba(0,0,0,0.05); }
+        body.light-mode .hero-bento { background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%); border: 1px solid rgba(59, 130, 246, 0.1); }
+        body.light-mode .hero-bento p { color: #64748b; }
+        body.light-mode .hero-bento h1 { color: #0f172a; }
+        body.light-mode .skill-pill { background: #ffffff; color: #1e293b; border-color: #cbd5e1; }
+        body.light-mode .skill-pill i { color: var(--accent-primary); }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(30, 58, 138, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 85% 90%, rgba(30, 58, 138, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 5rem;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.03em; }
+        p { line-height: 1.6; color: var(--text-secondary); }
+
+        /* Top Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .logo { font-size: 1.6rem; color: var(--text-primary); }
+        .logo span { color: var(--accent-primary); }
+        
+        .glow-btn {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Outfit';
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .glow-btn:hover { background: var(--accent-primary); box-shadow: var(--accent-glow); transform: translateY(-2px); }
+
+        /* Bento Grid Layout */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 250px;
+            gap: var(--gap);
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--bg-bento);
+            border: 1px solid var(--border-bento);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px) scale(1.005);
+            background: var(--bg-bento-hover);
+            border-color: var(--border-highlight);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        /* Specific Grids! */
+        .hero-bento { 
+            grid-column: span 8; grid-row: span 2; 
+            justify-content: center; 
+            background: linear-gradient(145deg, rgba(30,58,138,0.3) 0%, rgba(3,7,18,0.8) 100%);
+        }
+        .hero-bento h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-bento .text-cyan { color: #22d3ee; }
+        .hero-bento .text-gold { color: #facc15; }
+        
+        .profile-bento { 
+            grid-column: span 4; grid-row: span 1; 
+            align-items: center; justify-content: center; text-align: center; 
+        }
+        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--accent-primary); object-fit: cover; margin-bottom: 1rem; }
+        
+        .contact-bento {
+            grid-column: span 4; grid-row: span 1;
+            justify-content: center; gap: 1rem;
+        }
+        .contact-link { display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); text-decoration: none; transition: 0.2s; }
+        .contact-link:hover { color: var(--accent-primary); }
+
+        .vocation-bento { grid-column: span 6; grid-row: span 2; }
+        .vocation-bento ul { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+        .vocation-bento li { display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); }
+        .vocation-bento i { color: var(--accent-primary); font-size: 1.2rem; }
+
+        .mechanism-bento { grid-column: span 6; grid-row: span 2; overflow-y: auto; }
+        .mechanism-bento .blueprint { flex: 1; border-radius: var(--radius-lg); background: rgba(0,0,0,0.5); border: 1px dotted var(--accent-primary); display: flex; align-items: center; justify-content: center; margin-top: 1rem; min-height: 150px; }
+
+        .mastery-bento { grid-column: span 12; grid-row: span 3; }
+        .skills-row { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .skill-pill { background: rgba(255,255,255,0.05); border: 1px solid var(--border-bento); padding: 0.8rem 1.5rem; border-radius: 30px; display: flex; align-items: center; gap: 0.8rem; }
+        .mermaid-container { width: 100%; height: 100%; min-height: 400px; background: transparent; border-radius: var(--radius-lg); display: flex; justify-content: center; align-items: center; padding: 2rem; overflow: hidden; }
+        .mermaid { transform: scale(1.3); transform-origin: center; }
+        .log-bento { grid-column: span 7; grid-row: span 2; overflow-y: auto;}
+        .board-bento { grid-column: span 5; grid-row: span 2; }
+        .youtube-bento { grid-column: span 12; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+        .youtube-grid { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .youtube-card { flex: 1; min-width: 280px; background: rgba(0,0,0,0.5); border: 1px dotted rgba(59, 130, 246, 0.5); padding: 1.5rem; border-radius: var(--radius-lg); text-align: center; transition: 0.3s; cursor: pointer; }
+        .youtube-card:hover { border-color: var(--accent-primary); background: rgba(59, 130, 246, 0.1); }
+
+        /* Board Elements */
+        .board-input { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-bento); color: white; padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; font-family: 'Inter'; }
+        
+        /* Badges */
+        .badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(59, 130, 246, 0.4); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-bento { grid-column: span 12; }
+            .profile-bento, .contact-bento { grid-column: span 6; }
+            .vocation-bento, .mechanism-bento { grid-column: span 12; grid-row: auto; min-height: 350px; }
+            .log-bento, .board-bento, .youtube-bento { grid-column: span 12; }
+            .bento-grid { grid-auto-rows: min-content; }
+        }
+        @media (max-width: 768px) {
+            .profile-bento, .contact-bento { grid-column: span 12; }
+            .hero-bento h1 { font-size: 2.5rem; }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span style="color: var(--accent-primary); font-weight: 900;">Samsung</span> DX
+        </div>
+        <div style="display: flex; gap: 0.8rem;">
+            <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="glow-btn" onclick="toggleLanguage()">🌐 EN / KO</button>
+        </div>
+    </nav>
+
+    <main class="bento-container">
+        
+        <!-- Hero Box -->
+        <div class="bento-card hero-bento">
+            <h1 data-i18n="hero_title">정밀 설계. <span class="text-cyan">지능형 제어.</span> <span class="text-gold">한계 돌파.</span></h1>
+            <p style="font-size: 1.2rem; max-width: 600px;" data-i18n="hero_subtitle">
+                기계적 메커니즘의 완벽함과 지능형 제어 역량을 겸비한<br><strong>Mechanical Solution Architect</strong>
+            </p>
+        </div>
+
+        <!-- Profile Box -->
+        <div class="bento-card profile-bento">
+            <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+            <h2 data-i18n="profile_name">이재영 (Jaeyoung LEE)</h2>
+            <p data-i18n="profile_role">Mechanical & Control Engineer</p>
+        </div>
+
+        <!-- Contact Box -->
+        <div class="bento-card contact-bento">
+            <a href="mailto:jyoung0588@dongyang.ac.kr" class="contact-link"><i class="fa-solid fa-envelope"></i> jyoung0588@dongyang.ac.kr</a>
+            <a href="tel:010-4408-0588" class="contact-link"><i class="fa-solid fa-phone"></i> 010-4408-0588</a>
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-bento);">
+                <span class="badge" style="margin-left:0;">TOEIC 650+</span>
+                <span data-i18n="vocation_global" style="font-size: 0.85rem; color: var(--text-secondary); margin-left: 10px;">글로벌 업무 역량 보유</span>
+            </div>
+        </div>
+
+        <!-- Vocation Box -->
+        <div class="bento-card vocation-bento">
+            <h2 data-i18n="vocation_title">핵심 정체성 <span class="badge">성장 잠재력</span></h2>
+            <p data-i18n="vocation_desc" style="margin-top: 1rem;">
+                울산공고 전자통신과에서 시작된 하드웨어 통제에 대한 열정은 동양미래대학교 로봇소프트웨어 전공으로 이어지며, 물리적 메커니즘과 논리적 알고리즘에 대한 심층적인 탐구로 발전했습니다. 현재는 기계공학적 시각과 소프트웨어적 문제해결 능력을 아울러 갖춘 융복합 엔지니어로 거듭났습니다.
+            </p>
+            <ul>
+                <li><i class="fa-solid fa-microchip"></i> <span data-i18n="vocation_feat1">전기/전자 회로 분석 및 하드웨어 통제 시스템 이해도</span></li>
+                <li><i class="fa-solid fa-gears"></i> <span data-i18n="vocation_feat2">3D 기구 설계(Mechanical Design)와 펌웨어 제어 기술의 융합</span></li>
+                <li><i class="fa-solid fa-shield-halved"></i> <span data-i18n="vocation_feat3">품질 혁신과 불량률 제로를 지향하는 완벽주의(Supex) 마인드</span></li>
+            </ul>
+        </div>
+
+        <!-- Mechanism Box -->
+        <div class="bento-card mechanism-bento">
+            <div>
+                <h2 data-i18n="mechanism_title">기구학적 메커니즘 설계</h2>
+                <h4 data-i18n="mechanism_subtitle" style="color: var(--accent-primary); margin: 0.5rem 0 1rem 0;">3D 프린팅 RC카: 차동 기어와 서스펜션</h4>
+                <p data-i18n="mechanism_desc">
+                    전공동아리 프로젝트에서 차동 기어 시스템과 유니버설 조인트 기반의 현가장치를 설계했습니다. 안정적인 코너링을 위한 베벨 기어비 1:1 세팅과 정밀 유격 통제로 동력 효율을 극대화했습니다.
+                </p>
+            </div>
+            <div class="blueprint">
+                <i class="fa-solid fa-gears" style="font-size: 4rem; opacity: 0.5;"></i>
+            </div>
+        </div>
+
+        <!-- Mastery & Interactive Architecture Box -->
+        <div class="bento-card mastery-bento">
+            <h2 data-i18n="mastery_title" style="margin-bottom: 1.5rem;">제어 시스템 프레임워크 역량</h2>
+            
+            <div class="skills-row">
+                <div class="skill-pill"><i class="fa-solid fa-cubes"></i> <span data-i18n="skill_plc">3D 기구학적 설계</span></div>
+                <div class="skill-pill"><i class="fa-solid fa-gears"></i> <span data-i18n="skill_csharp">서스펜션 동력전달</span></div>
+                <div class="skill-pill"><i class="fa-solid fa-robot"></i> <span data-i18n="skill_arduino">Microcontroller 제어</span></div>
+                <div class="skill-pill"><i class="fa-solid fa-chart-line"></i> <span data-i18n="skill_python">데이터 로그 트래킹</span></div>
+            </div>
+
+            <div class="mermaid-container">
+                <div class="mermaid">
+                    graph LR
+                        A(스마트폰 App) -.->|Bluetooth 통신| B[Arduino Nano<br>데이터 파싱]
+                        B --> C{명령어 디코딩}
+                        C -->|PWM| D[L298N 모터 드라이버]
+                        C -->|조향| E[서보 모터 각도산출]
+                        D --> F((4륜 독립제어 DC 모터))
+                        E --> F
+                        F -->|유격 보정| B
+                        style A fill:#0f172a,stroke:#3b82f6,stroke-width:2px
+                        style B fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px
+                        style F fill:#064e3b,stroke:#10b981,stroke-width:2px
+                </div>
+            </div>
+        </div>
+
+        <!-- Troubleshooting Log -->
+        <div class="bento-card log-bento">
+            <h2 data-i18n="log_title">품질 혁신 및 트러블슈팅 로그</h2>
+            <h4 data-i18n="log_subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400;">데이터에 기반한 유격 해결과 바이브 코딩</h4>
+            
+            <div style="border-left: 2px solid var(--accent-primary); padding-left: 1rem; margin-bottom: 1.5rem;">
+                <h3 data-i18n="log_item1_title" style="font-size: 1.1rem; margin-bottom: 0.5rem;">구동축 편심 현상 극복 및 품질 최적화</h3>
+                <p data-i18n="log_item1_desc">유니버설 조인트의 심한 유격으로 모터 결함 발생. 조립 공차 데이터를 분석하여 내부 베어링 수치를 재설계해 흔들림을 잡아냈습니다.</p>
+            </div>
+            
+            <div style="border-left: 2px solid #22d3ee; padding-left: 1rem;">
+                <h3 data-i18n="log_item2_title" style="font-size: 1.1rem; margin-bottom: 0.5rem;">하드웨어와 AI 코딩의 시너지 (Vibe Coding)</h3>
+                <p data-i18n="log_item2_desc">AI의 환각으로 인한 스레드 블로킹 발생 시, 시스템 설계도를 구체적 프롬프트로 주입하는 바이브 코딩을 통해 즉각 최적화했습니다.</p>
+            </div>
+        </div>
+
+        <!-- Feedback Board Bento -->
+        <div class="bento-card board-bento">
+            <h2 data-i18n="board_title">소통의 장 <span class="badge">Feedback</span></h2>
+            <p data-i18n="board_guide_desc" style="font-size: 0.85rem; margin-bottom: 1.5rem;">본 게시판은 외부 DB 없이 로컬에 보관됩니다.</p>
+            
+            <div id="boardMessages" style="flex: 1; overflow-y: auto; margin-bottom: 1rem; border: 1px solid var(--border-bento); border-radius: 8px; padding: 1rem; background: rgba(0,0,0,0.2);">
+                <!-- Messages render here -->
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; flex-direction: column;">
+                <input type="text" id="nameInput" class="board-input" placeholder="이름 (Name)" style="margin-bottom: 0;">
+                <textarea id="contentInput" class="board-input" rows="2" placeholder="피드백 내용 (Feedback)" style="margin-bottom: 0;"></textarea>
+                <button class="glow-btn" style="width: 100%; border-radius: 8px;" onclick="addComment()">등록하기</button>
+            </div>
+        </div>
+
+        <!-- YouTube Video Bento -->
+        <div class="bento-card youtube-bento">
+            <h2 data-i18n="youtube_title">팀워크 및 프로젝트 메커니즘 시연</h2>
+            <p data-i18n="youtube_subtitle">팀원들과의 협업을 통해 부족함을 채우고 실제 구동 가능한 결과물을 완성했습니다.</p>
+            <div class="youtube-grid">
+                <div class="youtube-card" style="padding: 1rem;" onclick="window.open('https://www.youtube.com/watch?v=0vKGd3Y2LE0', '_blank')">
+                    <div style="position: relative; width: 100%; height: 200px; border-radius: var(--radius-md); overflow: hidden; background: #000;">
+                        <img src="https://img.youtube.com/vi/0vKGd3Y2LE0/hqdefault.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;" alt="Video Thumbnail">
+                        <i class="fa-brands fa-youtube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4.5rem; color: #ff0000; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.7)); transition: 0.3s;"></i>
+                    </div>
+                    <h3 data-i18n="youtube_vid1" style="font-size: 1.1rem; margin: 1rem 0 0.5rem 0;">국제로봇올림피아드 출전작</h3>
+                </div>
+                <div class="youtube-card" style="padding: 1rem;" onclick="window.open('https://www.youtube.com/watch?v=DQcM5zhMhF0', '_blank')">
+                    <div style="position: relative; width: 100%; height: 200px; border-radius: var(--radius-md); overflow: hidden; background: #000;">
+                        <img src="https://img.youtube.com/vi/DQcM5zhMhF0/hqdefault.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;" alt="Video Thumbnail">
+                        <i class="fa-brands fa-youtube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4.5rem; color: #ff0000; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.7)); transition: 0.3s;"></i>
+                    </div>
+                    <h3 data-i18n="youtube_vid2" style="font-size: 1.1rem; margin: 1rem 0 0.5rem 0;">8족 보행 로봇 설계 자체 제작기</h3>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Essential Scripts linking to original app logic -->
+    <script src="js/i18n.js"></script>
+    <script>
+        // LocalStorage Board Logic
+        document.addEventListener('DOMContentLoaded', loadComments);
+
+        function loadComments() {
+            const container = document.getElementById('boardMessages');
+            container.innerHTML = '';
+            const messages = JSON.parse(localStorage.getItem('amk_board')) || [];
+            
+            if(messages.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.9rem; text-align: center; margin-top: 2rem;">첫 번째 피드백을 남겨주세요!</p>';
+                return;
+            }
+
+            messages.forEach(msg => {
+                const div = document.createElement('div');
+                div.style.cssText = 'padding: 1rem; margin-bottom: 0.8rem; background: rgba(255,255,255,0.05); border-left: 2px solid var(--accent-primary); border-radius: 4px;';
+                
+                const meta = document.createElement('div');
+                meta.style.cssText = 'display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--accent-primary); font-weight: 600;';
+                meta.innerHTML = `<span>${msg.name}</span> <span style="color:var(--text-secondary); font-weight: 400;">${msg.date}</span>`;
+                
+                const content = document.createElement('p');
+                content.style.fontSize = '0.95rem';
+                content.textContent = msg.content;
+                
+                div.appendChild(meta);
+                div.appendChild(content);
+                container.appendChild(div);
+            });
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function addComment() {
+            const name = document.getElementById('nameInput').value.trim();
+            const content = document.getElementById('contentInput').value.trim();
+            if(!name || !content) {
+                alert('이름과 내용을 입력해주세요.');
+                return;
+            }
+            
+            const messages = JSON.parse(localStorage.getItem('amk_board')) || [];
+            const date = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute:'2-digit' });
+            
+            messages.push({ name, content, date });
+            localStorage.setItem('amk_board', JSON.stringify(messages));
+            
+            document.getElementById('nameInput').value = '';
+            document.getElementById('contentInput').value = '';
+            loadComments();
+        }
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const isLight = document.body.classList.toggle('light-mode');
+            localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            updateThemeIcon(isLight);
+            // Re-initialize mermaid to swap diagram colors
+            initMermaid(isLight);
+        }
+
+        function updateThemeIcon(isLight) {
+            const icon = document.querySelector('#themeToggle i');
+            icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+
+        // Initialize Theme
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                updateThemeIcon(true);
+            }
+        })();
+    </script>
+</body>
+</html>
