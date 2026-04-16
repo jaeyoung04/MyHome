@@ -53,7 +53,7 @@ const i18n = {
         footer_name: "이재영",
         nav_home: "홈",
         nav_board: "피드백 보드",
-        board_title: "소통의 장 <span class='badge'>Communication</span>",
+        board_title: "자유게시판 <span class='badge'>Communication</span>",
         board_subtitle: "기구 설계 아이디어나 따뜻한 피드백을 남겨주시면 감사한 마음으로 임하겠습니다.",
         board_recent: "최근 의견",
         board_write: "의견 남기기",
