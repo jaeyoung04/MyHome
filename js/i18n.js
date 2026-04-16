@@ -67,7 +67,26 @@ const i18n = {
         board_empty: "아직 등록된 피드백이 없습니다. 첫 의견을 주시면 감사하겠습니다!",
         board_btn_edit: "수정",
         board_btn_delete: "삭제",
-        board_btn_edit_done: "변경 완료"
+        board_btn_edit_done: "변경 완료",
+        board_page_title: "자유게시판 <span class='subtitle'>건강한 피드백과 자유로운 기술 토론의 장</span>",
+        board_search_ph: "제목 또는 작성자 검색...",
+        board_btn_write: "<i class='fa-solid fa-pen'></i> 글쓰기",
+        col_id: "번호",
+        col_title: "제목",
+        col_author: "작성자",
+        col_date: "작성일",
+        col_likes: "추천",
+        modal_write_title: "게시글 작성",
+        modal_ph_title: "제목을 입력하세요",
+        modal_ph_name: "작성자 이름",
+        modal_ph_pw: "비밀번호 (수정/삭제용)",
+        modal_secret: "🔒 비밀글로 작성하기",
+        modal_ph_content: "내용을 자유롭게 입력해주세요!",
+        modal_btn_submit: "등록하기",
+        modal_btn_like: "<i class='fa-solid fa-heart'></i> 추천",
+        modal_btn_delete: "<i class='fa-solid fa-trash'></i> 삭제",
+        nav_home_board: "<i class='fa-solid fa-house' style='width: 25px;'></i> 홈",
+        nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> 자유게시판"
     },
     en: {
         nav_vocation: "Potential",
@@ -137,7 +156,26 @@ const i18n = {
         board_empty: "No feedback yet. Please share your thoughts!",
         board_btn_edit: "Edit",
         board_btn_delete: "Delete",
-        board_btn_edit_done: "Done"
+        board_btn_edit_done: "Done",
+        board_page_title: "Free Board <span class='subtitle'>A space for healthy feedback and discussion</span>",
+        board_search_ph: "Search title or author...",
+        board_btn_write: "<i class='fa-solid fa-pen'></i> Write",
+        col_id: "No.",
+        col_title: "Title",
+        col_author: "Author",
+        col_date: "Date",
+        col_likes: "Likes",
+        modal_write_title: "Write Post",
+        modal_ph_title: "Enter title",
+        modal_ph_name: "Name",
+        modal_ph_pw: "Password (Mod/Del)",
+        modal_secret: "🔒 Secret Post",
+        modal_ph_content: "Share your thoughts freely!",
+        modal_btn_submit: "Submit",
+        modal_btn_like: "<i class='fa-solid fa-heart'></i> Like",
+        modal_btn_delete: "<i class='fa-solid fa-trash'></i> Delete",
+        nav_home_board: "<i class='fa-solid fa-house' style='width: 25px;'></i> Home",
+        nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> Board"
     }
 };
 
@@ -151,7 +189,11 @@ function setLanguage(lang) {
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (i18n[currentLang][key]) {
-            el.innerHTML = i18n[currentLang][key]; // Using innerHTML to preserve strong/badge tags
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = i18n[currentLang][key];
+            } else {
+                el.innerHTML = i18n[currentLang][key];
+            }
         }
     });
 }

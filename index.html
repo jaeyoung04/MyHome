@@ -44,7 +44,7 @@
             --border-bento: rgba(59, 130, 246, 0.2);
             --border-highlight: rgba(59, 130, 246, 0.6);
             --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --text-secondary: #cbd5e1;
             --accent-primary: #3b82f6;
             --accent-glow: 0 0 20px rgba(59, 130, 246, 0.5);
             --radius-xl: 32px;
@@ -114,8 +114,8 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
-        .logo { font-size: 1.6rem; color: var(--text-primary); }
-        .logo span { color: var(--accent-primary); }
+        .logo { font-size: 1.6rem; color: var(--text-primary); text-decoration: none; font-weight: 800; }
+        .logo span { color: var(--accent-primary); font-weight: 900; }
         
         .glow-btn {
             background: rgba(59, 130, 246, 0.1);
@@ -230,9 +230,9 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">
-            <span style="color: var(--accent-primary); font-weight: 900;">Samsung</span> DX
-        </div>
+        <a href="index.html" class="logo">
+            <span>Samsung</span> DX
+        </a>
         <div style="display: flex; gap: 0.8rem; align-items: center;">
             <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
                 <i class="fa-solid fa-moon"></i>
