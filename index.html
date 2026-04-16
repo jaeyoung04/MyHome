@@ -28,7 +28,7 @@
         }
         document.addEventListener("DOMContentLoaded", () => {
             const savedTheme = localStorage.getItem('portfolio-theme');
-            initMermaid(savedTheme === 'light');
+            initMermaid(savedTheme !== 'dark');
         });
     </script>
     
@@ -93,6 +93,12 @@
 
         h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.03em; }
         p { line-height: 1.6; color: var(--text-secondary); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(130, 130, 130, 0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(130, 130, 130, 0.6); }
 
         /* Top Navigation */
         .navbar {
@@ -207,11 +213,13 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
+            .bento-container { grid-auto-rows: auto; }
+            .bento-card { grid-row: auto !important; height: auto; }
             .hero-bento { grid-column: span 12; }
             .profile-bento, .contact-bento { grid-column: span 6; }
-            .vocation-bento, .mechanism-bento { grid-column: span 12; grid-row: auto; min-height: 350px; }
+            .vocation-bento, .mechanism-bento { grid-column: span 12; }
+            .mastery-bento { grid-column: span 12; }
             .log-bento, .board-bento, .youtube-bento { grid-column: span 12; }
-            .bento-grid { grid-auto-rows: min-content; }
         }
         @media (max-width: 768px) {
             .profile-bento, .contact-bento { grid-column: span 12; }
@@ -255,6 +263,7 @@
         <div class="bento-card contact-bento">
             <a href="mailto:jyoung0588@dongyang.ac.kr" class="contact-link"><i class="fa-solid fa-envelope"></i> jyoung0588@dongyang.ac.kr</a>
             <a href="tel:010-4408-0588" class="contact-link"><i class="fa-solid fa-phone"></i> 010-4408-0588</a>
+            <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="contact-link" data-i18n="contact_youtube"><i class="fa-brands fa-youtube"></i> 금성골드스타</a>
             <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-bento);">
                 <span class="badge" style="margin-left:0;">TOEIC 650+</span>
                 <span data-i18n="vocation_global" style="font-size: 0.85rem; color: var(--text-secondary); margin-left: 10px;">글로벌 업무 역량 보유</span>
@@ -443,7 +452,7 @@
         // Initialize Theme
         (function() {
             const savedTheme = localStorage.getItem('portfolio-theme');
-            if (savedTheme === 'light') {
+            if (savedTheme !== 'dark') {
                 document.body.classList.add('light-mode');
                 updateThemeIcon(true);
             }
