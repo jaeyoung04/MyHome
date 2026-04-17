@@ -19,7 +19,7 @@ const i18n = {
         cert_diat: "DIAT 고급",
         cert_title: "주요 역량 증명",
         profile_name: "이재영 (Jaeyoung LEE)",
-        profile_role: "Mechanical & Control Engineer<br>@ 동양미래대학교",
+        profile_role: "Mechanical & Control Engineer",
         mastery_title: "제어 시스템 프레임워크 역량",
         skill_plc: "3D 기구학적 설계 (CAD)",
         skill_csharp: "서스펜션 & 동력전달",
@@ -88,7 +88,15 @@ const i18n = {
         nav_home_board: "<i class='fa-solid fa-house' style='width: 25px;'></i> 홈",
         nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> 자유게시판",
         contact_youtube: "<i class='fa-brands fa-youtube'></i> 금성골드스타",
-        contact_insta: "<i class='fa-brands fa-instagram'></i> 인스타그램"
+        contact_insta: "<i class='fa-brands fa-instagram'></i> 인스타그램",
+        edu_title: "학력 사항",
+        edu_university: "동양미래대학교 로봇자동화공학부 로봇공학과",
+        edu_highschool: "울산공업고등학교 전자통신과",
+        edu_middle: "이화중학교",
+        edu_elementary: "이화초등학교",
+        edu_present: "현재",
+        mil_title: "지상작전사령부 대형차량운전병",
+        mil_desc: "병장 만기전역"
     },
     en: {
         nav_vocation: "Potential",
@@ -110,7 +118,7 @@ const i18n = {
         cert_diat: "DIAT Advanced",
         cert_title: "Competency Verification",
         profile_name: "Jaeyoung LEE",
-        profile_role: "Mechanical & Control Engineer<br>@ Dongyang Mirae Univ.",
+        profile_role: "Mechanical & Control Engineer",
         mastery_title: "Control System Framework Competency",
         skill_plc: "3D Kinematic Design",
         skill_csharp: "Suspension & Powertrain",
@@ -179,7 +187,15 @@ const i18n = {
         nav_home_board: "<i class='fa-solid fa-house' style='width: 25px;'></i> Home",
         nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> Board",
         contact_youtube: "<i class='fa-brands fa-youtube'></i> GoldStar",
-        contact_insta: "<i class='fa-brands fa-instagram'></i> Instagram"
+        contact_insta: "<i class='fa-brands fa-instagram'></i> Instagram",
+        edu_title: "Education",
+        edu_university: "Dongyang Mirae Univ. Robotics Engineering",
+        edu_highschool: "Ulsan Technical High School Electronics",
+        edu_middle: "Iwha Middle School",
+        edu_elementary: "Iwha Elementary School",
+        edu_present: "Present",
+        mil_title: "Ground Operations Command (Heavy Vehicle Driver)",
+        mil_desc: "Completed Military Service (Sergeant)"
     }
 };
 

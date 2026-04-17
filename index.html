@@ -423,8 +423,24 @@
         }
 
         /* Modal specific display */
-        .modal-only { display: none; }
+        .modal-only { display: none !important; }
         .card-modal-body .modal-only { display: flex !important; }
+        .profile-layout { display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center; }
+        .card-modal-body .profile-layout { flex-direction: row; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+
+        /* Contact Modal Layout */
+        .contact-layout { display: flex; flex-direction: column; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+        .card-modal-body .contact-layout { align-items: center; justify-content: center; text-align: center; margin-top: 2rem; gap: 1.5rem; }
+        .card-modal-body .contact-layout .contact-link { font-size: 1.2rem; padding: 1rem 1.5rem; border-radius: 20px; width: 100%; max-width: 400px; justify-content: center; border: 1px solid var(--border-bento); background: var(--bg-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card-modal-body .contact-layout .social-links-wrapper { margin-left: 0 !important; width: 100%; max-width: 400px; gap: 1rem !important; }
+        .card-modal-body .contact-layout .social-links-wrapper .contact-link { flex: 1; padding: 1rem 1rem; }
+
+        /* Education List Styles */
+        .edu-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem; text-align: left; flex: 1; min-width: 250px; }
+        .edu-item { display: flex; flex-direction: column; gap: 0.3rem; position: relative; padding-left: 1.5rem; }
+        .edu-item::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; }
+        .edu-item-title { font-weight: 600; color: var(--text-primary); font-size: 1rem; }
+        .edu-item-date { font-size: 0.85rem; color: var(--text-secondary); }
     </style>
 </head>
 <body>
@@ -488,26 +504,63 @@
         </div>
 
         <!-- Profile Box -->
-        <div class="bento-card profile-bento">
-            <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
-            <h2 data-i18n="profile_name">이재영 (Jaeyoung LEE)</h2>
-            <p data-i18n="profile_role">Mechanical & Control Engineer</p>
-            <div class="modal-only" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-bento); align-items: center; gap: 0.8rem; justify-content: center;">
+        <div class="bento-card profile-bento" style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="profile-layout">
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 200px; height: 100%;">
+                    <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+                    <h2 data-i18n="profile_name">이재영 (Jaeyoung LEE)</h2>
+                    <p data-i18n="profile_role">Mechanical & Control Engineer</p>
+
+                    <div class="modal-only" style="margin-top: auto; padding-top: 2rem; width: 100%; display: flex; justify-content: center;">
+                        <div style="width: 100%; max-width: 280px; text-align: center; color: var(--text-secondary); background: rgba(0,0,0,0.03); padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid var(--border-bento); box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                            <div style="font-size: 0.8rem; letter-spacing: -0.5px; margin-bottom: 0.4rem;">2024.04.23 ~ 2025.10.22</div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; font-size: 0.95rem;">
+                                <i class="fa-solid fa-medal" style="color: var(--accent-primary);"></i><span data-i18n="mil_title">지상작전사령부 대형차량운전병</span>
+                            </div>
+                            <div data-i18n="mil_desc" style="font-size: 0.85rem;">병장 만기전역</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-only edu-list">
+                    <h3 data-i18n="edu_title" style="margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">학력 사항</h3>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_university">동양미래대학교 로봇공학과</span>
+                        <span class="edu-item-date">2023.03 ~ <span data-i18n="edu_present">현재</span></span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_highschool">울산공업고등학교 전자통신과</span>
+                        <span class="edu-item-date">2020.03 ~ 2023.02</span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_middle">이화중학교</span>
+                        <span class="edu-item-date">2017.02 ~ 2020.02</span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_elementary">이화초등학교</span>
+                        <span class="edu-item-date">2011.03 ~ 2017.02</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-only" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-bento); align-items: center; gap: 0.8rem; justify-content: center; width: 100%;">
                 <span class="badge" style="margin-left:0; white-space: nowrap;">TOEIC 650+</span>
                 <span data-i18n="vocation_global" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.4; word-break: keep-all;">글로벌 업무 역량 보유</span>
             </div>
         </div>
 
         <div class="bento-card contact-bento">
-            <a href="mailto:jyoung0588@dongyang.ac.kr" class="contact-link"><i class="fa-solid fa-envelope"></i> jyoung0588@dongyang.ac.kr</a>
-            <a href="tel:010-4408-0588" class="contact-link"><i class="fa-solid fa-phone"></i> 010-4408-0588</a>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: -1rem; margin-top: 0.2rem;">
-                <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="contact-link" data-i18n="contact_youtube" style="margin-left:0;">
-                    <i class="fa-brands fa-youtube"></i> 금성골드스타
-                </a>
-                <a href="https://www.instagram.com/j0._.dl?igsh=MXZ6MWVkYzlnMmZhZw%3D%3D" target="_blank" class="contact-link" data-i18n="contact_insta" style="margin-left:0;">
-                    <i class="fa-brands fa-instagram"></i> 인스타그램
-                </a>
+            <div class="contact-layout">
+                <a href="mailto:jyoung0588@dongyang.ac.kr" class="contact-link"><i class="fa-solid fa-envelope"></i> jyoung0588@dongyang.ac.kr</a>
+                <a href="tel:010-4408-0588" class="contact-link"><i class="fa-solid fa-phone"></i> 010-4408-0588</a>
+                <div class="social-links-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: -1rem; margin-top: 0.2rem;">
+                    <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="contact-link" data-i18n="contact_youtube" style="margin-left:0;">
+                        <i class="fa-brands fa-youtube"></i> 금성골드스타
+                    </a>
+                    <a href="https://www.instagram.com/j0._.dl?igsh=MXZ6MWVkYzlnMmZhZw%3D%3D" target="_blank" class="contact-link" data-i18n="contact_insta" style="margin-left:0;">
+                        <i class="fa-brands fa-instagram"></i> 인스타그램
+                    </a>
+                </div>
             </div>
         </div>
 
