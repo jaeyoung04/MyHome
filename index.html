@@ -231,7 +231,7 @@
             transform: translateX(5px);
         }
 
-        .vocation-bento { grid-column: span 6; grid-row: span 2; }
+        .vocation-bento { grid-column: span 6; grid-row: span 1; align-self: start; height: fit-content; }
         .vocation-bento ul { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
         .vocation-bento li { display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); }
         .vocation-bento i { color: var(--accent-primary); font-size: 1.2rem; }
@@ -544,6 +544,22 @@
         .edu-item::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; }
         .edu-item-title { font-weight: 600; color: var(--text-primary); font-size: 1rem; }
         .edu-item-date { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Awards List Styles */
+        .preview-list { list-style: none; padding: 0; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+        .preview-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; color: var(--text-primary); font-weight: 500; }
+        .card-modal-body .preview-only { display: none !important; }
+        
+        .awards-timeline { display: flex; flex-direction: column; gap: 1.7rem; padding-left: 1rem; border-left: 2px solid var(--border-bento); margin-top: 1.5rem; margin-bottom: 2rem; }
+        .award-item { position: relative; padding-left: 1.5rem; }
+        .award-item::before {
+            content: ''; position: absolute; left: -1.45rem; top: 0.3rem; width: 14px; height: 14px;
+            background: var(--bg-bento); border: 2px solid var(--accent-primary); border-radius: 50%;
+        }
+        .award-date { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .award-title { font-weight: 600; color: var(--text-primary); font-size: 1.05rem; margin-bottom: 0.3rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; line-height: 1.4; word-break: keep-all; }
+        .award-org { font-size: 0.8rem; background: rgba(59, 130, 246, 0.1); color: var(--text-primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; white-space: nowrap; border: 1px solid rgba(0,0,0,0.05); }
+        .award-part { font-size: 0.9rem; color: var(--text-secondary); word-break: keep-all; }
     </style>
 </head>
 <body>
@@ -732,17 +748,38 @@
             </div>
         </div>
 
-        <!-- Vocation Box -->
-        <div class="bento-card vocation-bento">
-            <h2 data-i18n="vocation_title">핵심 정체성 <span class="badge">성장 잠재력</span></h2>
-            <p data-i18n="vocation_desc" style="margin-top: 1rem;">
-                울산공고 전자통신과에서 시작된 하드웨어 통제에 대한 열정은 동양미래대학교 로봇소프트웨어 전공으로 이어지며, 물리적 메커니즘과 논리적 알고리즘에 대한 심층적인 탐구로 발전했습니다. 현재는 기계공학적 시각과 소프트웨어적 문제해결 능력을 아울러 갖춘 융복합 엔지니어로 거듭났습니다.
-            </p>
-            <ul>
-                <li><i class="fa-solid fa-microchip"></i> <span data-i18n="vocation_feat1">전기/전자 회로 분석 및 하드웨어 통제 시스템 이해도</span></li>
-                <li><i class="fa-solid fa-gears"></i> <span data-i18n="vocation_feat2">3D 기구 설계(Mechanical Design)와 펌웨어 제어 기술의 융합</span></li>
-                <li><i class="fa-solid fa-shield-halved"></i> <span data-i18n="vocation_feat3">품질 혁신과 불량률 제로를 지향하는 완벽주의(Supex) 마인드</span></li>
+        <!-- Awards Box -->
+        <div class="bento-card vocation-bento awards-bento">
+            <h2>🏆 주요 수상 경력 <span class="badge">총 17건</span></h2>
+            
+            <!-- Preview Context (hidden in Modal) -->
+            <ul class="preview-list preview-only">
+                <li><i class="fa-solid fa-trophy" style="color: #d4af37;"></i> <span>2022 국제로봇올림피아드 세계대회(태국) - 금상</span></li>
+                <li><i class="fa-solid fa-medal" style="color: #a0a0a0;"></i> <span>2022 국제로봇올림피아드 한국대회 본선 - 은상</span></li>
+                <li><i class="fa-solid fa-award" style="color: #cd7f32;"></i> <span>2022 울산광역시 기능경기대회 - 동상</span></li>
+                <li style="color: var(--text-secondary); font-size: 0.85rem; justify-content: center; margin-top: 0.5rem; border-top: 1px dashed var(--border-bento); padding-top: 1rem;"><i class="fa-solid fa-plus" style="font-size:0.7rem;"></i> 외 14건 전체보기 (클릭)</li>
             </ul>
+
+            <!-- Timeline Detailed Context (hidden in Preview) -->
+            <div class="modal-only awards-timeline">
+                <div class="award-item"><div class="award-date">2023.05.17</div><div class="award-title">2023 강남 청소년 로봇인공지능 해커톤 <span class="award-org">장려상</span></div></div>
+                <div class="award-item"><div class="award-date">2023.01.12 ~ 2023.01.15</div><div class="award-title">2022 국제로봇올림피아드 세계대회(태국) <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);">금상(1위)</span></div><div class="award-part">카트롤링볼</div></div>
+                <div class="award-item"><div class="award-date">2023.01.12 ~ 2023.01.15</div><div class="award-title">2022 국제로봇올림피아드 세계대회(태국) <span class="award-org">성과상</span></div><div class="award-part">로봇게더링</div></div>
+                <div class="award-item"><div class="award-date">2022.11.05</div><div class="award-title">2022 창원 전국지능 로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">트랜스퍼로봇(중~고등부)</div></div>
+                <div class="award-item"><div class="award-date">2022.08.15</div><div class="award-title">2022 국제로봇올림피아드 한국대회 본선 <span class="award-org">장려상</span></div><div class="award-part">미션형창작</div></div>
+                <div class="award-item"><div class="award-date">2022.08.15</div><div class="award-title">2022 국제로봇올림피아드 한국대회 본선 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">카트롤링볼</div></div>
+                <div class="award-item"><div class="award-date">2022.04.08</div><div class="award-title">2022 울산광역시 기능경기대회 <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);">동상[3등]</span></div><div class="award-part">공업전자기기 | 울산광역시 기능경기위원회</div></div>
+                <div class="award-item"><div class="award-date">2021.11.21</div><div class="award-title">2021 국제로봇올림피아드 한국대회 본선 <span class="award-org">장려상</span></div><div class="award-part">로봇게더링 | (IROC)국제로봇올림피아드</div></div>
+                <div class="award-item"><div class="award-date">2019.10.27</div><div class="award-title">2019 창원전국지능 로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
+                <div class="award-item"><div class="award-date">2019.10.12</div><div class="award-title">2019 국제로봇컨테스트(IRC 2019) <span class="award-org">장려상</span></div><div class="award-part">로봇팀플레이 중고등부 | (로보콘)-서울과학기술대학교</div></div>
+                <div class="award-item"><div class="award-date">2019.06.23</div><div class="award-title">제17회 울산로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">미션트랜스퍼 중고등부 | 울산정보산업진흥원</div></div>
+                <div class="award-item"><div class="award-date">2018.10.12</div><div class="award-title">2018 국제로봇콘테스트 <span class="award-org">장려상</span></div><div class="award-part">로봇팀플레이 중고등부 | (로보콘)-창의과학교육연구회</div></div>
+                <div class="award-item"><div class="award-date">2018.09.01</div><div class="award-title">2018 창원 전국지능 로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
+                <div class="award-item"><div class="award-date">2017.11.26</div><div class="award-title">2017 창원 전국지능 로봇경진대회 <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);">동상</span></div><div class="award-part">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
+                <div class="award-item"><div class="award-date">2017.10.29</div><div class="award-title">2017 제7회 국제프로그래밍로봇챌린지 (IPRC) <span class="award-org">과학상</span></div><div class="award-part">프로그래밍레이싱 | 창의과학교육연구회</div></div>
+                <div class="award-item"><div class="award-date">2017.09.16</div><div class="award-title">2017 국제로봇컨테스트(IRC 2017) <span class="award-org">장려상</span></div><div class="award-part">로봇 팀플레이 중고등부 | (로보콘)-서울과학기술대학교</div></div>
+                <div class="award-item"><div class="award-date">2015.10.18</div><div class="award-title">2015 국제프로그래밍 로봇챌린지 울산대회 <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);">금상</span></div><div class="award-part">자유배틀경기부분 | (사)창의과학교육연구회</div></div>
+            </div>
         </div>
 
         <!-- Mechanism Box -->
