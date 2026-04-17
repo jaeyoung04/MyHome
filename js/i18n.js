@@ -5,14 +5,14 @@ const i18n = {
         nav_mechanism: "기구 설계",
         nav_youtube: "팀워크 및 시연",
         nav_log: "품질 혁신(TS)",
-        hero_title: "정밀 설계. <span class='text-cyan'>지능형 제어.</span> <span class='text-gold'>한계 돌파.</span>",
+        hero_title: "정밀 설계. <span class='text-samsung-blue'>지능형 제어.</span> <span class='text-samsung-silver'>한계 돌파.</span>",
         hero_subtitle: "기계적 메커니즘의 완벽함과 지능형 제어 역량을 겸비한<br><strong>Mechanical Solution Architect</strong>",
         vocation_title: "핵심 정체성 <span class='badge'>성장 잠재력</span>",
         vocation_desc: "울산공고 전자통신과에서 시작된 하드웨어 통제에 대한 열정은 동양미래대학교 로봇소프트웨어 전공으로 이어지며, 물리적 메커니즘과 논리적 알고리즘에 대한 심층적인 탐구로 발전했습니다. 현재는 기계공학적 시각과 소프트웨어적 문제해결 능력을 아울러 갖춘 융복합 엔지니어로 거듭났습니다.",
         vocation_feat1: "전기/전자 회로 분석 및 밀착된 하드웨어 통제 시스템 이해도",
         vocation_feat2: "3D 기구 설계(Mechanical Design)와 펌웨어 제어 기술의 융합",
         vocation_feat3: "품질 혁신과 불량률 제로를 지향하는 완벽주의(Supex) 마인드",
-        vocation_global: "글로벌 기술 리서치가 가능한 영문 문서 이해력(TOEIC 650+)",
+        vocation_global: "글로벌 기술 리서치가 가능한 영문 문서 이해력",
         cert_electric: "전기기능사",
         cert_electronic: "전자기능사",
         cert_gtq: "GTQ 3급",
@@ -86,7 +86,9 @@ const i18n = {
         modal_btn_like: "<i class='fa-solid fa-heart'></i> 추천",
         modal_btn_delete: "<i class='fa-solid fa-trash'></i> 삭제",
         nav_home_board: "<i class='fa-solid fa-house' style='width: 25px;'></i> 홈",
-        nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> 자유게시판"
+        nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> 자유게시판",
+        contact_youtube: "<i class='fa-brands fa-youtube'></i> 금성골드스타",
+        contact_insta: "<i class='fa-brands fa-instagram'></i> 인스타그램"
     },
     en: {
         nav_vocation: "Potential",
@@ -94,14 +96,14 @@ const i18n = {
         nav_mechanism: "Mechanism",
         nav_youtube: "Teamwork & Demo",
         nav_log: "Innovation(TS)",
-        hero_title: "PRECISION. <span class='text-cyan'>INTELLIGENCE.</span> <span class='text-gold'>BREAKTHROUGH.</span>",
+        hero_title: "PRECISION. <span class='text-samsung-blue'>INTELLIGENCE.</span> <span class='text-samsung-silver'>BREAKTHROUGH.</span>",
         hero_subtitle: "Combining flawless mechanical engineering with intelligent control capabilities<br><strong>Mechanical Solution Architect</strong>",
         vocation_title: "Core Identity <span class='badge'>Growth Potential</span>",
         vocation_desc: "My passion for hardware logic, forged at Ulsan Technical High School's Electronics & Communications department, evolved into a deep exploration of mechanical mechanisms and control algorithms during my Robotics Software studies. Today, I am a cross-functional engineer possessing both mechanical insight and software troubleshooting capabilities.",
         vocation_feat1: "Deep understanding of electrical/electronic circuits and hardware control systems",
         vocation_feat2: "Convergence of 3D Mechanical Design and Firmware Control",
         vocation_feat3: "Perfectionist (Supex) mindset targeting zero defects in quality",
-        vocation_global: "Capable of global technical research & manual comprehension (TOEIC 650+)",
+        vocation_global: "Capable of global technical research & manual comprehension",
         cert_electric: "Electric Technician",
         cert_electronic: "Electronic Technician",
         cert_gtq: "GTQ Level 3",
@@ -175,7 +177,9 @@ const i18n = {
         modal_btn_like: "<i class='fa-solid fa-heart'></i> Like",
         modal_btn_delete: "<i class='fa-solid fa-trash'></i> Delete",
         nav_home_board: "<i class='fa-solid fa-house' style='width: 25px;'></i> Home",
-        nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> Board"
+        nav_board_board: "<i class='fa-solid fa-comments' style='width: 25px;'></i> Board",
+        contact_youtube: "<i class='fa-brands fa-youtube'></i> GoldStar",
+        contact_insta: "<i class='fa-brands fa-instagram'></i> Instagram"
     }
 };
 

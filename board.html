@@ -58,11 +58,55 @@
 
         /* Top Navigation */
         .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%; position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
         }
         body.light-mode .navbar { border-bottom: 1px solid rgba(0,0,0,0.05); }
+
+        @keyframes expandMenu {
+            from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(-10px); }
+            to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
+        }
+
+        /* Premium Morphing Hamburger */
+        .hamburger-container {
+            width: 20px;
+            height: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .ham-line {
+            display: block;
+            height: 2px;
+            width: 100%;
+            border-radius: 2px;
+            background-color: var(--text-primary);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            transform-origin: center;
+        }
+        .hamburger-container.is-active .ham-line:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        .hamburger-container.is-active .ham-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger-container.is-active .ham-line:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
         .logo { font-size: 1.6rem; color: var(--text-primary); text-decoration: none; font-weight: 800; }
         .logo span { color: var(--accent-primary); font-weight: 900; }
         
@@ -170,36 +214,51 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html" class="logo">
-            <span>Samsung</span> DX
-        </a>
-        <div style="display: flex; gap: 0.8rem; align-items: center;">
-            <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-            <button class="glow-btn" onclick="toggleLanguage()">🌐 EN / KO</button>
-            <div style="position: relative;">
-                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴">
-                    <i class="fa-solid fa-bars"></i>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo">
+                <span>Samsung</span> DX
+            </a>
+            <div style="display: flex; gap: 0.8rem; align-items: center;">
+                <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
+                    <i class="fa-solid fa-moon"></i>
                 </button>
-                <div id="navMenu" style="display: none; position: absolute; top: 120%; right: 0; background: var(--bg-bento); border: 1px solid var(--border-highlight); border-radius: 12px; min-width: 160px; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1000; backdrop-filter: blur(10px);">
-                    <a href="index.html" style="padding: 1rem 1.5rem; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; display: block; font-weight: 600;"><i class="fa-solid fa-house" style="width: 25px;"></i> 홈</a>
-                    <a href="board.html" style="padding: 1rem 1.5rem; color: var(--text-primary); text-decoration: none; transition: 0.2s; display: block; font-weight: 600;"><i class="fa-solid fa-comments" style="width: 25px;"></i> 자유게시판</a>
-                </div>
+                <button class="glow-btn" onclick="toggleLanguage()">🌐 EN / KO</button>
+                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴" style="display: flex; align-items: center; justify-content: center; padding-top: 0.8rem; padding-bottom: 0.8rem;">
+                    <div id="hamburgerIcon" class="hamburger-container">
+                        <span class="ham-line"></span>
+                        <span class="ham-line"></span>
+                        <span class="ham-line"></span>
+                    </div>
+                </button>
             </div>
-            <script>
-                function toggleMenu() {
-                    const menu = document.getElementById('navMenu');
-                    menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
-                }
-                document.addEventListener('click', function(e) {
-                    const menu = document.getElementById('navMenu');
-                    if (menu && !e.target.closest('#navMenu') && !e.target.closest('button[onclick="toggleMenu()"]')) {
-                        menu.style.display = 'none';
-                    }
-                });
-            </script>
         </div>
+
+        <div id="navMenu" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;">
+            <div style="display: flex; flex-direction: column; gap: 0.2rem; border-top: 1px solid var(--border-bento); padding: 1rem 0.5rem;">
+                <a href="index.html" style="padding: 1rem 1rem; border-radius: 12px; color: var(--text-primary); text-decoration: none; font-weight: 600; display: block; transition: background 0.2s;" data-i18n="nav_home_board" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-house" style="width: 25px;"></i> 홈</a>
+                <a href="board.html" style="padding: 1rem 1rem; border-radius: 12px; color: var(--text-primary); text-decoration: none; font-weight: 600; display: block; transition: background 0.2s;" data-i18n="nav_board_board" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-comments" style="width: 25px;"></i> 자유게시판</a>
+            </div>
+        </div>
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('navMenu');
+                const hamburgerIcon = document.getElementById('hamburgerIcon');
+
+                if (menu.style.maxHeight === '0px' || menu.style.maxHeight === '') {
+                    menu.style.maxHeight = '300px';
+                    menu.style.opacity = '1';
+                    menu.style.marginTop = '1.5rem';
+
+                    hamburgerIcon.classList.add('is-active');
+                } else {
+                    menu.style.maxHeight = '0px';
+                    menu.style.opacity = '0';
+                    menu.style.marginTop = '0px';
+
+                    hamburgerIcon.classList.remove('is-active');
+                }
+            }
+        </script>
     </nav>
 
     <div class="page-container">
