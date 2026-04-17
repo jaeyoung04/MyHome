@@ -90,13 +90,27 @@ const i18n = {
         contact_youtube: "<i class='fa-brands fa-youtube'></i> 금성골드스타",
         contact_insta: "<i class='fa-brands fa-instagram'></i> 인스타그램",
         edu_title: "학력 사항",
-        edu_university: "동양미래대학교 로봇자동화공학부 로봇공학과",
+        edu_university: "동양미래대학교 로봇공학과",
         edu_highschool: "울산공업고등학교 전자통신과",
         edu_middle: "이화중학교",
         edu_elementary: "이화초등학교",
         edu_present: "현재",
         mil_title: "지상작전사령부 대형차량운전병",
-        mil_desc: "병장 만기전역"
+        mil_desc: "병장 만기전역",
+        cert_section_title: "보유 자격 사항",
+        cert_type_national: "국가기술자격증",
+        cert_type_national_base: "국가자격증",
+        cert_type_national_small: "국가기술자격",
+        cert_type_private: "공인민간자격증",
+        cert_type_reg: "등록민간자격증",
+        cert_3d: "3D프린터운용기능사",
+        cert_bus: "버스운전자격",
+        cert_diat_search: "DIAT 인터넷정보검색 초급",
+        cert_diat_media: "DIAT 멀티미디어제작 고급",
+        cert_diat_sheet: "DIAT 스프레드시트 고급",
+        cert_diat_ppt: "DIAT 프리젠테이션 중급",
+        cert_pass: "합격",
+        cert_issue: "발급"
     },
     en: {
         nav_vocation: "Potential",
@@ -195,7 +209,21 @@ const i18n = {
         edu_elementary: "Iwha Elementary School",
         edu_present: "Present",
         mil_title: "Ground Operations Command (Heavy Vehicle Driver)",
-        mil_desc: "Completed Military Service (Sergeant)"
+        mil_desc: "Completed Military Service (Sergeant)",
+        cert_section_title: "Certifications",
+        cert_type_national: "National Tech",
+        cert_type_national_base: "National Cert",
+        cert_type_national_small: "National Tech",
+        cert_type_private: "Authorized Private",
+        cert_type_reg: "Registered Private",
+        cert_3d: "3D Printer Operation Tech",
+        cert_bus: "Bus Driver License",
+        cert_diat_search: "DIAT Info Search (Beginner)",
+        cert_diat_media: "DIAT Multimedia (Advanced)",
+        cert_diat_sheet: "DIAT Spreadsheet (Advanced)",
+        cert_diat_ppt: "DIAT Presentation (Intermediate)",
+        cert_pass: "Passed",
+        cert_issue: "Issued"
     }
 };
 

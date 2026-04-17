@@ -339,8 +339,8 @@
             background: var(--bg-bento);
             border: 1px solid var(--border-highlight);
             border-radius: var(--radius-xl);
-            width: 90vw;
-            max-width: 800px;
+            width: 95vw;
+            max-width: 1200px;
             max-height: 85vh;
             padding: 3rem;
             position: relative;
@@ -382,7 +382,8 @@
             color: var(--text-primary);
         }
 
-        .card-modal-close:hover {
+        .card-modal-close:hover,
+        body.light-mode .card-modal-close:hover {
             background: var(--accent-primary);
             color: white;
             transform: rotate(90deg);
@@ -427,6 +428,14 @@
         .card-modal-body .modal-only { display: flex !important; }
         .profile-layout { display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center; }
         .card-modal-body .profile-layout { flex-direction: row; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+
+        /* Cert List Styles */
+        .cert-list { display: flex; flex-direction: column; gap: 0.6rem; width: 100%; margin-top: 1rem; }
+        .cert-item { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px dashed var(--border-bento); gap: 1rem; }
+        .cert-item:last-child { border-bottom: none; }
+        .cert-badge { display: inline-block; min-width: 85px; text-align: center; font-size: 0.65rem; padding: 0.3rem 0.5rem; border-radius: 4px; background: rgba(0,0,0,0.04); color: var(--text-secondary); white-space: nowrap; }
+        .cert-title { font-size: 0.9rem; font-weight: 500; color: var(--text-primary); flex: 1; text-align: left; }
+        .cert-date { font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap; }
 
         /* Contact Modal Layout */
         .contact-layout { display: flex; flex-direction: column; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
@@ -512,17 +521,17 @@
                     <p data-i18n="profile_role">Mechanical & Control Engineer</p>
 
                     <div class="modal-only" style="margin-top: auto; padding-top: 2rem; width: 100%; display: flex; justify-content: center;">
-                        <div style="width: 100%; max-width: 280px; text-align: center; color: var(--text-secondary); background: rgba(0,0,0,0.03); padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid var(--border-bento); box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                        <div style="width: 100%; max-width: 380px; text-align: center; color: var(--text-secondary); background: rgba(0,0,0,0.03); padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid var(--border-bento); box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
                             <div style="font-size: 0.8rem; letter-spacing: -0.5px; margin-bottom: 0.4rem;">2024.04.23 ~ 2025.10.22</div>
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; font-size: 0.95rem;">
-                                <i class="fa-solid fa-medal" style="color: var(--accent-primary);"></i><span data-i18n="mil_title">지상작전사령부 대형차량운전병</span>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; font-size: 0.93rem; word-break: keep-all; line-height: 1.4;">
+                                <i class="fa-solid fa-medal" style="color: var(--accent-primary); flex-shrink: 0; margin-top: 0.15rem;"></i><span data-i18n="mil_title">지상작전사령부 대형차량운전병</span>
                             </div>
                             <div data-i18n="mil_desc" style="font-size: 0.85rem;">병장 만기전역</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="modal-only edu-list">
+                <div class="modal-only edu-list" style="flex: 1; min-width: 220px;">
                     <h3 data-i18n="edu_title" style="margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">학력 사항</h3>
                     <div class="edu-item">
                         <span class="edu-item-title" data-i18n="edu_university">동양미래대학교 로봇공학과</span>
@@ -539,6 +548,57 @@
                     <div class="edu-item">
                         <span class="edu-item-title" data-i18n="edu_elementary">이화초등학교</span>
                         <span class="edu-item-date">2011.03 ~ 2017.02</span>
+                    </div>
+                </div>
+
+                <div class="modal-only cert-list-container" style="flex: 1.8; min-width: 350px; flex-direction: column;">
+                    <h3 data-i18n="cert_section_title" style="margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">보유 자격 사항</h3>
+                    <div class="cert-list" style="margin-top: 0;">
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national">국가기술자격증</span>
+                            <span class="cert-title" data-i18n="cert_3d">3D프린터운용기능사</span>
+                            <span class="cert-date">2026.04.10 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national_base">국가자격증</span>
+                            <span class="cert-title" data-i18n="cert_bus">버스운전자격</span>
+                            <span class="cert-date">2025.05.09 <span data-i18n="cert_issue">발급</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national">국가기술자격증</span>
+                            <span class="cert-title" data-i18n="cert_electric">전기기능사</span>
+                            <span class="cert-date">2022.07.22 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national">국가기술자격증</span>
+                            <span class="cert-title" data-i18n="cert_electronic">전자기능사</span>
+                            <span class="cert-date">2022.05.30 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_search">DIAT 인터넷정보검색 초급</span>
+                            <span class="cert-date">2017.02.10 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_reg">등록민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_gtq">GTQ(그래픽기술자격) 3급</span>
+                            <span class="cert-date">2016.12.16 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_media">DIAT 멀티미디어제작 고급</span>
+                            <span class="cert-date">2016.05.13 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_sheet">DIAT 스프레드시트 고급</span>
+                            <span class="cert-date">2014.12.12 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_ppt">DIAT 프리젠테이션 중급</span>
+                            <span class="cert-date">2014.06.13 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
                     </div>
                 </div>
             </div>
