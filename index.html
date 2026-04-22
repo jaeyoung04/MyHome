@@ -678,11 +678,56 @@
             </div>
         </div>
 
-        <div id="navMenu" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;">
-            <div style="display: flex; flex-direction: column; gap: 0.2rem; border-top: 1px solid var(--border-bento); padding: 1rem 0.5rem;">
-                <a href="index.html" style="padding: 1rem 1rem; border-radius: 12px; color: var(--text-primary); text-decoration: none; font-weight: 600; display: block; transition: background 0.2s;" data-i18n="nav_home_board" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-house" style="width: 25px;"></i> 홈</a>
-                <a href="board.html" style="padding: 1rem 1rem; border-radius: 12px; color: var(--text-primary); text-decoration: none; font-weight: 600; display: block; transition: background 0.2s;" data-i18n="nav_board_board" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-comments" style="width: 25px;"></i> 자유게시판</a>
+        <div id="navMenu" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease; background: var(--bg-bento); border-bottom: 1px solid var(--border-bento);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Main Nav Group -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; padding-left: 0.5rem;">Navigation</div>
+                    <a href="index.html" class="menu-item-link" data-i18n="nav_home_board"><i class="fa-solid fa-house"></i> 홈</a>
+                    <a href="board.html" class="menu-item-link" data-i18n="nav_board_board"><i class="fa-solid fa-comments"></i> 자유게시판</a>
+                    <a href="index.html#projects" class="menu-item-link" onclick="toggleMenu()" data-i18n="nav_projects"><i class="fa-solid fa-diagram-project"></i> 프로젝트 보기</a>
+                    <a href="index.html#awards" class="menu-item-link" onclick="toggleMenu()" data-i18n="nav_awards"><i class="fa-solid fa-trophy"></i> 수상 실적</a>
+                </div>
+                
+                <!-- Social Group -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; padding-left: 0.5rem;">Social Channels</div>
+                    <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="menu-item-link"><i class="fa-brands fa-youtube"></i> 유튜브 (금성골드스타)</a>
+                    <a href="https://www.instagram.com/j0._.dl?igsh=MXZ6MWVkYzlnMmZhZw%3D%3D" target="_blank" class="menu-item-link"><i class="fa-brands fa-instagram"></i> 인스타그램</a>
+                </div>
+
+                <!-- Contact Group -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; padding-left: 0.5rem;">Quick Contact</div>
+                    <a href="mailto:jyoung0588@dongyang.ac.kr" class="menu-item-link" data-i18n="nav_email"><i class="fa-solid fa-envelope"></i> 이메일 문의</a>
+                    <a href="tel:010-4408-0588" class="menu-item-link" data-i18n="nav_phone"><i class="fa-solid fa-phone"></i> 전화 연결</a>
+                </div>
             </div>
+            
+            <style>
+                .menu-item-link {
+                    padding: 0.8rem 1rem;
+                    border-radius: 12px;
+                    color: var(--text-primary);
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.8rem;
+                    transition: all 0.2s;
+                    font-size: 0.95rem;
+                }
+                .menu-item-link i {
+                    width: 20px;
+                    color: var(--accent-primary);
+                    font-size: 1.1rem;
+                }
+                .menu-item-link:hover {
+                    background: rgba(59, 130, 246, 0.1);
+                    transform: translateX(5px);
+                    color: var(--accent-primary);
+                }
+            </style>
         </div>
         <script>
             function toggleMenu() {
