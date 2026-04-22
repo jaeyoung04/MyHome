@@ -1006,18 +1006,84 @@
         </div>
 
         <!-- Troubleshooting Log -->
-        <div class="bento-card log-bento">
-            <h2 data-i18n="log_title">품질 혁신 및 트러블슈팅 로그</h2>
-            <h4 data-i18n="log_subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400;">데이터에 기반한 유격 해결과 바이브 코딩</h4>
-            
-            <div style="border-left: 2px solid var(--accent-primary); padding-left: 1rem; margin-bottom: 1.5rem;">
-                <h3 data-i18n="log_item1_title" style="font-size: 1.1rem; margin-bottom: 0.5rem;">구동축 편심 현상 극복 및 품질 최적화</h3>
-                <p data-i18n="log_item1_desc">유니버설 조인트의 심한 유격으로 모터 결함 발생. 조립 공차 데이터를 분석하여 내부 베어링 수치를 재설계해 흔들림을 잡아냈습니다.</p>
+        <div class="bento-card log-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
+                <!-- Left: Photo 1 -->
+                <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
+                    <img src="assets/fridge_1.png" alt="냉장고 본체" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="preview-only" style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02);">
+                    <div style="font-size: 0.85rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="fridge_date">2022.09</div>
+                    <h2 data-i18n="fridge_title" style="margin-bottom: 0.3rem; font-size: 1.5rem; word-break: keep-all;">펠티어 스마트 미니 냉장고</h2>
+                    <h4 data-i18n="fridge_subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400; font-size: 1rem;">정밀 온도 제어 및 모니터링 시스템</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-snowflake" style="color: #22d3ee; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature1" style="font-size: 0.9rem;">펠티어 소자(Peltier) 냉각 기술</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-temperature-low" style="color: #6366f1; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature2" style="font-size: 0.9rem;">영하 감지 온습도 센서 활용</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-microchip" style="color: #10b981; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature3" style="font-size: 0.9rem;">LCD 실시간 모니터링 시스템</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-fan" style="color: #f59e0b; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature4" style="font-size: 0.9rem;">-10℃ 자동 팬 제어 알고리즘</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div style="border-left: 2px solid #22d3ee; padding-left: 1rem;">
-                <h3 data-i18n="log_item2_title" style="font-size: 1.1rem; margin-bottom: 0.5rem;">하드웨어와 AI 코딩의 시너지 (Vibe Coding)</h3>
-                <p data-i18n="log_item2_desc">AI의 환각으로 인한 스레드 블로킹 발생 시, 시스템 설계도를 구체적 프롬프트로 주입하는 바이브 코딩을 통해 즉각 최적화했습니다.</p>
+
+            <!-- Modal Content -->
+            <div class="modal-only" style="flex-direction: column; width: 100%; gap: 2rem; padding: 1rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Gallery -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_1.png" alt="이미지 1" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_2.png" alt="이미지 2" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_3.png" alt="이미지 3" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_4.png" alt="이미지 4" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento); height: 100%;">
+                            <h3 data-i18n="fridge_detail_title" style="margin-bottom: 1.5rem; color: var(--accent-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.5rem; font-size: 1.3rem;">시스템 설계 및 트러블슈팅</h3>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-circle-info" style="color: var(--accent-primary);"></i> 프로젝트 개요
+                                </h4>
+                                <p data-i18n="fridge_desc" style="font-size: 1rem; color: var(--text-primary); line-height: 1.8; opacity: 0.9;">
+                                    펠티어 소자와 아두이노를 결합하여 영하 10도까지 정밀 제어가 가능한 스마트 미니 냉장고입니다. 실시간 LCD 모니터링과 자동 온도 유지 로직을 구현했습니다.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-gear" style="color: var(--accent-primary);"></i> 핵심 기술 및 트러블슈팅
+                                </h4>
+                                <p data-i18n="fridge_detail_desc" style="font-size: 1rem; color: var(--text-secondary); line-height: 1.8;">
+                                    냉각 효율 극대화 및 결빙 방지를 위해 -10도 도달 시 팬 속도를 조절하는 임계치 제어 알고리즘을 적용했습니다. 영하의 정밀한 온도 측정을 위해 전용 센서를 보정하여 사용했습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1047,7 +1113,7 @@
 
             <div class="preview-only more-link-container" style="text-align: center; margin-top: 1.5rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
                 <a href="javascript:void(0)" class="more-link" onclick="openModal(this.closest('.bento-card'))" style="text-decoration: none; color: var(--accent-primary); font-size: 0.95rem; font-weight: 500;">
-                    <span data-i18n="youtube_more">외 7건 전체보기 (클릭)</span>
+                    <span data-i18n="youtube_more">외 8건 전체보기 (클릭)</span>
                 </a>
             </div>
 
@@ -1076,6 +1142,10 @@
                         <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=Y0b1ZSGc-M4', '_blank')">
                             <img src="https://img.youtube.com/vi/Y0b1ZSGc-M4/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Y0b1ZSGc-M4/hqdefault.jpg'" alt="Video Thumbnail">
                             <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_3">시스템 제어 현장 실습</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=SsaXY9K2THM', '_blank')">
+                            <img src="https://img.youtube.com/vi/SsaXY9K2THM/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/SsaXY9K2THM/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_4">로봇 메커니즘 구동 테스트</h3></div>
                         </div>
                     </div>
                 </div>
