@@ -1,5 +1,10 @@
 const i18n = {
     ko: {
+        welcome_title: "<span style='color: var(--accent-primary);'>환영합니다!</span> 포트폴리오 안내",
+        welcome_desc: "화면 내 <strong style='color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;'>모든 카드들을 직접 클릭하면</strong> 상세 내용이 나타납니다.",
+        welcome_subdesc: "* 본 사이트는 반응형 벤토(Bento) 레이아웃으로 디자인되었습니다.",
+        demo_click_text: "위처럼 화면의 흥미로운 카드를 직접 클릭해 보세요!",
+        dont_show_again: "다시 보지 않기",
         nav_vocation: "성장 잠재력",
         nav_mastery: "제어 역량",
         nav_mechanism: "기구 설계",
@@ -110,9 +115,28 @@ const i18n = {
         cert_diat_sheet: "DIAT 스프레드시트 고급",
         cert_diat_ppt: "DIAT 프리젠테이션 중급",
         cert_pass: "합격",
-        cert_issue: "발급"
+        cert_issue: "발급",
+        robot_title: "미니서보 12개를 사용한 3D프린팅 다관절로봇",
+        robot_date: "2021.09",
+        robot_vid_title: "다관절로봇 구동 시연 영상",
+        robot_detail_title: "로봇 상세 스펙 및 세부 설명",
+        robot_detail_desc: "미니서보 12개를 관절로 활용하고 아두이노 나노를 제어부로 사용하여 직접 3D 프린팅으로 외관을 제작한 4족 보행 다관절 로봇입니다. 동물들의 역운동학(Inverse Kinematics) 보행 메커니즘을 분석하여 알고리즘을 프로그래밍했으며, 다양한 동작 모션을 통해 부드럽고 유연한 움직임을 구현했습니다.",
+        cube_title: "네오픽셀 하이퍼큐브",
+        cube_date: "2022.03",
+        cube_desc: "3D 프린팅으로 큐브 프레임을 자체 설계 및 출력하고, 아두이노 보드와 네오픽셀 LED, 하프미러를 조합하여 내부에 무한한 빛의 반사 공간(하이퍼큐브)을 연출한 작품입니다.",
+        cube_detail_title: "작품 상세 설명",
+        cube_img1: "1. 프레임 3D 출력 및 배선",
+        cube_img2: "2. 네오픽셀 LED 정밀 납땜",
+        cube_img3: "3. 하프미러 결합 및 점등 반응",
+        cube_img4: "4. 소프트웨어 구동 및 최종 완성",
+        cube_vid_title: "작동 시연 Shorts"
     },
     en: {
+        welcome_title: "<span style='color: var(--accent-primary);'>Welcome!</span> Portfolio Guide",
+        welcome_desc: "<strong style='color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;'>Click on any interactive card</strong> to expand and view detailed information.",
+        welcome_subdesc: "* This page features a responsive Bento grid design.",
+        demo_click_text: "Try clicking on interesting cards like the demo above!",
+        dont_show_again: "Do not show again",
         nav_vocation: "Potential",
         nav_mastery: "Control Logic",
         nav_mechanism: "Mechanism",
@@ -223,7 +247,21 @@ const i18n = {
         cert_diat_sheet: "DIAT Spreadsheet (Advanced)",
         cert_diat_ppt: "DIAT Presentation (Intermediate)",
         cert_pass: "Passed",
-        cert_issue: "Issued"
+        cert_issue: "Issued",
+        robot_title: "3D Printed Multi-joint Robot using 12 Mini-servos",
+        robot_date: "Sep 2021",
+        robot_vid_title: "Multi-joint Robot Demo Video",
+        robot_detail_title: "Detailed Specs & Mechanisms",
+        robot_detail_desc: "A 4-legged walking robot created by fully 3D printing its external parts, utilizing 12 mini-servos as joints and an Arduino Nano as the main controller. By analyzing the Inverse Kinematics mechanisms of animal gaits, I programmed advanced walking algorithms that achieve extremely fluid and flexible motion patterns.",
+        cube_title: "NeoPixel HyperCube",
+        cube_date: "Mar 2022",
+        cube_desc: "A custom 3D printed frame embedded with Arduino, NeoPixel LEDs, and half-mirrors to create an illusion of infinite light space inside.",
+        cube_detail_title: "Project Description",
+        cube_img1: "1. Hardware wiring & printing",
+        cube_img2: "2. Precision LED soldering",
+        cube_img3: "3. Half-mirror casing & illumination",
+        cube_img4: "4. Final completion & display",
+        cube_vid_title: "Action Demo (Shorts)"
     }
 };
 
