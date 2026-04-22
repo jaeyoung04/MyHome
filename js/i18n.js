@@ -1,7 +1,7 @@
 const i18n = {
     ko: {
         welcome_title: "<span style='color: var(--accent-primary);'>환영합니다!</span> 포트폴리오 안내",
-        welcome_desc: "화면 내 <strong style='color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;'>모든 카드들을 직접 클릭하면</strong> 상세 내용이 나타납니다.",
+        welcome_desc: "화면 내 <strong style='color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;'>모든 카드들을 직접 클릭하면</strong><br>상세 내용이 나타납니다.",
         welcome_subdesc: "* 본 사이트는 반응형 벤토(Bento) 레이아웃으로 디자인되었습니다.",
         demo_click_text: "위처럼 화면의 흥미로운 카드를 직접 클릭해 보세요!",
         dont_show_again: "오늘 하루 다시 보지 않기",
