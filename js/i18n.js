@@ -146,7 +146,10 @@ const i18n = {
         cube_img2: "2. 네오픽셀 LED 정밀 납땜",
         cube_img3: "3. 하프미러 결합 및 점등 반응",
         cube_img4: "4. 소프트웨어 구동 및 최종 완성",
-        cube_vid_title: "작동 시연 Shorts"
+        cube_vid_title: "작동 시연 Shorts",
+        theme_light: "라이트 모드",
+        theme_dark: "다크 모드",
+        nav_board_btn: "자유게시판"
     },
     en: {
         welcome_title: "<span style='color: var(--accent-primary);'>Welcome!</span> Portfolio Guide",
@@ -295,7 +298,10 @@ const i18n = {
         cube_img2: "2. Precision LED soldering",
         cube_img3: "3. Half-mirror casing & illumination",
         cube_img4: "4. Final completion & display",
-        cube_vid_title: "Action Demo (Shorts)"
+        cube_vid_title: "Action Demo (Shorts)",
+        theme_light: "Light Mode",
+        theme_dark: "Dark Mode",
+        nav_board_btn: "Board"
     }
 };
 

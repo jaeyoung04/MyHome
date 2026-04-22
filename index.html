@@ -123,13 +123,22 @@
             background: rgba(59, 130, 246, 0.1);
             color: var(--text-primary);
             border: 1px solid var(--accent-primary);
-            padding: 0.6rem 1.5rem;
-            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 24px;
             cursor: pointer;
             font-family: 'Outfit';
             font-weight: 600;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 46px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            text-decoration: none;
         }
+        .glow-btn i { font-size: 1rem; width: 1.2rem; text-align: center; }
         .glow-btn:hover { background: var(--accent-primary); box-shadow: var(--accent-glow); transform: translateY(-2px); }
 
         /* Bento Grid Layout */
@@ -646,12 +655,20 @@
             <a href="index.html" class="logo">
                 <span>Samsung</span> DX
             </a>
-            <div style="display: flex; gap: 0.8rem; align-items: center;">
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+                <a href="board.html" class="glow-btn">
+                    <i class="fa-solid fa-comments"></i>
+                    <span data-i18n="nav_board_btn">자유게시판</span>
+                </a>
                 <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
                     <i class="fa-solid fa-moon"></i>
+                    <span id="themeText" data-i18n="theme_dark">다크 모드</span>
                 </button>
-                <button class="glow-btn" onclick="toggleLanguage()">🌐 EN / KO</button>
-                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴" style="display: flex; align-items: center; justify-content: center; padding-top: 0.8rem; padding-bottom: 0.8rem;">
+                <button class="glow-btn" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>EN / KO</span>
+                </button>
+                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴" style="padding-left: 1rem; padding-right: 1rem;">
                     <div id="hamburgerIcon" class="hamburger-container">
                         <span class="ham-line"></span>
                         <span class="ham-line"></span>
@@ -930,8 +947,8 @@
                     </div>
 
                     <!-- Video Area (Shorts) -->
-                    <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column;">
-                        <div class="youtube-card" onclick="window.open('https://youtube.com/shorts/-qOtb40IMRo', '_blank')" style="border-radius: var(--radius-lg); width: 100%; max-width: none; flex: 1; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-highlight); margin: 0; min-height: 350px; position: relative; aspect-ratio: auto; overflow: hidden;">
+                    <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; align-items: center;">
+                        <div class="youtube-card" onclick="window.open('https://youtube.com/shorts/-qOtb40IMRo', '_blank')" style="border-radius: var(--radius-lg); width: 100%; max-width: 400px; flex: 1; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-highlight); margin: 0; min-height: 350px; position: relative; aspect-ratio: auto; overflow: hidden;">
                             <!-- Shorts usually use hqdefault.jpg if maxresdefault doesn't yield high res -->
                             <img src="https://img.youtube.com/vi/-qOtb40IMRo/hqdefault.jpg" alt="Shorts Thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
                             <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.9) 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 2.5rem; pointer-events: none;">
@@ -965,8 +982,8 @@
             </div>
 
             <!-- Modal Only Context (Details + Video) -->
-            <div class="modal-only" style="margin-top: 0.5rem; flex-direction: column; width: 100%; gap: 1.5rem;">
-                <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=q28LsOm2DeE', '_blank')" style="margin: 0 auto;">
+            <div class="modal-only" style="margin-top: 0.5rem; flex-direction: column; width: 100%; gap: 1.5rem; align-items: center;">
+                <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=q28LsOm2DeE', '_blank')" style="margin: 0 auto; max-width: 700px; width: 100%;">
                     <img src="https://img.youtube.com/vi/q28LsOm2DeE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/q28LsOm2DeE/hqdefault.jpg'" alt="Video Thumbnail">
                     <div class="overlay">
                         <i class="fa-brands fa-youtube play-btn"></i>
@@ -1095,7 +1112,15 @@
 
         function updateThemeIcon(isLight) {
             const icon = document.querySelector('#themeToggle i');
+            const textSpan = document.getElementById('themeText');
             icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            if (textSpan) {
+                const key = isLight ? 'theme_light' : 'theme_dark';
+                textSpan.setAttribute('data-i18n', key);
+                if (typeof i18n !== 'undefined' && i18n[currentLang]) {
+                    textSpan.innerText = i18n[currentLang][key];
+                }
+            }
         }
 
         // Initialize Theme

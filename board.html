@@ -113,9 +113,13 @@
         
         .glow-btn {
             background: rgba(59, 130, 246, 0.1); color: var(--text-primary);
-            border: 1px solid var(--accent-primary); padding: 0.6rem 1.5rem;
-            border-radius: 20px; cursor: pointer; font-weight: 600; transition: var(--transition);
+            border: 1px solid var(--accent-primary); padding: 0.6rem 1.2rem;
+            border-radius: 24px; cursor: pointer; font-weight: 600; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            height: 46px; white-space: nowrap; font-size: 0.95rem; text-decoration: none;
+            font-family: 'Outfit';
         }
+        .glow-btn i { font-size: 1rem; width: 1.2rem; text-align: center; }
         .glow-btn:hover { background: var(--accent-primary); box-shadow: var(--accent-glow); transform: translateY(-2px); }
 
         /* Board Container Layout */
@@ -219,12 +223,20 @@
             <a href="index.html" class="logo">
                 <span>Samsung</span> DX
             </a>
-            <div style="display: flex; gap: 0.8rem; align-items: center;">
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+                <a href="index.html" class="glow-btn">
+                    <i class="fa-solid fa-house"></i>
+                    <span data-i18n="nav_home">홈</span>
+                </a>
                 <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
                     <i class="fa-solid fa-moon"></i>
+                    <span id="themeText" data-i18n="theme_dark">다크 모드</span>
                 </button>
-                <button class="glow-btn" onclick="toggleLanguage()">🌐 EN / KO</button>
-                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴" style="display: flex; align-items: center; justify-content: center; padding-top: 0.8rem; padding-bottom: 0.8rem;">
+                <button class="glow-btn" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>EN / KO</span>
+                </button>
+                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴" style="padding-left: 1rem; padding-right: 1rem;">
                     <div id="hamburgerIcon" class="hamburger-container">
                         <span class="ham-line"></span>
                         <span class="ham-line"></span>
@@ -347,16 +359,33 @@
         let currentOpenPostId = null;
 
         // Theme Logic
+        function updateThemeUI(isLight) {
+            const icon = document.querySelector('#themeToggle i');
+            const textSpan = document.getElementById('themeText');
+            icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            if (textSpan) {
+                const key = isLight ? 'theme_light' : 'theme_dark';
+                textSpan.setAttribute('data-i18n', key);
+                if (typeof i18n !== 'undefined' && i18n[currentLang]) {
+                    textSpan.innerText = i18n[currentLang][key];
+                }
+            }
+        }
+
         function toggleTheme() {
             const isLight = document.body.classList.toggle('light-mode');
             localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-            document.querySelector('#themeToggle i').className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            updateThemeUI(isLight);
         }
         (function() {
-            if (localStorage.getItem('portfolio-theme') !== 'dark') {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const isLight = savedTheme !== 'dark';
+            if (isLight) {
                 document.body.classList.add('light-mode');
-                document.querySelector('#themeToggle i').className = 'fa-solid fa-sun';
+            } else {
+                document.body.classList.remove('light-mode');
             }
+            updateThemeUI(isLight);
         })();
 
         // Modal Logic
