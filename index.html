@@ -1013,7 +1013,13 @@
             const dontShowCheckbox = document.getElementById('dontShowNav');
             const startBtn = document.getElementById('startPortfolioBtn');
 
-            if (welcomeModal && !localStorage.getItem('hideWelcomeModal')) {
+            function shouldShowWelcomeModal() {
+                const hideUntil = localStorage.getItem('hideWelcomeModalUntil');
+                if (!hideUntil) return true;
+                return Date.now() > parseInt(hideUntil, 10);
+            }
+
+            if (welcomeModal && shouldShowWelcomeModal()) {
                 setTimeout(() => {
                     welcomeModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
@@ -1023,7 +1029,7 @@
             if (startBtn) {
                 startBtn.addEventListener('click', () => {
                     if (dontShowCheckbox.checked) {
-                        localStorage.setItem('hideWelcomeModal', 'true');
+                        localStorage.setItem('hideWelcomeModalUntil', Date.now() + 24 * 60 * 60 * 1000);
                     }
                     welcomeModal.classList.remove('active');
                     document.body.style.overflow = '';
