@@ -685,9 +685,9 @@
                 <div class="menu-group-card" style="--order: 1;">
                     <div class="menu-group-label">About & Achievements</div>
                     <div class="menu-items-grid">
-                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('hero')" data-i18n="nav_vision"></a>
-                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('profile')" data-i18n="nav_profile"></a>
-                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('awards')" data-i18n="nav_awards"></a>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('hero')" data-i18n="nav_vision"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('profile')" data-i18n="nav_profile"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('awards')" data-i18n="nav_awards"></button>
                     </div>
                 </div>
                 
@@ -695,9 +695,9 @@
                 <div class="menu-group-card" style="--order: 2;">
                     <div class="menu-group-label">Project Portfolio</div>
                     <div class="menu-items-grid">
-                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('project-rc')" data-i18n="nav_rc"></a>
-                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('project-robot')" data-i18n="nav_robot"></a>
-                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('project-fridge')" data-i18n="nav_fridge"></a>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('project-rc')" data-i18n="nav_rc"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('project-robot')" data-i18n="nav_robot"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('project-fridge')" data-i18n="nav_fridge"></button>
                     </div>
                 </div>
 
@@ -717,11 +717,14 @@
                     max-height: 0;
                     opacity: 0;
                     overflow: hidden;
-                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     background: transparent;
                     backdrop-filter: blur(25px);
                     -webkit-backdrop-filter: blur(25px);
                     margin-top: 0;
+                }
+                body.light-mode .nav-menu-bento {
+                    background: transparent;
                 }
                 .nav-menu-bento.active {
                     max-height: 600px;
@@ -764,6 +767,7 @@
                     gap: 0.5rem;
                 }
                 .menu-item-link {
+                    width: 100%;
                     padding: 0.8rem 1rem;
                     border-radius: 12px;
                     color: var(--text-primary);
@@ -774,7 +778,11 @@
                     gap: 1rem;
                     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
                     font-size: 1rem;
-                    border: 1px solid transparent;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    text-align: left;
+                    font-family: inherit;
                 }
                 .menu-item-link i {
                     width: 24px;
@@ -801,6 +809,13 @@
                 
                 menu.classList.toggle('active');
                 hamburgerIcon.classList.toggle('is-active');
+            }
+
+            function closeMenu() {
+                const menu = document.getElementById('navMenu');
+                const hamburgerIcon = document.getElementById('hamburgerIcon');
+                menu.classList.remove('active');
+                hamburgerIcon.classList.remove('is-active');
             }
         </script>
     </nav>
@@ -1611,14 +1626,16 @@
         function scrollToAndOpenModal(id) {
             const element = document.getElementById(id);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // 메뉴를 닫음
+                closeMenu();
+                
+                // 스크롤 없이 바로 모달 오픈
                 setTimeout(() => {
                     openModal(element);
-                    // 모달이 열린 후 주소창의 #awards 등을 제거하여 새로고침 시 다시 열리지 않게 함
                     if (history.replaceState) {
                         history.replaceState(null, null, window.location.pathname + window.location.search);
                     }
-                }, 600);
+                }, 300);
             }
         }
     </script>
