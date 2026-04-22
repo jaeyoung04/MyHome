@@ -246,30 +246,129 @@
             </div>
         </div>
 
-        <div id="navMenu" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;">
-            <div style="display: flex; flex-direction: column; gap: 0.2rem; border-top: 1px solid var(--border-bento); padding: 1rem 0.5rem;">
-                <a href="index.html" style="padding: 1rem 1rem; border-radius: 12px; color: var(--text-primary); text-decoration: none; font-weight: 600; display: block; transition: background 0.2s;" data-i18n="nav_home_board" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-house" style="width: 25px;"></i> 홈</a>
-                <a href="board.html" style="padding: 1rem 1rem; border-radius: 12px; color: var(--text-primary); text-decoration: none; font-weight: 600; display: block; transition: background 0.2s;" data-i18n="nav_board_board" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='transparent'"><i class="fa-solid fa-comments" style="width: 25px;"></i> 자유게시판</a>
+        <div id="navMenu" class="nav-menu-bento">
+            <div class="menu-bento-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 3rem 5%; max-width: 1400px; margin: 0 auto;">
+                
+                <!-- Navigation Card -->
+                <div class="menu-group-card" style="--order: 1;">
+                    <div class="menu-group-label">About & Achievements</div>
+                    <div class="menu-items-grid">
+                        <a href="index.html#hero" class="menu-item-link" data-i18n="nav_vision"></a>
+                        <a href="index.html#profile" class="menu-item-link" data-i18n="nav_profile"></a>
+                        <a href="index.html#awards" class="menu-item-link" data-i18n="nav_awards"></a>
+                    </div>
+                </div>
+                
+                <!-- Projects Card -->
+                <div class="menu-group-card" style="--order: 2;">
+                    <div class="menu-group-label">Project Portfolio</div>
+                    <div class="menu-items-grid">
+                        <a href="index.html#project-rc" class="menu-item-link" data-i18n="nav_rc"></a>
+                        <a href="index.html#project-robot" class="menu-item-link" data-i18n="nav_robot"></a>
+                        <a href="index.html#project-fridge" class="menu-item-link" data-i18n="nav_fridge"></a>
+                    </div>
+                </div>
+
+                <!-- Social & Contact Card -->
+                <div class="menu-group-card" style="--order: 3;">
+                    <div class="menu-group-label">Connect</div>
+                    <div class="menu-items-grid">
+                        <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="menu-item-link" data-i18n="nav_youtube"></a>
+                        <a href="mailto:jyoung0588@dongyang.ac.kr" class="menu-item-link" data-i18n="nav_email"></a>
+                        <a href="tel:010-4408-0588" class="menu-item-link" data-i18n="nav_phone"></a>
+                    </div>
+                </div>
             </div>
+            
+            <style>
+                .nav-menu-bento {
+                    max-height: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                    background: transparent;
+                    backdrop-filter: blur(25px);
+                    -webkit-backdrop-filter: blur(25px);
+                    margin-top: 0;
+                }
+                .nav-menu-bento.active {
+                    max-height: 600px;
+                    opacity: 1;
+                    margin-top: 1.5rem;
+                }
+                .menu-group-card {
+                    background: var(--bg-bento);
+                    border: 1px solid var(--border-bento);
+                    border-radius: 20px;
+                    padding: 1.5rem;
+                    text-align: left;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .nav-menu-bento.active .menu-group-card {
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition-delay: calc(var(--order) * 0.1s + 0.2s);
+                }
+                .menu-group-card:hover {
+                    border-color: var(--border-highlight);
+                    background: var(--bg-bento-hover);
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                }
+                .menu-group-label {
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    color: var(--accent-primary);
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    margin-bottom: 1.2rem;
+                    opacity: 0.8;
+                }
+                .menu-items-grid {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .menu-item-link {
+                    padding: 0.8rem 1rem;
+                    border-radius: 12px;
+                    color: var(--text-primary);
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                    font-size: 1rem;
+                    border: 1px solid transparent;
+                }
+                .menu-item-link i {
+                    width: 24px;
+                    font-size: 1.2rem;
+                    color: var(--accent-primary);
+                    text-align: center;
+                }
+                .menu-item-link:hover {
+                    background: rgba(59, 130, 246, 0.1);
+                    border-color: rgba(59, 130, 246, 0.2);
+                    transform: translateX(8px);
+                    color: var(--accent-primary);
+                }
+                body.light-mode .menu-group-card {
+                    background: rgba(255, 255, 255, 0.9);
+                    border-color: rgba(0, 0, 0, 0.05);
+                }
+            </style>
         </div>
         <script>
             function toggleMenu() {
                 const menu = document.getElementById('navMenu');
                 const hamburgerIcon = document.getElementById('hamburgerIcon');
-
-                if (menu.style.maxHeight === '0px' || menu.style.maxHeight === '') {
-                    menu.style.maxHeight = '300px';
-                    menu.style.opacity = '1';
-                    menu.style.marginTop = '1.5rem';
-
-                    hamburgerIcon.classList.add('is-active');
-                } else {
-                    menu.style.maxHeight = '0px';
-                    menu.style.opacity = '0';
-                    menu.style.marginTop = '0px';
-
-                    hamburgerIcon.classList.remove('is-active');
-                }
+                
+                menu.classList.toggle('active');
+                hamburgerIcon.classList.toggle('is-active');
             }
         </script>
     </nav>

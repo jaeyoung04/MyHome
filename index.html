@@ -678,33 +678,91 @@
             </div>
         </div>
 
-        <div id="navMenu" style="max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease; background: var(--bg-bento); border-bottom: 1px solid var(--border-bento);">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1200px; margin: 0 auto;">
-                <!-- Main Nav Group -->
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; padding-left: 0.5rem;">Navigation</div>
-                    <a href="index.html" class="menu-item-link" data-i18n="nav_home_board"><i class="fa-solid fa-house"></i> 홈</a>
-                    <a href="board.html" class="menu-item-link" data-i18n="nav_board_board"><i class="fa-solid fa-comments"></i> 자유게시판</a>
-                    <a href="index.html#projects" class="menu-item-link" onclick="toggleMenu()" data-i18n="nav_projects"><i class="fa-solid fa-diagram-project"></i> 프로젝트 보기</a>
-                    <a href="index.html#awards" class="menu-item-link" onclick="toggleMenu()" data-i18n="nav_awards"><i class="fa-solid fa-trophy"></i> 수상 실적</a>
+        <div id="navMenu" class="nav-menu-bento">
+            <div class="menu-bento-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 3rem 5%; max-width: 1400px; margin: 0 auto;">
+                
+                <!-- Navigation Card -->
+                <div class="menu-group-card" style="--order: 1;">
+                    <div class="menu-group-label">About & Achievements</div>
+                    <div class="menu-items-grid">
+                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('hero')" data-i18n="nav_vision"></a>
+                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('profile')" data-i18n="nav_profile"></a>
+                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('awards')" data-i18n="nav_awards"></a>
+                    </div>
                 </div>
                 
-                <!-- Social Group -->
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; padding-left: 0.5rem;">Social Channels</div>
-                    <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="menu-item-link"><i class="fa-brands fa-youtube"></i> 유튜브 (금성골드스타)</a>
-                    <a href="https://www.instagram.com/j0._.dl?igsh=MXZ6MWVkYzlnMmZhZw%3D%3D" target="_blank" class="menu-item-link"><i class="fa-brands fa-instagram"></i> 인스타그램</a>
+                <!-- Projects Card -->
+                <div class="menu-group-card" style="--order: 2;">
+                    <div class="menu-group-label">Project Portfolio</div>
+                    <div class="menu-items-grid">
+                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('project-rc')" data-i18n="nav_rc"></a>
+                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('project-robot')" data-i18n="nav_robot"></a>
+                        <a href="javascript:void(0)" class="menu-item-link" onclick="toggleMenu(); scrollToAndOpenModal('project-fridge')" data-i18n="nav_fridge"></a>
+                    </div>
                 </div>
 
-                <!-- Contact Group -->
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-primary); font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; padding-left: 0.5rem;">Quick Contact</div>
-                    <a href="mailto:jyoung0588@dongyang.ac.kr" class="menu-item-link" data-i18n="nav_email"><i class="fa-solid fa-envelope"></i> 이메일 문의</a>
-                    <a href="tel:010-4408-0588" class="menu-item-link" data-i18n="nav_phone"><i class="fa-solid fa-phone"></i> 전화 연결</a>
+                <!-- Social & Contact Card -->
+                <div class="menu-group-card" style="--order: 3;">
+                    <div class="menu-group-label">Connect</div>
+                    <div class="menu-items-grid">
+                        <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="menu-item-link" data-i18n="nav_youtube"></a>
+                        <a href="mailto:jyoung0588@dongyang.ac.kr" class="menu-item-link" data-i18n="nav_email"></a>
+                        <a href="tel:010-4408-0588" class="menu-item-link" data-i18n="nav_phone"></a>
+                    </div>
                 </div>
             </div>
             
             <style>
+                .nav-menu-bento {
+                    max-height: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                    background: transparent;
+                    backdrop-filter: blur(25px);
+                    -webkit-backdrop-filter: blur(25px);
+                    margin-top: 0;
+                }
+                .nav-menu-bento.active {
+                    max-height: 600px;
+                    opacity: 1;
+                    margin-top: 1.5rem;
+                }
+                .menu-group-card {
+                    background: var(--bg-bento);
+                    border: 1px solid var(--border-bento);
+                    border-radius: 20px;
+                    padding: 1.5rem;
+                    text-align: left;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .nav-menu-bento.active .menu-group-card {
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition-delay: calc(var(--order) * 0.1s + 0.2s);
+                }
+                .menu-group-card:hover {
+                    border-color: var(--border-highlight);
+                    background: var(--bg-bento-hover);
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                }
+                .menu-group-label {
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    color: var(--accent-primary);
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    margin-bottom: 1.2rem;
+                    opacity: 0.8;
+                }
+                .menu-items-grid {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
                 .menu-item-link {
                     padding: 0.8rem 1rem;
                     border-radius: 12px;
@@ -713,19 +771,26 @@
                     font-weight: 600;
                     display: flex;
                     align-items: center;
-                    gap: 0.8rem;
-                    transition: all 0.2s;
-                    font-size: 0.95rem;
+                    gap: 1rem;
+                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                    font-size: 1rem;
+                    border: 1px solid transparent;
                 }
                 .menu-item-link i {
-                    width: 20px;
+                    width: 24px;
+                    font-size: 1.2rem;
                     color: var(--accent-primary);
-                    font-size: 1.1rem;
+                    text-align: center;
                 }
                 .menu-item-link:hover {
                     background: rgba(59, 130, 246, 0.1);
-                    transform: translateX(5px);
+                    border-color: rgba(59, 130, 246, 0.2);
+                    transform: translateX(8px);
                     color: var(--accent-primary);
+                }
+                body.light-mode .menu-group-card {
+                    background: rgba(255, 255, 255, 0.9);
+                    border-color: rgba(0, 0, 0, 0.05);
                 }
             </style>
         </div>
@@ -733,20 +798,9 @@
             function toggleMenu() {
                 const menu = document.getElementById('navMenu');
                 const hamburgerIcon = document.getElementById('hamburgerIcon');
-
-                if (menu.style.maxHeight === '0px' || menu.style.maxHeight === '') {
-                    menu.style.maxHeight = '300px';
-                    menu.style.opacity = '1';
-                    menu.style.marginTop = '1.5rem';
-
-                    hamburgerIcon.classList.add('is-active');
-                } else {
-                    menu.style.maxHeight = '0px';
-                    menu.style.opacity = '0';
-                    menu.style.marginTop = '0px';
-
-                    hamburgerIcon.classList.remove('is-active');
-                }
+                
+                menu.classList.toggle('active');
+                hamburgerIcon.classList.toggle('is-active');
             }
         </script>
     </nav>
@@ -754,7 +808,7 @@
     <main class="bento-container">
         
         <!-- Hero Box -->
-        <div class="bento-card hero-bento">
+        <div id="hero" class="bento-card hero-bento">
             <h1 data-i18n="hero_title">정밀 설계. <span class="text-cyan" style="color:#22d3ee;">지능형 제어.</span> <span class="text-gold" style="color:#fbbf24;">한계 돌파.</span></h1>
             <p style="font-size: 1.2rem; max-width: 600px;" data-i18n="hero_subtitle">
                 기계적 메커니즘의 완벽함과 지능형 제어 역량을 겸비한<br><strong>Mechanical Solution Architect</strong>
@@ -796,7 +850,7 @@
         </div>
 
         <!-- Profile Box -->
-        <div class="bento-card profile-bento" style="display: flex; flex-direction: column; justify-content: center;">
+        <div id="profile" class="bento-card profile-bento" style="display: flex; flex-direction: column; justify-content: center;">
             <div class="profile-layout">
                 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 200px; height: 100%;">
                     <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
@@ -908,7 +962,7 @@
         </div>
 
         <!-- Awards Box -->
-        <div class="bento-card vocation-bento awards-bento">
+        <div id="awards" class="bento-card vocation-bento awards-bento">
             <h2 data-i18n="awards_title">🏆 주요 수상 경력 <span class="badge">총 17건</span></h2>
             
             <!-- Preview Context (hidden in Modal) -->
@@ -1093,7 +1147,7 @@
         </div>
 
         <!-- Mechanism / Hypercube Box -->
-        <div class="bento-card mechanism-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+        <div id="project-rc" class="bento-card mechanism-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
             <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
                 <!-- Left: Photo -->
                 <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
@@ -1193,7 +1247,7 @@
         </div>
 
         <!-- Multi-joint Robot Box -->
-        <div class="bento-card mastery-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+        <div id="project-robot" class="bento-card mastery-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
             <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
                 <!-- Left: Photo -->
                 <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
@@ -1255,7 +1309,7 @@
         </div>
 
         <!-- Troubleshooting Log -->
-        <div class="bento-card log-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+        <div id="project-fridge" class="bento-card log-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
             <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
                 <!-- Left: Photo 1 -->
                 <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
@@ -1530,13 +1584,43 @@
                     // Prevent modal if clicking on links, buttons, or child interactive cards
                     if(e.target.closest('a') || e.target.closest('button') || e.target.closest('.youtube-card')) return;
                     
-                    modalBody.innerHTML = card.innerHTML;
-                    modalOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                    openModal(card);
                 });
             });
+
+            // Handle hash navigation on load
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const validIds = ['awards', 'project-rc', 'project-robot', 'project-fridge', 'hero', 'profile'];
+                if (validIds.includes(targetId)) {
+                    setTimeout(() => scrollToAndOpenModal(targetId), 800);
+                }
+            }
         });
 
+        function openModal(card) {
+            const modalBody = document.querySelector('.card-modal-body');
+            const modalOverlay = document.querySelector('.card-modal-overlay');
+            if (modalBody && modalOverlay) {
+                modalBody.innerHTML = card.innerHTML;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function scrollToAndOpenModal(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    openModal(element);
+                    // 모달이 열린 후 주소창의 #awards 등을 제거하여 새로고침 시 다시 열리지 않게 함
+                    if (history.replaceState) {
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    }
+                }, 600);
+            }
+        }
     </script>
 </body>
 </html>
