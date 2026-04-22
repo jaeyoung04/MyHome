@@ -864,35 +864,40 @@
 
         <!-- Awards Box -->
         <div class="bento-card vocation-bento awards-bento">
-            <h2>🏆 주요 수상 경력 <span class="badge">총 17건</span></h2>
+            <h2 data-i18n="awards_title">🏆 주요 수상 경력 <span class="badge">총 17건</span></h2>
             
             <!-- Preview Context (hidden in Modal) -->
-            <ul class="preview-list preview-only">
-                <li><i class="fa-solid fa-trophy" style="color: #d4af37;"></i> <span>2022 국제로봇올림피아드 세계대회(태국) - 금상</span></li>
-                <li><i class="fa-solid fa-medal" style="color: #a0a0a0;"></i> <span>2022 국제로봇올림피아드 한국대회 본선 - 은상</span></li>
-                <li><i class="fa-solid fa-award" style="color: #cd7f32;"></i> <span>2022 울산광역시 기능경기대회 - 동상</span></li>
-                <li style="color: var(--text-secondary); font-size: 0.85rem; justify-content: center; margin-top: 0.5rem; border-top: 1px dashed var(--border-bento); padding-top: 1rem;"><i class="fa-solid fa-plus" style="font-size:0.7rem;"></i> 외 14건 전체보기 (클릭)</li>
+            <ul class="preview-list preview-only" style="margin-bottom: 1.5rem;">
+                <li><i class="fa-solid fa-trophy" style="color: #d4af37;"></i> <span data-i18n="awards_preview_1">2022 국제로봇올림피아드 세계대회 - 금상</span></li>
+                <li><i class="fa-solid fa-medal" style="color: #a0a0a0;"></i> <span data-i18n="awards_preview_2">2022 국제로봇올림피아드 한국대회 본선 - 은상</span></li>
+                <li><i class="fa-solid fa-award" style="color: #cd7f32;"></i> <span data-i18n="awards_preview_3">2022 울산광역시 기능경기대회 - 동상</span></li>
             </ul>
+
+            <div class="preview-only more-link-container" style="text-align: center; margin-top: auto; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
+                <a href="javascript:void(0)" class="more-link" onclick="openModal(this.closest('.bento-card'))" style="text-decoration: none; color: var(--accent-primary); font-size: 0.95rem; font-weight: 500;">
+                    <span data-i18n="awards_more">외 14건 전체보기 (클릭)</span>
+                </a>
+            </div>
 
             <!-- Timeline Detailed Context (hidden in Preview) -->
             <div class="modal-only awards-timeline">
-                <div class="award-item"><div class="award-date">2023.05.17</div><div class="award-title">2023 강남 청소년 로봇인공지능 해커톤 <span class="award-org">장려상</span></div></div>
-                <div class="award-item"><div class="award-date">2023.01.12 ~ 2023.01.15</div><div class="award-title">2022 국제로봇올림피아드 세계대회(태국) <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);">금상(1위)</span></div><div class="award-part">카트롤링볼</div></div>
-                <div class="award-item"><div class="award-date">2023.01.12 ~ 2023.01.15</div><div class="award-title">2022 국제로봇올림피아드 세계대회(태국) <span class="award-org">성과상</span></div><div class="award-part">로봇게더링</div></div>
-                <div class="award-item"><div class="award-date">2022.11.05</div><div class="award-title">2022 창원 전국지능 로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">트랜스퍼로봇(중~고등부)</div></div>
-                <div class="award-item"><div class="award-date">2022.08.15</div><div class="award-title">2022 국제로봇올림피아드 한국대회 본선 <span class="award-org">장려상</span></div><div class="award-part">미션형창작</div></div>
-                <div class="award-item"><div class="award-date">2022.08.15</div><div class="award-title">2022 국제로봇올림피아드 한국대회 본선 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">카트롤링볼</div></div>
-                <div class="award-item"><div class="award-date">2022.04.08</div><div class="award-title">2022 울산광역시 기능경기대회 <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);">동상[3등]</span></div><div class="award-part">공업전자기기 | 울산광역시 기능경기위원회</div></div>
-                <div class="award-item"><div class="award-date">2021.11.21</div><div class="award-title">2021 국제로봇올림피아드 한국대회 본선 <span class="award-org">장려상</span></div><div class="award-part">로봇게더링 | (IROC)국제로봇올림피아드</div></div>
-                <div class="award-item"><div class="award-date">2019.10.27</div><div class="award-title">2019 창원전국지능 로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
-                <div class="award-item"><div class="award-date">2019.10.12</div><div class="award-title">2019 국제로봇컨테스트(IRC 2019) <span class="award-org">장려상</span></div><div class="award-part">로봇팀플레이 중고등부 | (로보콘)-서울과학기술대학교</div></div>
-                <div class="award-item"><div class="award-date">2019.06.23</div><div class="award-title">제17회 울산로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">미션트랜스퍼 중고등부 | 울산정보산업진흥원</div></div>
-                <div class="award-item"><div class="award-date">2018.10.12</div><div class="award-title">2018 국제로봇콘테스트 <span class="award-org">장려상</span></div><div class="award-part">로봇팀플레이 중고등부 | (로보콘)-창의과학교육연구회</div></div>
-                <div class="award-item"><div class="award-date">2018.09.01</div><div class="award-title">2018 창원 전국지능 로봇경진대회 <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);">은상</span></div><div class="award-part">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
-                <div class="award-item"><div class="award-date">2017.11.26</div><div class="award-title">2017 창원 전국지능 로봇경진대회 <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);">동상</span></div><div class="award-part">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
-                <div class="award-item"><div class="award-date">2017.10.29</div><div class="award-title">2017 제7회 국제프로그래밍로봇챌린지 (IPRC) <span class="award-org">과학상</span></div><div class="award-part">프로그래밍레이싱 | 창의과학교육연구회</div></div>
-                <div class="award-item"><div class="award-date">2017.09.16</div><div class="award-title">2017 국제로봇컨테스트(IRC 2017) <span class="award-org">장려상</span></div><div class="award-part">로봇 팀플레이 중고등부 | (로보콘)-서울과학기술대학교</div></div>
-                <div class="award-item"><div class="award-date">2015.10.18</div><div class="award-title">2015 국제프로그래밍 로봇챌린지 울산대회 <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);">금상</span></div><div class="award-part">자유배틀경기부분 | (사)창의과학교육연구회</div></div>
+                <div class="award-item"><div class="award-date">2023.05.17</div><div class="award-title"><span data-i18n="awards_item_1">2023 강남 청소년 로봇인공지능 해커톤</span> <span class="award-org" data-i18n="rank_encouragement">장려상</span></div></div>
+                <div class="award-item"><div class="award-date">2023.01.12 ~ 2023.01.15</div><div class="award-title"><span data-i18n="awards_item_2">2022 국제로봇올림피아드 세계대회</span> <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);" data-i18n="rank_gold_1st">금상(1위)</span></div><div class="award-part" data-i18n="part_cart">카트롤링볼</div></div>
+                <div class="award-item"><div class="award-date">2023.01.12 ~ 2023.01.15</div><div class="award-title"><span data-i18n="awards_item_2">2022 국제로봇올림피아드 세계대회</span> <span class="award-org" data-i18n="rank_achievement">성과상</span></div><div class="award-part" data-i18n="part_gathering">로봇게더링</div></div>
+                <div class="award-item"><div class="award-date">2022.11.05</div><div class="award-title"><span data-i18n="awards_item_3">2022 창원 전국지능 로봇경진대회</span> <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span></div><div class="award-part" data-i18n="part_transfer">트랜스퍼로봇(중~고등부)</div></div>
+                <div class="award-item"><div class="award-date">2022.08.15</div><div class="award-title"><span data-i18n="awards_item_4">2022 국제로봇올림피아드 한국대회 본선</span> <span class="award-org" data-i18n="rank_encouragement">장려상</span></div><div class="award-part" data-i18n="part_creation">미션형창작</div></div>
+                <div class="award-item"><div class="award-date">2022.08.15</div><div class="award-title"><span data-i18n="awards_item_4">2022 국제로봇올림피아드 한국대회 본선</span> <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span></div><div class="award-part" data-i18n="part_cart">카트롤링볼</div></div>
+                <div class="award-item"><div class="award-date">2022.04.08</div><div class="award-title"><span data-i18n="awards_item_5">2022 울산광역시 기능경기대회</span> <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);" data-i18n="rank_bronze_3rd">동상[3등]</span></div><div class="award-part" data-i18n="part_electronics">공업전자기기 | 울산광역시 기능경기위원회</div></div>
+                <div class="award-item"><div class="award-date">2021.11.21</div><div class="award-title"><span data-i18n="awards_item_6">2021 국제로봇올림피아드 한국대회 본선</span> <span class="award-org" data-i18n="rank_encouragement">장려상</span></div><div class="award-part" data-i18n="part_iroc">로봇게더링 | (IROC)국제로봇올림피아드</div></div>
+                <div class="award-item"><div class="award-date">2019.10.27</div><div class="award-title"><span data-i18n="awards_item_7">2019 창원전국지능 로봇경진대회</span> <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span></div><div class="award-part" data-i18n="part_sisakorea">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
+                <div class="award-item"><div class="award-date">2019.10.12</div><div class="award-title"><span data-i18n="awards_item_8">2019 국제로봇컨테스트(IRC 2019)</span> <span class="award-org" data-i18n="rank_encouragement">장려상</span></div><div class="award-part" data-i18n="part_robocon_seoul">로봇팀플레이 중고등부 | (로보콘)-서울과학기술대학교</div></div>
+                <div class="award-item"><div class="award-date">2019.06.23</div><div class="award-title"><span data-i18n="awards_item_9">제17회 울산로봇경진대회</span> <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span></div><div class="award-part" data-i18n="part_ulsan_info">미션트랜스퍼 중고등부 | 울산정보산업진흥원</div></div>
+                <div class="award-item"><div class="award-date">2018.10.12</div><div class="award-title"><span data-i18n="awards_item_10">2018 국제로봇콘테스트</span> <span class="award-org" data-i18n="rank_encouragement">장려상</span></div><div class="award-part" data-i18n="part_robocon_research">로봇팀플레이 중고등부 | (로보콘)-창의과학교육연구회</div></div>
+                <div class="award-item"><div class="award-date">2018.09.01</div><div class="award-title"><span data-i18n="awards_item_11">2018 창원 전국지능 로봇경진대회</span> <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span></div><div class="award-part" data-i18n="part_sisakorea">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
+                <div class="award-item"><div class="award-date">2017.11.26</div><div class="award-title"><span data-i18n="awards_item_12">2017 창원 전국지능 로봇경진대회</span> <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);" data-i18n="rank_bronze">동상</span></div><div class="award-part" data-i18n="part_sisakorea">트랜스퍼로봇(중고등부) | 시사코리아저널</div></div>
+                <div class="award-item"><div class="award-date">2017.10.29</div><div class="award-title"><span data-i18n="awards_item_13">2017 제7회 국제프로그래밍로봇챌린지 (IPRC)</span> <span class="award-org" data-i18n="rank_science">과학상</span></div><div class="award-part" data-i18n="part_iprc_racing">프로그래밍레이싱 | 창의과학교육연구회</div></div>
+                <div class="award-item"><div class="award-date">2017.09.16</div><div class="award-title"><span data-i18n="awards_item_14">2017 국제로봇컨테스트(IRC 2017)</span> <span class="award-org" data-i18n="rank_encouragement">장려상</span></div><div class="award-part" data-i18n="part_robocon_seoul">로봇 팀플레이 중고등부 | (로보콘)-서울과학기술대학교</div></div>
+                <div class="award-item"><div class="award-date">2015.10.18</div><div class="award-title"><span data-i18n="awards_item_15">2015 국제프로그래밍 로봇챌린지 울산대회</span> <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);" data-i18n="rank_gold">금상</span></div><div class="award-part" data-i18n="part_battle">자유배틀경기부분 | (사)창의과학교육연구회</div></div>
             </div>
         </div>
 
@@ -900,14 +905,14 @@
         <div class="bento-card mechanism-bento" style="padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
             <div style="width: 100%; margin-bottom: 1.2rem; padding-right: 2.5rem; text-align: left;">
                 <h2 style="line-height: 1.4; font-size: 1.4rem; word-break: keep-all; display: inline;">
-                    <span data-i18n="cube_title">네오픽셀 하이퍼큐브</span>
+                    <span data-i18n="rc_car_title">3D 프린팅 RC카 (차동기어 및 서스펜션)</span>
                 </h2>
-                <span data-i18n="cube_date" class="badge" style="font-family: 'Outfit', sans-serif; font-weight: 600; white-space: nowrap; margin-left: 0.4rem; vertical-align: middle; margin-bottom: 0.3rem;">2022.03</span>
+                <span data-i18n="rc_car_date" class="badge" style="font-family: 'Outfit', sans-serif; font-weight: 600; white-space: nowrap; margin-left: 0.4rem; vertical-align: middle; margin-bottom: 0.3rem;">2022.03</span>
             </div>
             
-            <!-- Preview Image (Image 5) -->
+            <!-- Preview Image -->
             <div class="preview-only" style="flex: 1; width: 100%; border-radius: var(--radius-lg); overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2);">
-                <img src="assets/hypercube_4.jpg" alt="네오픽셀 하이퍼큐브 메인" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="assets/rc_car_main.jpg" alt="3D 프린팅 RC카 메인" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
 
             <!-- Modal Specific Context -->
@@ -919,41 +924,40 @@
                         <!-- Image 1 -->
                         <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); display: flex; flex-direction: column; background: rgba(0,0,0,0.2);">
                             <div style="flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; aspect-ratio: 4/3;">
-                                <img src="assets/hypercube_1.jpg" alt="프레임 조립 및 배선" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="assets/rc_car_gear.jpg" alt="차동 기어 메커니즘" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="cube_img1">1. 아두이노 배선 작업</div>
+                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="rc_car_img1">1. 차동 기어 메커니즘</div>
                         </div>
                         <!-- Image 2 -->
                         <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); display: flex; flex-direction: column; background: rgba(0,0,0,0.2);">
                             <div style="flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; aspect-ratio: 4/3;">
-                                <img src="assets/hypercube_2.jpg" alt="LED 납땜" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="assets/rc_car_suspension.jpg" alt="독립 현가장치 및 조향" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="cube_img2">2. 네오픽셀 LED 정밀 납땜</div>
+                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="rc_car_img2">2. 독립 현가장치 및 조향 구조</div>
                         </div>
                         <!-- Image 3 -->
                         <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); display: flex; flex-direction: column; background: rgba(0,0,0,0.2);">
                             <div style="flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; aspect-ratio: 4/3;">
-                                <img src="assets/hypercube_3.jpg" alt="하프미러 테스트" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="assets/rc_car_circuit.jpg" alt="제어 회로 및 배선" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="cube_img3">3. 하프미러 및 LED 점등 테스트</div>
+                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="rc_car_img3">3. 제어 회로 및 하드웨어 배선</div>
                         </div>
                         <!-- Image 4 -->
                         <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); display: flex; flex-direction: column; background: rgba(0,0,0,0.2);">
                             <div style="flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; aspect-ratio: 4/3;">
-                                <img src="assets/hypercube_4.jpg" alt="최종 완성" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="assets/rc_car_main.jpg" alt="최종" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="cube_img4">4. 최종 완성 시연</div>
+                            <div style="padding: 0.8rem; text-align: center; font-size: 0.85rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05);" data-i18n="rc_car_img4">4. 최종 주행 테스트</div>
                         </div>
                     </div>
 
                     <!-- Video Area (Shorts) -->
                     <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; align-items: center;">
-                        <div class="youtube-card" onclick="window.open('https://youtube.com/shorts/-qOtb40IMRo', '_blank')" style="border-radius: var(--radius-lg); width: 100%; max-width: 400px; flex: 1; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-highlight); margin: 0; min-height: 350px; position: relative; aspect-ratio: auto; overflow: hidden;">
-                            <!-- Shorts usually use hqdefault.jpg if maxresdefault doesn't yield high res -->
-                            <img src="https://img.youtube.com/vi/-qOtb40IMRo/hqdefault.jpg" alt="Shorts Thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                        <div class="youtube-card" onclick="window.open('https://youtube.com/shorts/wKejMKm1-X4', '_blank')" style="border-radius: var(--radius-lg); width: 100%; max-width: 400px; flex: 1; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-highlight); margin: 0; min-height: 350px; position: relative; aspect-ratio: auto; overflow: hidden;">
+                            <img src="https://img.youtube.com/vi/wKejMKm1-X4/hqdefault.jpg" alt="Shorts Thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
                             <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.9) 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 2.5rem; pointer-events: none;">
                                 <i class="fa-brands fa-youtube" style="font-size: 4rem; color: #ff0000; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8)); margin-bottom: 1rem;"></i>
-                                <h3 data-i18n="cube_vid_title" style="color: white; font-size: 1.2rem; text-align: center; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,1); word-break: keep-all; padding: 0 1rem;">작동 시연 Shorts</h3>
+                                <h3 data-i18n="rc_car_vid_title" style="color: white; font-size: 1.2rem; text-align: center; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,1); word-break: keep-all; padding: 0 1rem;">주행 시연 영상</h3>
                             </div>
                         </div>
                     </div>
@@ -961,9 +965,9 @@
 
                 <!-- Description Block -->
                 <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
-                    <h3 data-i18n="cube_detail_title" style="margin-bottom: 0.8rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">작품 상세 설명</h3>
-                    <p data-i18n="cube_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
-                        3D 프린팅으로 프레임을 자체 설계 및 출력하고, 아두이노 보드와 네오픽셀 LED, 하프미러를 결합하여 내부에 무한한 빛의 반사 공간(하이퍼큐브)을 연출한 메이커 프로젝트입니다. 하드웨어 배선, LED 제어 코딩, 기구 조립을 모두 진행했습니다.
+                    <h3 data-i18n="rc_car_detail_title" style="margin-bottom: 0.8rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">기구 설계 상세 설명</h3>
+                    <p data-i18n="rc_car_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                        차동 기어 시스템과 독립 현가장치를 3D 프린팅으로 직접 설계 및 제작한 RC카 프로젝트입니다. 동력 전달 효율과 주행 안정성을 최적화했습니다.
                     </p>
                 </div>
             </div>
@@ -1039,6 +1043,12 @@
                         <h3 data-i18n="youtube_vid2">8족 보행 로봇 설계 자체 제작기</h3>
                     </div>
                 </div>
+            </div>
+
+            <div class="preview-only more-link-container" style="text-align: center; margin-top: 1.5rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
+                <a href="javascript:void(0)" class="more-link" onclick="openModal(this.closest('.bento-card'))" style="text-decoration: none; color: var(--accent-primary); font-size: 0.95rem; font-weight: 500;">
+                    <span data-i18n="youtube_more">외 7건 전체보기 (클릭)</span>
+                </a>
             </div>
 
             <!-- Modal Specific Expansive View with Sections -->
