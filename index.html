@@ -248,7 +248,7 @@
         .youtube-bento { grid-column: span 12; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
         .youtube-grid { display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
         .youtube-card {
-            position: relative; flex: 1; min-width: 280px; max-width: 500px;
+            position: relative; flex: 1; min-width: 280px;
             aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden;
             cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: var(--transition); border: 1px solid var(--border-bento);
         }
@@ -259,6 +259,19 @@
         .youtube-card h3 { color: #fff !important; margin: 0; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,1); font-weight: 600; line-height: 1.3; }
         .youtube-card i.fa-youtube { position: absolute; top: 43%; left: 50%; transform: translate(-50%, -50%); font-size: 3.5rem; color: #ff0000; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8)); transition: 0.3s; }
         .youtube-card:hover i.fa-youtube { transform: translate(-50%, -50%) scale(1.1); color: #ff3333; filter: drop-shadow(0 4px 15px rgba(255,0,0,0.5)); }
+
+        .youtube-shorts-card {
+            position: relative; flex: 1; min-width: 140px; max-width: 220px;
+            aspect-ratio: 9 / 16; border-radius: var(--radius-lg); overflow: hidden;
+            cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: var(--transition); border: 1px solid var(--border-bento);
+        }
+        .youtube-shorts-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.2); border-color: var(--accent-primary); }
+        .youtube-shorts-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.8 !important; }
+        .youtube-shorts-card:hover img { transform: scale(1.05); opacity: 1 !important; }
+        .youtube-shorts-card .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 40%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; text-align: center; }
+        .youtube-shorts-card h3 { color: #fff !important; margin: 0; font-size: 0.85rem; text-shadow: 0 2px 4px rgba(0,0,0,1); font-weight: 500; line-height: 1.3; }
+        .youtube-shorts-card i.fa-youtube { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: #ff0000; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8)); transition: 0.3s; }
+        .youtube-shorts-card:hover i.fa-youtube { transform: translate(-50%, -50%) scale(1.1); color: #ff3333; filter: drop-shadow(0 4px 15px rgba(255,0,0,0.5)); }
 
 
         
@@ -678,10 +691,44 @@
         
         <!-- Hero Box -->
         <div class="bento-card hero-bento">
-            <h1 data-i18n="hero_title">정밀 설계. <span class="text-cyan">지능형 제어.</span> <span class="text-gold">한계 돌파.</span></h1>
+            <h1 data-i18n="hero_title">정밀 설계. <span class="text-cyan" style="color:#22d3ee;">지능형 제어.</span> <span class="text-gold" style="color:#fbbf24;">한계 돌파.</span></h1>
             <p style="font-size: 1.2rem; max-width: 600px;" data-i18n="hero_subtitle">
                 기계적 메커니즘의 완벽함과 지능형 제어 역량을 겸비한<br><strong>Mechanical Solution Architect</strong>
             </p>
+
+            <!-- Modal Expanded Content -->
+            <div class="modal-only" style="margin-top: 2.5rem; flex-direction: column; text-align: left; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; padding-top: 2rem; border-top: 1px solid rgba(11, 92, 213, 0.3);">
+                <h2 data-i18n="hero_modal_heading" style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.6rem; text-align: center; word-break: keep-all; width: 100%;">삼성전자 DX부문 기구개발 직무를 향한 비전</h2>
+                <p data-i18n="hero_modal_intro" style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem; text-align: center; margin-bottom: 3rem; font-weight: 500; word-break: keep-all; width: 100%;">
+                    단순한 외형 설계를 넘어, 사용자 경험(UX)을 극대화하는 혁신적인 하드웨어 솔루션을 설계하겠습니다.
+                </p>
+
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; width: 100%; justify-content: center;">
+                    <div style="flex: 1; min-width: 260px; background: rgba(125,125,125,0.05); padding: 1.8rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                        <div style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 data-i18n="hero_core1_title" style="margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--text-primary); font-weight: 700;">하드웨어-소프트웨어 융합 설계</h3>
+                        <p data-i18n="hero_core1_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                            기구부 설계에 그치지 않고, 센서와 제어 알고리즘을 결합하여 실제 구동 가능한 지능형 메커니즘을 구축해 온 경험은 삼성전자의 스마트 기기 개발에 직결되는 시스템적 사고 역량입니다.
+                        </p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 260px; background: rgba(125,125,125,0.05); padding: 1.8rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                        <div style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h3 data-i18n="hero_core2_title" style="margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--text-primary); font-weight: 700;">데이터 기반 수치/공차 최적화</h3>
+                        <p data-i18n="hero_core2_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                            조립 공차 데이터를 분석하고 부품 수치를 재설계하여 유격을 잡아내는 등 품질을 끌어올린 경험이 있습니다. 대량 양산을 목표로 하는 엄격한 기구가구 환경에서 빛을 발할 무기입니다.
+                        </p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 260px; background: rgba(125,125,125,0.05); padding: 1.8rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                        <div style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3 data-i18n="hero_core3_title" style="margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--text-primary); font-weight: 700;">다차원 협업 기반의 커뮤니케이션</h3>
+                        <p data-i18n="hero_core3_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                            다수의 로봇 프로젝트 팀장으로서 기계/SW/회로 파트 간 조율을 이끌었습니다. 디자인, 회로, 상품기획 등 유관 부서와의 유기적 소통이 필수적인 직무에서 완벽한 시너지를 창출해 내겠습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Profile Box -->
@@ -918,7 +965,7 @@
             <!-- Modal Only Context (Details + Video) -->
             <div class="modal-only" style="margin-top: 0.5rem; flex-direction: column; width: 100%; gap: 1.5rem;">
                 <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=q28LsOm2DeE', '_blank')" style="margin: 0 auto;">
-                    <img src="https://img.youtube.com/vi/q28LsOm2DeE/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/q28LsOm2DeE/hqdefault.jpg'" alt="Video Thumbnail">
+                    <img src="https://img.youtube.com/vi/q28LsOm2DeE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/q28LsOm2DeE/hqdefault.jpg'" alt="Video Thumbnail">
                     <div class="overlay">
                         <i class="fa-brands fa-youtube play-btn"></i>
                         <h3 data-i18n="robot_vid_title">다관절로봇 구동 시연 영상</h3>
@@ -955,21 +1002,74 @@
 
         <!-- YouTube Video Bento -->
         <div class="bento-card youtube-bento">
-            <h2 data-i18n="youtube_title">팀워크 및 프로젝트 메커니즘 시연</h2>
+            <h2 data-i18n="youtube_title" style="margin-bottom: 0.5rem;">팀워크 및 프로젝트 메커니즘 시연</h2>
             <p data-i18n="youtube_subtitle">팀원들과의 협업을 통해 부족함을 채우고 실제 구동 가능한 결과물을 완성했습니다.</p>
-            <div class="youtube-grid">
+            
+            <div class="preview-only youtube-grid" style="margin-top: 1.5rem;">
                 <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=0vKGd3Y2LE0', '_blank')">
-                    <img src="https://img.youtube.com/vi/0vKGd3Y2LE0/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/0vKGd3Y2LE0/hqdefault.jpg'" alt="Video Thumbnail">
+                    <img src="https://img.youtube.com/vi/0vKGd3Y2LE0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/0vKGd3Y2LE0/hqdefault.jpg'" alt="Video Thumbnail">
                     <div class="overlay">
                         <i class="fa-brands fa-youtube play-btn"></i>
                         <h3 data-i18n="youtube_vid1">국제로봇올림피아드 출전작</h3>
                     </div>
                 </div>
                 <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=DQcM5zhMhF0', '_blank')">
-                    <img src="https://img.youtube.com/vi/DQcM5zhMhF0/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/DQcM5zhMhF0/hqdefault.jpg'" alt="Video Thumbnail">
+                    <img src="https://img.youtube.com/vi/DQcM5zhMhF0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/DQcM5zhMhF0/hqdefault.jpg'" alt="Video Thumbnail">
                     <div class="overlay">
                         <i class="fa-brands fa-youtube play-btn"></i>
                         <h3 data-i18n="youtube_vid2">8족 보행 로봇 설계 자체 제작기</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Specific Expansive View with Sections -->
+            <div class="modal-only" style="margin-top: 1rem; flex-direction: column; width: 100%; gap: 1.5rem;">
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                    <h3 data-i18n="yt_sec_competition" style="margin-bottom: 1.2rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem; font-size: 1.15rem;">프로젝트 주행 및 대회 출전 기록</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;">
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=0vKGd3Y2LE0', '_blank')">
+                            <img src="https://img.youtube.com/vi/0vKGd3Y2LE0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/0vKGd3Y2LE0/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="youtube_vid1">국제로봇올림피아드 출전작</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=DQcM5zhMhF0', '_blank')">
+                            <img src="https://img.youtube.com/vi/DQcM5zhMhF0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/DQcM5zhMhF0/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="youtube_vid2">8족 보행 로봇 설계 자체 제작기</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=SFlKGm2QdkI', '_blank')">
+                            <img src="https://img.youtube.com/vi/SFlKGm2QdkI/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/SFlKGm2QdkI/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_1">하드웨어 구동 테스트 1</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=5poKKr4eK8Q', '_blank')">
+                            <img src="https://img.youtube.com/vi/5poKKr4eK8Q/0.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/5poKKr4eK8Q/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_2">하드웨어 구동 테스트 2</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=Y0b1ZSGc-M4', '_blank')">
+                            <img src="https://img.youtube.com/vi/Y0b1ZSGc-M4/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Y0b1ZSGc-M4/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_3">시스템 제어 현장 실습</h3></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                    <h3 data-i18n="yt_sec_ev3" style="margin-bottom: 1.2rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem; font-size: 1.15rem;">EV3 로봇 알고리즘 실습 (Shorts)</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/cfWj8G2uGy4', '_blank')">
+                            <img src="https://img.youtube.com/vi/cfWj8G2uGy4/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/cfWj8G2uGy4/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_1">EV3 실습 1</h3></div>
+                        </div>
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/rv6OM1lERoY', '_blank')">
+                            <img src="https://img.youtube.com/vi/rv6OM1lERoY/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/rv6OM1lERoY/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_2">EV3 실습 2</h3></div>
+                        </div>
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/mivO0FKkqZE', '_blank')">
+                            <img src="https://img.youtube.com/vi/mivO0FKkqZE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/mivO0FKkqZE/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_3">EV3 실습 3</h3></div>
+                        </div>
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/59NX_2Wjj1Y', '_blank')">
+                            <img src="https://img.youtube.com/vi/59NX_2Wjj1Y/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/59NX_2Wjj1Y/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_4">EV3 실습 4</h3></div>
+                        </div>
                     </div>
                 </div>
             </div>
