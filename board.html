@@ -21,6 +21,7 @@
             --text-secondary: #cbd5e1;
             --accent-primary: #3b82f6;
             --accent-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+            --radius-xl: 32px;
             --radius-lg: 24px;
             --transition: all 0.3s ease;
         }
@@ -40,6 +41,10 @@
         
         body {
             background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(30, 58, 138, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 85% 90%, rgba(30, 58, 138, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
@@ -146,7 +151,7 @@
         .primary-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
         /* List Table */
-        .board-list { width: 100%; border-collapse: collapse; background: var(--bg-bento); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .board-list { width: 100%; border-collapse: collapse; background: var(--bg-bento); border: 1px solid var(--border-bento); border-radius: var(--radius-lg); overflow: hidden; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3); }
         body.light-mode .board-list { border: 1px solid var(--border-bento); }
         .board-list th, .board-list td { padding: 1.2rem 1rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
         body.light-mode .board-list th, body.light-mode .board-list td { border-bottom-color: rgba(0,0,0,0.05); }
@@ -171,9 +176,9 @@
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 2000;
             display: flex;
             justify-content: center;
@@ -189,16 +194,18 @@
         .modal-content {
             background: var(--bg-bento);
             border: 1px solid var(--border-highlight);
-            border-radius: 40px;
+            border-radius: var(--radius-xl);
             width: 95vw;
             max-width: 1200px;
             max-height: 85vh;
-            padding: 3rem;
+            padding: 0;
             position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), var(--accent-glow);
             transform: scale(0.95) translateY(20px);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            overflow-y: auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         body.light-mode .modal-content {
             background: rgba(255, 255, 255, 0.95);
@@ -223,8 +230,16 @@
             font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.2s;
-            z-index: 10;
-            }
+            z-index: 100;
+        }
+        .modal-scroll-area {
+            padding: 3rem;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
         .close-modal:hover {
             transform: rotate(90deg) scale(1.1);
             background: var(--accent-primary) !important;
@@ -586,27 +601,29 @@
     <div id="writeModal" class="modal" onclick="if(event.target===this) closeModal('writeModal')">
         <div class="modal-content">
             <i class="fa-solid fa-xmark close-modal" onclick="closeModal('writeModal')"></i>
-            <h2 style="margin-bottom: 1.5rem;" data-i18n="modal_write_title">게시글 작성</h2>
-            <div class="form-group">
-                <input type="text" id="writeTitle" class="form-input" placeholder="제목을 입력하세요" data-i18n="modal_ph_title">
-            </div>
-            <div style="display: flex; gap: 1rem;">
-                <div class="form-group" style="flex: 1;">
-                    <input type="text" id="writeName" class="form-input" placeholder="작성자 이름" data-i18n="modal_ph_name">
+            <div class="modal-scroll-area">
+                <h2 style="margin-bottom: 1.5rem;" data-i18n="modal_write_title">게시글 작성</h2>
+                <div class="form-group">
+                    <input type="text" id="writeTitle" class="form-input" placeholder="제목을 입력하세요" data-i18n="modal_ph_title">
                 </div>
-                <div class="form-group" style="flex: 1;">
-                    <input type="password" id="writePw" class="form-input" placeholder="비밀번호 (수정/삭제용)" autocomplete="new-password" data-i18n="modal_ph_pw">
+                <div style="display: flex; gap: 1rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <input type="text" id="writeName" class="form-input" placeholder="작성자 이름" data-i18n="modal_ph_name">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <input type="password" id="writePw" class="form-input" placeholder="비밀번호 (수정/삭제용)" autocomplete="new-password" data-i18n="modal_ph_pw">
+                    </div>
                 </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary); margin-bottom: 1rem;">
+                        <input type="checkbox" id="writeSecret" style="transform: scale(1.2);"> <span data-i18n="modal_secret">🔒 비밀글로 작성하기</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <textarea id="writeContent" class="form-input" rows="8" placeholder="내용을 자유롭게 입력해주세요!" style="resize: vertical;" data-i18n="modal_ph_content"></textarea>
+                </div>
+                <button class="primary-btn" style="width: 100%;" onclick="submitPost()" data-i18n="modal_btn_submit">등록하기</button>
             </div>
-            <div class="form-group">
-                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary); margin-bottom: 1rem;">
-                    <input type="checkbox" id="writeSecret" style="transform: scale(1.2);"> <span data-i18n="modal_secret">🔒 비밀글로 작성하기</span>
-                </label>
-            </div>
-            <div class="form-group">
-                <textarea id="writeContent" class="form-input" rows="8" placeholder="내용을 자유롭게 입력해주세요!" style="resize: vertical;" data-i18n="modal_ph_content"></textarea>
-            </div>
-            <button class="primary-btn" style="width: 100%;" onclick="submitPost()" data-i18n="modal_btn_submit">등록하기</button>
         </div>
     </div>
 
@@ -614,40 +631,42 @@
     <div id="viewModal" class="modal" onclick="if(event.target===this) closeModal('viewModal')">
         <div class="modal-content">
             <i class="fa-solid fa-xmark close-modal" onclick="closeModal('viewModal')"></i>
-            <h2 id="viewTitle" class="view-title">제목</h2>
-            <div class="view-meta">
-                <span><i class="fa-solid fa-user"></i> <span id="viewAuthor">작성자</span></span>
-                <span><i class="fa-regular fa-clock"></i> <span id="viewDate">작성일</span></span>
-            </div>
-            <div id="viewContent" class="view-content">내용</div>
-            
-            <div class="view-actions">
-                <button class="view-btn" id="btnLike" style="color: #ef4444; font-weight: 600;" onclick="likeCurrentPost()">
-                    <span data-i18n="modal_btn_like"><i class="fa-solid fa-heart"></i> 추천</span> <span id="viewLikes">0</span>
-                </button>
-                <button class="view-btn" onclick="deleteCurrentPost()" data-i18n="modal_btn_delete">
-                    <i class="fa-solid fa-trash"></i> 삭제
-                </button>
-            </div>
-
-            <!-- Comment Section -->
-            <div class="comment-section">
-                <div class="comment-header">
-                    <i class="fa-solid fa-comments"></i> 댓글 <span id="commentCount">0</span>
+            <div class="modal-scroll-area">
+                <h2 id="viewTitle" class="view-title">제목</h2>
+                <div class="view-meta">
+                    <span><i class="fa-solid fa-user"></i> <span id="viewAuthor">작성자</span></span>
+                    <span><i class="fa-regular fa-clock"></i> <span id="viewDate">작성일</span></span>
                 </div>
+                <div id="viewContent" class="view-content">내용</div>
                 
-                <div id="commentList" class="comment-list">
-                    <!-- Comments render here -->
+                <div class="view-actions">
+                    <button class="view-btn" id="btnLike" style="color: #ef4444; font-weight: 600;" onclick="likeCurrentPost()">
+                        <span data-i18n="modal_btn_like"><i class="fa-solid fa-heart"></i> 추천</span> <span id="viewLikes">0</span>
+                    </button>
+                    <button class="view-btn" onclick="deleteCurrentPost()" data-i18n="modal_btn_delete">
+                        <i class="fa-solid fa-trash"></i> 삭제
+                    </button>
                 </div>
 
-                <div class="comment-form">
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
-                        <input type="text" id="commentName" placeholder="작성자" class="comment-input" style="flex: 1;">
-                        <input type="password" id="commentPw" placeholder="비밀번호" class="comment-input" style="flex: 1;">
+                <!-- Comment Section -->
+                <div class="comment-section">
+                    <div class="comment-header">
+                        <i class="fa-solid fa-comments"></i> 댓글 <span id="commentCount">0</span>
                     </div>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <textarea id="commentContent" placeholder="댓글을 남겨보세요..." class="comment-input" style="flex: 1; resize: none;" rows="2"></textarea>
-                        <button class="comment-submit-btn" onclick="submitComment()">등록</button>
+                    
+                    <div id="commentList" class="comment-list">
+                        <!-- Comments render here -->
+                    </div>
+
+                    <div class="comment-form">
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <input type="text" id="commentName" placeholder="작성자" class="comment-input" style="flex: 1;">
+                            <input type="password" id="commentPw" placeholder="비밀번호" class="comment-input" style="flex: 1;">
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <textarea id="commentContent" placeholder="댓글을 남겨보세요..." class="comment-input" style="flex: 1; resize: none;" rows="2"></textarea>
+                            <button class="comment-submit-btn" onclick="submitComment()">등록</button>
+                        </div>
                     </div>
                 </div>
             </div>
