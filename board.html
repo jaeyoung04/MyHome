@@ -721,7 +721,6 @@
         // --- Data layer ---
         window.getMessages = async function() {
             if(!db) {
-                // Firebase ?곕룞 ?먮윭/誘몄꽕????湲곗〈 LocalStorage 濡쒖쭅 ?ъ슜
                 let messages = JSON.parse(localStorage.getItem('amk_board')) || [];
                 let needsSave = false;
                 messages.forEach(msg => {
@@ -776,23 +775,23 @@
             
             if (filtered.length === 0) {
                 const emptyMsg = (typeof currentLang !== 'undefined' && currentLang === 'en') ? "No posts found." : "?깅줉??寃뚯떆湲???놁뒿?덈떎.";
-                if(tbody) tbody.innerHTML = <tr><td colspan="5" class="empty-row"> + emptyMsg + </td></tr>;
+                if(tbody) tbody.innerHTML = `<tr><td colspan="5" class="empty-row">${emptyMsg}</td></tr>`;
                 return;
             }
 
             filtered.forEach((msg, idx) => {
                 const tr = document.createElement('tr');
                 const secretTxt = (typeof currentLang !== 'undefined' && currentLang === 'en') ? "Secret Post." : "鍮꾨?湲?낅땲??";
-                const commentCount = (msg.comments && msg.comments.length > 0) ?  <span style="color: var(--accent-primary); font-size: 0.85rem; font-weight: 700;">[ + msg.comments.length + ]</span> : '';
-                const displayTitle = (msg.isSecret ? <i class="fa-solid fa-lock lock-icon"></i> + secretTxt : msg.title) + commentCount;
+                const commentCount = (msg.comments && msg.comments.length > 0) ? ` <span style="color: var(--accent-primary); font-size: 0.85rem; font-weight: 700;">[${msg.comments.length}]</span>` : '';
+                const displayTitle = (msg.isSecret ? `<i class="fa-solid fa-lock lock-icon"></i>${secretTxt}` : msg.title) + commentCount;
                 
-                tr.innerHTML = 
-                    <td class="col-id"> + (filtered.length - idx) + </td>
-                    <td class="col-title"> + displayTitle + </td>
-                    <td class="col-author"> + msg.name + </td>
-                    <td class="col-date"> + msg.date + </td>
-                    <td class="col-likes"> + (msg.likes > 0 ? '<i class="fa-solid fa-heart"></i> ' + msg.likes : '-') + </td>
-                ;
+                tr.innerHTML = `
+                    <td class="col-id">${filtered.length - idx}</td>
+                    <td class="col-title">${displayTitle}</td>
+                    <td class="col-author">${msg.name}</td>
+                    <td class="col-date">${msg.date}</td>
+                    <td class="col-likes">${msg.likes > 0 ? '<i class="fa-solid fa-heart"></i> ' + msg.likes : '-'}</td>
+                `;
                 tr.querySelector('.col-title').onclick = () => window.viewPost(msg.id);
                 if(tbody) tbody.appendChild(tr);
             });
@@ -882,24 +881,24 @@
             comments.forEach(c => {
                 const item = document.createElement('div');
                 item.className = 'comment-item';
-                item.innerHTML = 
+                item.innerHTML = `
                     <div class="comment-meta">
                         <div>
-                            <span class="comment-author"> + c.name + </span>
-                            <span class="comment-date"> + c.date + </span>
+                            <span class="comment-author">${c.name}</span>
+                            <span class="comment-date">${c.date}</span>
                         </div>
-                        <i class="fa-solid fa-trash comment-delete" onclick="window.deleteComment(' + postId + ', ' + c.id + ')"></i>
+                        <i class="fa-solid fa-trash comment-delete" onclick="window.deleteComment('${postId}', '${c.id}')"></i>
                     </div>
-                    <div class="comment-body"> + c.content.replace(/\n/g, '<br>') + </div>
+                    <div class="comment-body">${c.content.replace(/\n/g, '<br>')}</div>
                     <div class="comment-actions">
-                        <span class="comment-action-btn like" onclick="window.likeComment(' + postId + ', ' + c.id + ')">
-                            <i class="fa-solid fa-thumbs-up"></i>  + (c.likes || 0) + 
+                        <span class="comment-action-btn like" onclick="window.likeComment('${postId}', '${c.id}')">
+                            <i class="fa-solid fa-thumbs-up"></i> ${c.likes || 0}
                         </span>
-                        <span class="comment-action-btn dislike" onclick="window.dislikeComment(' + postId + ', ' + c.id + ')">
-                            <i class="fa-solid fa-thumbs-down"></i>  + (c.dislikes || 0) + 
+                        <span class="comment-action-btn dislike" onclick="window.dislikeComment('${postId}', '${c.id}')">
+                            <i class="fa-solid fa-thumbs-down"></i> ${c.dislikes || 0}
                         </span>
                     </div>
-                ;
+                `;
                 if(commentList) commentList.appendChild(item);
             });
         }
