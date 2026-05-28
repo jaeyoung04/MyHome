@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCA | 프로젝트</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Background Aurora Glow Orbs -->
+  <div class="orb-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header id="main-header" class="header-active">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="nav-logo">
+        <span class="logo-grad">MCA</span>
+      </a>
+      
+      <nav aria-label="Main Navigation">
+        <ul class="nav-pill" id="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-link-home">홈</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-link-about">동아리 소개</a></li>
+          <li><a href="activities.html" class="nav-link" id="nav-link-activities">주요 활동</a></li>
+          <li><a href="awards.html" class="nav-link" id="nav-link-awards">수상 내역</a></li>
+          <li><a href="projects.html" class="nav-link active" id="nav-link-projects">프로젝트</a></li>
+          <li><a href="career.html" class="nav-link" id="nav-link-career">진로 및 비전</a></li>
+          <li><a href="board.html" class="nav-link" id="nav-link-board">소통게시판</a></li>
+        </ul>
+      </nav>
+      
+      <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main style="padding-top: 80px; min-height: 80vh;">
+    <!-- Featured Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+
+        <h2 class="section-title"><span class="text-gradient">FEATURED PROJECTS</span></h2>
+        <p class="section-subtitle">MCA만의 제어 기술 노하우와 완성도가 돋보이는 대표적인 설계 결과물들을 상세히 공개합니다.</p>
+        
+        <div class="projects-grid">
+          <!-- Project 1: SHM-iSM -->
+          <div class="proj-card">
+            <div class="proj-img-wrap">
+              <img src="assets/images/project_shm_ism.jpg" alt="AI 비전인식을 활용한 분리수거 시스템" class="proj-img">
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">2025</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">AI 비전인식을 활용한 분리수거 시스템</h3>
+              <p class="proj-desc">
+                반도체 제조 현장의 위험 가스 및 액체 유출을 모니터링하기 위해 구축된 임베디드 시뮬레이터입니다. AI 비전 카메라 출력을 바탕으로 이상 요인을 실시간 추출하고 모니터링 타임로그를 웹 서버에 정밀 기록하는 뛰어난 제어 확장성을 보여주었습니다.
+              </p>
+              <div class="proj-tags">
+                <span class="tag">Industrial IoT</span>
+                <span class="tag">AI Vision</span>
+                <span class="tag">Smart Safety</span>
+              </div>
+              <button class="proj-link" id="btn-project-shm" data-project-id="shm">
+                <span>스펙 문서 보기</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Project 2: Unmanned Robot Cafe -->
+          <div class="proj-card">
+            <div class="proj-img-wrap">
+              <img src="assets/images/project_robot_cafe.jpg" alt="무인화 로봇카페 시스템" class="proj-img">
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">2024</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">무인화 로봇카페 시스템</h3>
+              <p class="proj-desc">
+                주문 인터페이스와 로봇 암 제어부 간의 다중 이기종 통신을 접목한 무인 스마트 키친 프로젝트입니다. 정밀 로봇 기구학 연산과 그리퍼 압력 제어 로직을 적용하여 음료 추출, 포장 및 서빙 전 공정 자동화를 안정적으로 증명하였습니다.
+              </p>
+              <div class="proj-tags">
+                <span class="tag">Robot Arm</span>
+                <span class="tag">Control Comm</span>
+                <span class="tag">Automation</span>
+              </div>
+              <button class="proj-link" id="btn-project-cafe" data-project-id="cafe">
+                <span>스펙 문서 보기</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Project 3: Digi-Star Target -->
+          <div class="proj-card">
+            <div class="proj-img-wrap" style="display: flex; align-items: center; justify-content: center; background: #e2e8f0;">
+              <span style="color: #64748b; font-weight: 600; font-size: 1.1rem; z-index: 1;">다른이미지 업로드 예정</span>
+              <div class="proj-img-overlay"></div>
+              <span class="proj-badge">2023</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Digi-Star 대상 시스템</h3>
+              <p class="proj-desc">
+                로봇자동화공학부의 인공지능 융합 자율 주행 및 동적 경로 탐색 기술을 집대성하여 개발된 하드웨어 시스템입니다. 전국 캡스톤디자인 본선에서 고속 매핑과 장애물 회피 구동 능력을 극찬받아 대상의 영예를 안았습니다.
+              </p>
+              <div class="proj-tags">
+                <span class="tag">Mechatronics</span>
+                <span class="tag">Embed Control</span>
+                <span class="tag">Capston Design</span>
+              </div>
+              <button class="proj-link" id="btn-project-digi" data-project-id="digi">
+                <span>스펙 문서 보기</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <a href="index.html" class="footer-logo">
+            <span class="logo-grad">MCA</span>
+          </a>
+          <p class="footer-desc">
+            MCA는 기계, 전기, 전자 공학을 복합적으로 응용하여 통신 및 제어회로와 프로그램을 개발하고 자동화 시스템 구축 및 인공지능(AI)와 증강현실(AR)기술 등을 이용한 로봇을 제작하는 동아리로 미래지향적인 작품의 개발을 중점으로 활동하고 있는 동아리입니다.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="footer-nav-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">홈</a></li>
+            <li><a href="about.html">동아리 소개</a></li>
+            <li><a href="activities.html">주요 활동</a></li>
+            <li><a href="awards.html">수상 내역</a></li>
+            <li><a href="projects.html">프로젝트</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-nav-title">Contact</h4>
+          <ul class="contact-list">
+            <li>
+              <i data-lucide="map-pin"></i>
+              <span>서울시 구로구 경인로 445 동양미래대학교 4호관 510호 (MCA 동아리실)</span>
+            </li>
+            <li>
+              <i data-lucide="phone"></i>
+              <span>로봇자동화공학부 사무실: 02-2610-1832</span>
+            </li>
+            <li>
+              <i data-lucide="mail"></i>
+              <span>mca.robotics.robot@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 MCA. All Rights Reserved. Designed by Antigravity.</p>
+        <div class="social-row">
+          <a href="https://github.com/jaeyoung04" target="_blank" class="social-btn" aria-label="Github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.18-.35 6.5-1.56 6.5-7.16 0-1.54-.55-2.8-1.46-3.7.15-.37.64-1.75-.15-3.64 0 0-1.18-.38-3.87 1.4a13.3 13.3 0 0 0-7 0C6.18 2.5 5 2.88 5 2.88c-.79 1.89-.3 3.27-.15 3.64-1 1-1.46 2.16-1.46 3.7 0 5.6 3.32 6.8 6.5 7.16A4.8 4.8 0 0 0 8 18v4"/><path d="M4 20c-1.2 0-2-.5-3-1"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@금성골드스타" target="_blank" class="social-btn" aria-label="Youtube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/j0._.dl/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Details Modal -->
+  <div class="modal" id="project-modal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" id="modal-overlay"></div>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-project-title">Project Title</h3>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-scroll">
+        <div class="modal-img-wrap">
+          <img src="" alt="Project Detailed View" id="modal-project-img">
+        </div>
+        
+        <div class="modal-block">
+          <h4 class="modal-sec-label">작품 상세 설명</h4>
+          <p id="modal-project-description">상세 설명 내용이 로드됩니다.</p>
+        </div>
+        
+        <div class="modal-block">
+          <h4 class="modal-sec-label">주요 기술 스펙 (Specifications)</h4>
+          <ul class="modal-specs" id="modal-project-specs">
+            <!-- Loaded dynamically by JavaScript -->
+          </ul>
+        </div>
+        
+        <div class="modal-block">
+          <h4 class="modal-sec-label">기대 효과 및 확장성</h4>
+          <p id="modal-project-impact">기대 효과 내용이 로드됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

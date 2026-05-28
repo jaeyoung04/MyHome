@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCA | 소통게시판</title>
+  <title>MCA | 동아리 소개</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -28,12 +28,12 @@
       <nav aria-label="Main Navigation">
         <ul class="nav-pill" id="nav-menu">
           <li><a href="index.html" class="nav-link" id="nav-link-home">홈</a></li>
-          <li><a href="about.html" class="nav-link" id="nav-link-about">동아리 소개</a></li>
+          <li><a href="about.html" class="nav-link active" id="nav-link-about">동아리 소개</a></li>
           <li><a href="activities.html" class="nav-link" id="nav-link-activities">주요 활동</a></li>
           <li><a href="awards.html" class="nav-link" id="nav-link-awards">수상 내역</a></li>
           <li><a href="projects.html" class="nav-link" id="nav-link-projects">프로젝트</a></li>
           <li><a href="career.html" class="nav-link" id="nav-link-career">진로 및 비전</a></li>
-          <li><a href="board.html" class="nav-link active" id="nav-link-board">소통게시판</a></li>
+          <li><a href="board.html" class="nav-link" id="nav-link-board">소통게시판</a></li>
         </ul>
       </nav>
       
@@ -44,44 +44,64 @@
   </header>
 
   <main style="padding-top: 80px; min-height: 80vh;">
-    <!-- Board Section -->
-    <section id="board" class="section">
+    <!-- About MCA Section -->
+    <section id="about" class="section">
       <div class="container">
 
-        <h2 class="section-title"><span class="text-gradient">COMMUNITY BOARD</span></h2>
-        <p class="section-subtitle">MCA 동아리원들과 방문자들이 자유롭게 소통할 수 있는 공간입니다.</p>
+        <h2 class="section-title"><span class="text-gradient">ABOUT MCA</span></h2>
+        <p class="section-subtitle">동양미래대학교 로봇자동화공학부 소속의 대표 전공동아리(PD Lab)인 MCA를 소개합니다.</p>
         
-        <!-- Board Input Form (Feed Style) -->
-        <div class="board-compose glass-card">
-          <form id="board-form">
-            <div class="compose-header">
-              <input type="text" id="board-name" class="compose-input name-input" placeholder="이름 (닉네임)" required maxlength="15">
-              <input type="password" id="board-password" class="compose-input pwd-input" placeholder="비밀번호 (삭제용)" required minlength="4">
+        <div class="about-wrap">
+          <div class="about-text">
+            <h3>기계, 전기, 전자를 결합한<br><span class="text-gradient">차세대 로봇 제어 솔루션</span></h3>
+            <p>
+              MCA는 기계, 전기, 전자 공학을 복합적으로 응용하여 통신 및 제어회로, 소프트웨어 프로그램을 개발하는 동양미래대학교 로봇자동화공학부 소속의 전공동아리(PD Lab)입니다. 한계를 두지 않는 기술 융합 학습을 통해 산업 현장에서 요구하는 설계 능력을 습득합니다.
+            </p>
+            
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card-label">동아리실 위치</div>
+                <div class="info-card-value">4호관 510호</div>
+              </div>
+              <div class="info-card">
+                <div class="info-card-label">지도교수</div>
+                <div class="info-card-value">김학성 교수, 이영화 교수</div>
+              </div>
             </div>
-            <div class="compose-body">
-              <textarea id="board-message" class="compose-textarea" rows="3" placeholder="지금 무슨 생각을 하고 계신가요? (따뜻한 한마디 부탁드려요!)" required maxlength="300"></textarea>
+          </div>
+          
+          <div class="research-stack">
+            <div class="glass-card research-item">
+              <div class="research-ico">
+                <i data-lucide="bot"></i>
+              </div>
+              <div class="research-info">
+                <h4>지능형 로봇 (Intelligent Robots)</h4>
+                <p>인공지능(AI)과 증강현실(AR) 기술을 이용해 자율 환경을 탐색하고 복잡한 명령을 수행하는 로봇 시스템을 설계합니다.</p>
+              </div>
             </div>
-            <div class="compose-footer">
-              <div class="char-counter"><span id="char-count">0</span> / 300</div>
-              <button type="submit" class="btn btn-primary btn-compose" id="board-submit-btn">
-                <span>등록하기</span>
-                <i data-lucide="send"></i>
-              </button>
+            
+            <div class="glass-card research-item">
+              <div class="research-ico">
+                <i data-lucide="navigation"></i>
+              </div>
+              <div class="research-info">
+                <h4>자율주행 시스템 (Autonomous Driving)</h4>
+                <p>자율주행 서비스 로봇 및 스마트 창고 물류를 위한 센서 융합 기반의 정밀 무인 제어 아키텍처를 연구합니다.</p>
+              </div>
             </div>
-          </form>
-        </div>
-
-        <!-- Board Message List (Feed) -->
-        <div class="board-feed-container">
-          <div id="board-messages" class="board-messages">
-            <!-- Messages will be loaded here dynamically by JS -->
-            <div class="loading-messages" style="text-align:center; padding: 3rem; color: var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:1rem;">
-              <i data-lucide="loader-2" class="spin-icon" style="width:32px; height:32px;"></i>
-              <span>메시지를 불러오는 중입니다...</span>
+            
+            <div class="glass-card research-item">
+              <div class="research-ico">
+                <i data-lucide="shield-alert"></i>
+              </div>
+              <div class="research-info">
+                <h4>산업 연계 제어 (Industrial Control)</h4>
+                <p>반도체 생산 장비 제어 및 유해 작업장 내 위험물질 관리를 실시간 통합 제어하는 자동화 시스템을 제작합니다.</p>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   </main>
@@ -95,7 +115,7 @@
             <span class="logo-grad">MCA</span>
           </a>
           <p class="footer-desc">
-            MCA는 기계, 전기, 전자 공학을 복합적으로 응용하여 통신 및 제어회로와 프로그램을 개발하고 자동화 시스템 구축 및 인공지능(AI)과 증강현실(AR)기술 등을 이용하여 로봇을 제작하는 동아리로 미래지향적인 작품의 개발을 중점으로 활동하고 있는 동아리입니다.
+            MCA는 기계, 전기, 전자 공학을 복합적으로 응용하여 통신 및 제어회로와 프로그램을 개발하고 자동화 시스템 구축 및 인공지능(AI)와 증강현실(AR)기술 등을 이용한 로봇을 제작하는 동아리로 미래지향적인 작품의 개발을 중점으로 활동하고 있는 동아리입니다.
           </p>
         </div>
         
@@ -107,8 +127,6 @@
             <li><a href="activities.html">주요 활동</a></li>
             <li><a href="awards.html">수상 내역</a></li>
             <li><a href="projects.html">프로젝트</a></li>
-            <li><a href="career.html">진로 및 비전</a></li>
-            <li><a href="board.html">소통게시판</a></li>
           </ul>
         </div>
         
@@ -117,7 +135,7 @@
           <ul class="contact-list">
             <li>
               <i data-lucide="map-pin"></i>
-              <span>서울특별시 구로구 경인로 445 동양미래대학교 4호관 510호 (MCA 동아리실)</span>
+              <span>서울시 구로구 경인로 445 동양미래대학교 4호관 510호 (MCA 동아리실)</span>
             </li>
             <li>
               <i data-lucide="phone"></i>
@@ -148,9 +166,6 @@
     </div>
   </footer>
 
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/board.js"></script>
 </body>
 </html>
