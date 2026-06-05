@@ -1,7 +1,7 @@
 const i18n = {
     ko: {
         welcome_title: "<span style='color: var(--accent-primary);'>환영합니다!</span> 포트폴리오 안내",
-        welcome_desc: "화면 내 <strong style='color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;'>모든 카드들을 직접 클릭하면</strong> 상세 내용이 나타납니다.",
+        welcome_desc: "화면 내 <strong style='color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;'>모든 카드들을 직접 클릭하면</strong><br>상세 내용이 나타납니다.",
         welcome_subdesc: "* 본 사이트는 반응형 벤토(Bento) 레이아웃으로 디자인되었습니다.",
         demo_click_text: "위처럼 화면의 흥미로운 카드를 직접 클릭해 보세요!",
         dont_show_again: "오늘 하루 다시 보지 않기",
@@ -163,7 +163,7 @@ const i18n = {
         fridge_feature4: "-10℃ 자동 팬 제어 알고리즘",
         fridge_detail_title: "시스템 설계 및 트러블슈팅",
         fridge_detail_desc: "냉각 효율 극대화 및 결빙 방지를 위해 -10도 도달 시 팬 속도를 조절하는 임계치 제어 알고리즘을 적용했습니다. 영하의 정밀한 온도 측정을 위해 전용 센서를 보정하여 사용했습니다.",
-        rc_car_title: "3D 프린팅 RC카<br>(차동기어 및 서스펜션)",
+        rc_car_title: "3D 프린팅 RC카 (차동기어 및 서스펜션)",
         rc_car_subtitle: "차동 기어 시스템과 독립 현가장치를 활용한 고성능 RC카 설계",
         rc_car_date: "2026.01.27 ~ 2026.03.06",
         rc_car_feature1: "차동 기어 시스템 설계 및 제작",
@@ -393,7 +393,7 @@ const i18n = {
         fridge_feature4: "-10°C Auto Fan Control Logic",
         fridge_detail_title: "System Design & Troubleshooting",
         fridge_detail_desc: "Implemented a threshold control algorithm that adjusts fan speed at -10°C to maximize cooling efficiency and prevent icing. Calibrated specialized sensors for precise sub-zero measurement.",
-        rc_car_title: "3D Printed RC Car<br>(Diff Gear & Suspension)",
+        rc_car_title: "3D Printed RC Car (Diff Gear & Suspension)",
         rc_car_subtitle: "High-performance RC car design using differential gear and independent suspension",
         rc_car_date: "2026.01.27 ~ 2026.03.06",
         rc_car_feature1: "Differential Gear System Design",

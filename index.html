@@ -1,153 +1,1643 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="동양미래대학교 로봇자동화공학부 핵심 전공동아리 MCA(Mechatronics & Control Automation)의 정체성, 기술력, 화려한 수상 실적 및 대표 프로젝트를 소개하는 공식 웹페이지입니다.">
-  <meta name="keywords" content="동양미래대학교, 로봇자동화공학부, MCA, 전공동아리, 메카트로닉스, 자율주행, 인공지능, SHM-iSM, 로봇공학">
-  <meta name="author" content="MCA (Mechatronics & Control Automation)">
-  <title>MCA | 동양미래대학교 로봇자동화공학부 핵심 전공동아리</title>
-  
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2">
-  
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Solution Architect | Samsung DX</title>
+    <meta name="description" content="Samsung Electronics DX Portfolio - Bento Grid Composition">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Mermaid.js for interactive diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js"></script>
+    <script>
+        // Separate function to allow re-render on theme toggle
+        function initMermaid(isLight = false) {
+            const theme = isLight ? 'default' : 'dark';
+            mermaid.initialize({ 
+                startOnLoad: false, 
+                theme: theme,
+                securityLevel: 'loose',
+                flowchart: { useMaxWidth: false, htmlLabels: true }
+            });
+            mermaid.run();
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            initMermaid(savedTheme !== 'dark');
+        });
+    </script>
+    
+    <style>
+        /* =========================================
+           BENTO GRID DASHBOARD AESTHETICS (SAMSUNG DX)
+           ========================================= */
+        :root {
+            /* Default Dark Mode (Samsung Deep Blue) */
+            --bg-base: #030712;
+            --bg-bento: rgba(17, 24, 39, 0.6);
+            --bg-bento-hover: rgba(31, 41, 55, 0.8);
+            --border-bento: rgba(59, 130, 246, 0.2);
+            --border-highlight: rgba(59, 130, 246, 0.6);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --accent-primary: #3b82f6;
+            --accent-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --gap: 1.2rem;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.light-mode {
+            --bg-base: #f8fafc;
+            --bg-bento: rgba(255, 255, 255, 0.8);
+            --bg-bento-hover: rgba(255, 255, 255, 1);
+            --border-bento: rgba(203, 213, 225, 0.5);
+            --border-highlight: rgba(59, 130, 246, 0.4);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-glow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        body.light-mode .mermaid-container { background: white; border: 1px solid var(--border-bento); }
+        body.light-mode .youtube-card { background: #f1f5f9; }
+        body.light-mode .board-input { background: white; color: black; border-color: #cbd5e1; }
+        body.light-mode .contact-link { color: #475569; }
+        body.light-mode .navbar { border-bottom: 1px solid rgba(0,0,0,0.05); }
+        body.light-mode .hero-bento { background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%); border: 1px solid rgba(59, 130, 246, 0.1); }
+        body.light-mode .hero-bento p { color: #64748b; }
+        body.light-mode .hero-bento h1 { color: #0f172a; }
+        body.light-mode .skill-pill { background: #ffffff; color: #1e293b; border-color: #cbd5e1; }
+        body.light-mode .skill-pill i { color: var(--accent-primary); }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(30, 58, 138, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 85% 90%, rgba(30, 58, 138, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 5rem;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.03em; word-break: keep-all; }
+        p { line-height: 1.6; color: var(--text-secondary); word-break: keep-all; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(130, 130, 130, 0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(130, 130, 130, 0.6); }
+
+        /* Top Navigation */
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .logo { font-size: 1.6rem; color: var(--text-primary); text-decoration: none; font-weight: 800; }
+        .logo span { color: var(--accent-primary); font-weight: 900; }
+        
+        .glow-btn {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 24px;
+            cursor: pointer;
+            font-family: 'Outfit';
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 46px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+        .glow-btn i { font-size: 1rem; width: 1.2rem; text-align: center; }
+        .glow-btn:hover { background: var(--accent-primary); box-shadow: var(--accent-glow); transform: translateY(-2px); }
+
+        /* Bento Grid Layout */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(250px, auto);
+            gap: var(--gap);
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--bg-bento);
+            border: 1px solid var(--border-bento);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px) scale(1.005);
+            background: var(--bg-bento-hover);
+            border-color: var(--border-highlight);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        /* Specific Grids! */
+        .hero-bento { 
+            grid-column: span 8; grid-row: span 2; 
+            justify-content: center; 
+            position: relative;
+            background: linear-gradient(145deg, #030712 0%, #0f172b 100%);
+            border: 1px solid rgba(11, 92, 213, 0.2);
+        }
+        .hero-bento::before {
+            content: '';
+            position: absolute;
+            top: -20%; right: -10%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(11, 92, 213, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body.light-mode .hero-bento {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-color: rgba(11, 92, 213, 0.1);
+        }
+        body.light-mode .hero-bento::before {
+            background: radial-gradient(circle, rgba(11, 92, 213, 0.12) 0%, transparent 70%);
+        }
+        .hero-bento h1, .hero-bento p { position: relative; z-index: 1; }
+        .hero-bento h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem; font-weight: 900; letter-spacing: -0.04em; }
+        .text-samsung-blue { color: #0b5cd5; text-shadow: 0 0 20px rgba(11, 92, 213, 0.3); display: inline-block; white-space: nowrap; }
+        .text-samsung-silver { 
+            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        body.light-mode .text-samsung-silver {
+            background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .profile-bento { 
+            grid-column: span 4; grid-row: span 1; 
+            align-items: center; justify-content: center; text-align: center; 
+        }
+        .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--accent-primary); object-fit: cover; margin-bottom: 1rem; }
+        
+        .contact-bento {
+            grid-column: span 4; grid-row: span 1;
+            justify-content: center; gap: 1rem;
+        }
+        .contact-link { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            margin-left: -1rem;
+            width: fit-content;
+        }
+        .contact-link:hover { 
+            color: var(--accent-primary); 
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(5px);
+        }
+
+        .vocation-bento { grid-column: span 6; grid-row: span 1; }
+        .vocation-bento ul { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+        .vocation-bento li { display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); }
+        .vocation-bento i { color: var(--accent-primary); font-size: 1.2rem; }
+
+        .mechanism-bento { grid-column: span 6; grid-row: span 2; overflow-y: auto; }
+        .mechanism-bento .blueprint { flex: 1; border-radius: var(--radius-lg); background: rgba(0,0,0,0.5); border: 1px dotted var(--accent-primary); display: flex; align-items: center; justify-content: center; margin-top: 1rem; min-height: 150px; }
+
+        .mastery-bento { grid-column: span 6; grid-row: span 1; }
+        .skills-row { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .skill-pill { background: rgba(255,255,255,0.05); border: 1px solid var(--border-bento); padding: 0.8rem 1.5rem; border-radius: 30px; display: flex; align-items: center; gap: 0.8rem; }
+        .mermaid-container { width: 100%; height: 100%; min-height: 400px; background: transparent; border-radius: var(--radius-lg); display: flex; justify-content: center; align-items: center; padding: 2rem; overflow: hidden; }
+        .mermaid { transform: scale(1.3); transform-origin: center; }
+        .log-bento { grid-column: span 12; grid-row: span 2; overflow-y: auto;}
+        .youtube-bento { grid-column: span 12; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+        .youtube-grid { display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+        .youtube-card {
+            position: relative; flex: 1; min-width: 280px;
+            aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden;
+            cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: var(--transition); border: 1px solid var(--border-bento);
+        }
+        .youtube-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.2); border-color: var(--accent-primary); }
+        .youtube-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.8 !important; }
+        .youtube-card:hover img { transform: scale(1.05); opacity: 1 !important; }
+        .youtube-card .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; text-align: left; }
+        .youtube-card h3 { color: #fff !important; margin: 0; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,1); font-weight: 600; line-height: 1.3; }
+        .youtube-card i.fa-youtube { position: absolute; top: 43%; left: 50%; transform: translate(-50%, -50%); font-size: 3.5rem; color: #ff0000; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8)); transition: 0.3s; }
+        .youtube-card:hover i.fa-youtube { transform: translate(-50%, -50%) scale(1.1); color: #ff3333; filter: drop-shadow(0 4px 15px rgba(255,0,0,0.5)); }
+
+        .youtube-shorts-card {
+            position: relative; flex: 1; min-width: 140px; max-width: 220px;
+            aspect-ratio: 9 / 16; border-radius: var(--radius-lg); overflow: hidden;
+            cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: var(--transition); border: 1px solid var(--border-bento);
+        }
+        .youtube-shorts-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.2); border-color: var(--accent-primary); }
+        .youtube-shorts-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.8 !important; }
+        .youtube-shorts-card:hover img { transform: scale(1.05); opacity: 1 !important; }
+        .youtube-shorts-card .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 40%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; text-align: center; }
+        .youtube-shorts-card h3 { color: #fff !important; margin: 0; font-size: 0.85rem; text-shadow: 0 2px 4px rgba(0,0,0,1); font-weight: 500; line-height: 1.3; }
+        .youtube-shorts-card i.fa-youtube { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: #ff0000; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8)); transition: 0.3s; }
+        .youtube-shorts-card:hover i.fa-youtube { transform: translate(-50%, -50%) scale(1.1); color: #ff3333; filter: drop-shadow(0 4px 15px rgba(255,0,0,0.5)); }
+
+
+        
+        /* Badges */
+        .badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; vertical-align: middle; margin-left: 10px; border: 1px solid rgba(59, 130, 246, 0.4); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .bento-container { grid-auto-rows: auto; }
+            .bento-card { grid-row: auto !important; height: auto; }
+            .hero-bento { grid-column: span 12; }
+            .profile-bento, .contact-bento { grid-column: span 6; }
+            .vocation-bento, .mechanism-bento { grid-column: span 12; }
+            .mastery-bento { grid-column: span 12; }
+            .log-bento, .youtube-bento { grid-column: span 12; }
+        }
+        @media (max-width: 768px) {
+            .profile-bento, .contact-bento { grid-column: span 12; }
+            .hero-bento h1 { font-size: 2.5rem; }
+            
+            .welcome-modal-content { padding: 1.5rem; width: 95vw; }
+            .welcome-img { margin: 1rem 0; }
+            .welcome-modal-content h2 { font-size: 1.4rem !important; }
+        }
+
+        @keyframes expandMenu {
+            from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(-10px); }
+            to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
+        }
+
+        /* Premium Morphing Hamburger */
+        .hamburger-container {
+            width: 20px;
+            height: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .ham-line {
+            display: block;
+            height: 2px;
+            width: 100%;
+            border-radius: 2px;
+            background-color: var(--text-primary);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            transform-origin: center;
+        }
+        .hamburger-container.is-active .ham-line:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        .hamburger-container.is-active .ham-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger-container.is-active .ham-line:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        /* Card Expansion Modal */
+        .card-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .card-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .card-modal-content {
+            background: var(--bg-bento);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-xl);
+            width: 95vw;
+            max-width: 1200px;
+            max-height: 85vh;
+            padding: 3rem;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), var(--accent-glow);
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+        }
+
+        body.light-mode .card-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .card-modal-overlay.active .card-modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .card-modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 10;
+        }
+
+        body.light-mode .card-modal-close {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-primary);
+        }
+
+        .card-modal-close:hover,
+        body.light-mode .card-modal-close:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .card-modal-body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Welcome Guide Modal */
+        .welcome-modal-overlay {
+            position: fixed;
+            inset: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .welcome-modal-content {
+            background: var(--bg-bento);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-xl);
+            width: 90vw;
+            max-width: 650px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), var(--accent-glow);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        body.light-mode .welcome-modal-content {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .welcome-modal-overlay.active .welcome-modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .welcome-img {
+            width: 100%;
+            height: auto;
+            max-height: 44vh;
+            object-fit: contain;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border: 1px solid var(--border-bento);
+            background: transparent;
+        }
+
+        .welcome-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .dont-show-again {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .welcome-start-btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .welcome-start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Hover indicator for expandable cards */
+        .bento-card {
+            cursor: pointer;
+        }
+        .bento-card::after {
+            content: "\f0b2"; /* fa-arrows-alt */
+            font-family: "FontAwesome";
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            opacity: 0;
+            color: white;
+            font-size: 1.2rem;
+            background: var(--accent-primary);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            transform: scale(0.8);
+            z-index: 10;
+        }
+        .bento-card:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Modal specific display */
+        .modal-only { display: none !important; }
+        .card-modal-body .modal-only { display: flex !important; }
+        .profile-layout { display: flex; flex-direction: column; width: 100%; align-items: center; justify-content: center; }
+        .card-modal-body .profile-layout { flex-direction: row; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+
+        /* Cert List Styles */
+        .cert-list { display: flex; flex-direction: column; gap: 0.6rem; width: 100%; margin-top: 1rem; }
+        .cert-item { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px dashed var(--border-bento); gap: 1rem; }
+        .cert-item:last-child { border-bottom: none; }
+        .cert-badge { display: inline-block; min-width: 85px; text-align: center; font-size: 0.65rem; padding: 0.3rem 0.5rem; border-radius: 4px; background: rgba(0,0,0,0.04); color: var(--text-secondary); white-space: nowrap; }
+        .cert-title { font-size: 0.9rem; font-weight: 500; color: var(--text-primary); flex: 1; text-align: left; }
+        .cert-date { font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap; }
+
+        /* Contact Modal Layout */
+        .contact-layout { display: flex; flex-direction: column; gap: 1rem; width: 100%; height: 100%; justify-content: center; }
+        .card-modal-body .contact-layout { align-items: center; justify-content: center; text-align: center; margin-top: 2rem; gap: 1.5rem; }
+        .card-modal-body .contact-layout .contact-link { font-size: 1.2rem; padding: 1rem 1.5rem; border-radius: 20px; width: 100%; max-width: 400px; justify-content: center; border: 1px solid var(--border-bento); background: var(--bg-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card-modal-body .contact-layout .social-links-wrapper { margin-left: 0 !important; width: 100%; max-width: 400px; gap: 1rem !important; }
+        .card-modal-body .contact-layout .social-links-wrapper .contact-link { flex: 1; padding: 1rem 1rem; }
+
+        /* Education List Styles */
+        .edu-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2rem; text-align: left; flex: 1; min-width: 250px; }
+        .edu-item { display: flex; flex-direction: column; gap: 0.3rem; position: relative; padding-left: 1.5rem; }
+        .edu-item::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; }
+        .edu-item-title { font-weight: 600; color: var(--text-primary); font-size: 1rem; }
+        .edu-item-date { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Awards List Styles */
+        .preview-list { list-style: none; padding: 0; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+        .preview-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; color: var(--text-primary); font-weight: 500; }
+        .card-modal-body .preview-only { display: none !important; }
+        
+        .awards-timeline { display: flex; flex-direction: column; gap: 1.7rem; padding-left: 1rem; border-left: 2px solid var(--border-bento); margin-top: 1.5rem; margin-bottom: 2rem; }
+        .award-item { position: relative; padding-left: 1.5rem; }
+        .award-item::before {
+            content: ''; position: absolute; left: -1.45rem; top: 0.3rem; width: 14px; height: 14px;
+            background: var(--bg-bento); border: 2px solid var(--accent-primary); border-radius: 50%;
+        }
+        .award-date { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .award-title { font-weight: 600; color: var(--text-primary); font-size: 1.05rem; margin-bottom: 0.3rem; display: block; line-height: 1.4; word-break: keep-all; }
+        .award-org { font-size: 0.8rem; background: rgba(59, 130, 246, 0.1); color: var(--text-primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; white-space: nowrap; border: 1px solid rgba(0,0,0,0.05); display: inline-block; vertical-align: middle; margin-left: 0.4rem; }
+        .award-part { font-size: 0.9rem; color: var(--text-secondary); word-break: keep-all; }
+    </style>
 </head>
 <body>
+    <!-- Welcome Modal -->
+    <style>
+        @keyframes welcomeCursorAnim {
+            0% { transform: translate(10px, 90px); opacity: 0; }
+            20% { transform: translate(105px, 20px); opacity: 1; }
+            40% { transform: translate(105px, 20px) scale(0.85); }
+            60% { transform: translate(105px, 20px) scale(1); }
+            80% { transform: translate(105px, 20px); opacity: 1; }
+            100% { transform: translate(105px, 20px); opacity: 0; }
+        }
+        @keyframes welcomeRippleAnim {
+            0%, 35% { opacity: 0; transform: translate(95px, 10px) scale(0); border-width: 3px; }
+            40% { opacity: 1; transform: translate(95px, 10px) scale(0.5); border-width: 3px; }
+            60% { opacity: 0; transform: translate(95px, 10px) scale(1.5); border-width: 1px; }
+            100% { opacity: 0; }
+        }
+        @keyframes welcomeCardPulse {
+            0%, 38% { transform: scale(1); background: transparent; border-color: var(--border-bento); }
+            45%, 65% { transform: scale(1.05); background: rgba(59, 130, 246, 0.15); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4); border-color: var(--accent-primary); z-index: 5; }
+            75%, 100% { transform: scale(1); background: transparent; border-color: var(--border-bento); }
+        }
+        .demo-cursor { animation: welcomeCursorAnim 3s infinite cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .demo-ripple { animation: welcomeRippleAnim 3s infinite ease-out; }
+        .demo-interactive { animation: welcomeCardPulse 3s infinite ease-in-out; }
+    </style>
+    <div class="welcome-modal-overlay" id="welcomeModal">
+        <div class="welcome-modal-content">
+            <h2 data-i18n="welcome_title" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: var(--text-primary);"><span style="color: var(--accent-primary);">환영합니다!</span> 포트폴리오 안내</h2>
+            <p data-i18n="welcome_desc" style="text-align: center; color: var(--text-primary); font-size: 1.1rem; font-weight: 500; line-height: 1.6; margin-bottom: 0.5rem; word-break: keep-all;">
+                화면 내 <strong style="color: var(--accent-primary); font-size: 1.2rem; font-weight: 700;">모든 카드들을 직접 클릭하면</strong><br>상세 내용이 나타납니다.
+            </p>
+            <!-- Animated Welcome Demo -->
+            <div class="welcome-demo" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(59, 130, 246, 0.03); padding: 2rem 1rem 1.5rem 1rem; border-radius: var(--radius-lg); margin-top: 1.5rem; margin-bottom: 1rem; border: 1px dashed rgba(59, 130, 246, 0.3); position: relative; overflow: hidden;">
+                <!-- Animated Mini Bento -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; width: 160px; height: 160px; position: relative;">
+                    <div style="background: transparent; border-radius: 12px; border: 2px solid var(--border-bento); position: relative; z-index: 1;"></div>
+                    <div class="demo-interactive" style="background: transparent; border-radius: 12px; border: 2px solid var(--border-bento); position: relative; z-index: 2;"></div>
+                    <div style="background: transparent; border-radius: 12px; border: 2px solid var(--border-bento); grid-column: span 2; position: relative; z-index: 1;"></div>
+                    
+                    <!-- Mouse Cursor -->
+                    <div class="demo-cursor" style="position: absolute; font-size: 1.8rem; color: var(--text-primary); z-index: 10; pointer-events: none;">
+                        <i class="fa-solid fa-arrow-pointer" style="text-shadow: 0 4px 8px rgba(0,0,0,0.5);"></i>
+                    </div>
+                    <!-- Click Ripple -->
+                    <div class="demo-ripple" style="position: absolute; width: 45px; height: 45px; border: 3px solid var(--accent-primary); border-radius: 50%; z-index: 9;"></div>
+                </div>
+                
+                <h3 data-i18n="demo_click_text" style="margin-top: 1.5rem; color: var(--accent-primary); font-size: 1rem; font-weight: 500; text-align: center; letter-spacing: -0.5px;">위처럼 화면의 흥미로운 카드를 직접 클릭해 보세요!</h3>
+            </div>
+            
+            <p data-i18n="welcome_subdesc" style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 0; margin-bottom: 1.8rem; opacity: 0.7;">
+                * 본 사이트는 반응형 벤토(Bento) 레이아웃으로 디자인되었습니다.
+            </p>
 
-  <!-- Top Scroll Progress Bar -->
-  <div id="scroll-progress"></div>
-
-  <!-- Background Aurora Glow Orbs -->
-  <div class="orb-container">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
-  </div>
-
-  <!-- Header & Navigation -->
-  <header id="main-header" class="header-active">
-    <div class="container nav-container">
-      <a href="index.html" class="logo" id="nav-logo">
-        <span class="logo-grad">MCA</span>
-      </a>
-      
-      <nav aria-label="Main Navigation">
-        <ul class="nav-pill" id="nav-menu">
-          <li><a href="index.html" class="nav-link active" id="nav-link-home">홈</a></li>
-          <li><a href="about.html" class="nav-link" id="nav-link-about">동아리 소개</a></li>
-          <li><a href="activities.html" class="nav-link" id="nav-link-activities">주요 활동</a></li>
-          <li><a href="awards.html" class="nav-link" id="nav-link-awards">수상 내역</a></li>
-          <li><a href="projects.html" class="nav-link" id="nav-link-projects">프로젝트</a></li>
-          <li><a href="career.html" class="nav-link" id="nav-link-career">진로 및 비전</a></li>
-          <li><a href="board.html" class="nav-link" id="nav-link-board">소통게시판</a></li>
-        </ul>
-      </nav>
-      
-      <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
-        <i data-lucide="menu"></i>
-      </button>
+            <div class="welcome-controls">
+                <label class="dont-show-again">
+                    <input type="checkbox" id="dontShowNav"> <span data-i18n="dont_show_again">다시 보지 않기</span>
+                </label>
+                <button class="welcome-start-btn" id="startPortfolioBtn">확인</button>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-bg-img"></div>
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="eyebrow-dot"></span>
-          <span>DONGYANG MIRAE UNIVERSITY PD LAB</span>
+    <nav class="navbar">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo">
+                <span>Samsung</span> DX
+            </a>
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+                <a href="board.html" class="glow-btn">
+                    <i class="fa-solid fa-comments"></i>
+                    <span data-i18n="nav_board_btn">자유게시판</span>
+                </a>
+                <button class="glow-btn" id="themeToggle" onclick="toggleTheme()" title="Theme Toggle">
+                    <i class="fa-solid fa-moon"></i>
+                    <span id="themeText" data-i18n="theme_dark">다크 모드</span>
+                </button>
+                <button class="glow-btn" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>EN / KO</span>
+                </button>
+                <button class="glow-btn" onclick="toggleMenu()" title="전체 메뉴" style="padding-left: 1rem; padding-right: 1rem;">
+                    <div id="hamburgerIcon" class="hamburger-container">
+                        <span class="ham-line"></span>
+                        <span class="ham-line"></span>
+                        <span class="ham-line"></span>
+                    </div>
+                </button>
+            </div>
         </div>
-        
-        <h1 class="hero-title">
-          <span class="text-gradient">MCA</span>
-        </h1>
-        
-        <p class="hero-desc">
-          기계공학(Mechatronics), 지능형 제어(Control), 창의적 자동화(Automation)를 결합하여 실용적이고 혁신적인 스마트 솔루션을 설계합니다.
-        </p>
-        
 
-        <div class="btn-group">
-          <a href="about.html" class="btn btn-primary" id="btn-hero-explore">
-            <span>동아리 소개</span>
-            <i data-lucide="arrow-right"></i>
-          </a>
-          <a href="projects.html" class="btn btn-outline" id="btn-hero-projects">
-            <span>프로젝트 보기</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="hero-visual">
-        <img src="assets/images/home_1.png" alt="MCA Team" class="hero-img img-1">
-        <img src="assets/images/home_2.jpg" alt="MCA Meeting" class="hero-img img-2">
-      </div>
-    </div>
-  </section>
+        <div id="navMenu" class="nav-menu-bento">
+            <div class="menu-bento-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 3rem 5%; max-width: 1400px; margin: 0 auto;">
+                
+                <!-- Navigation Card -->
+                <div class="menu-group-card" style="--order: 1;">
+                    <div class="menu-group-label">About & Achievements</div>
+                    <div class="menu-items-grid">
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('hero')" data-i18n="nav_vision"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('profile')" data-i18n="nav_profile"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('awards')" data-i18n="nav_awards"></button>
+                    </div>
+                </div>
+                
+                <!-- Projects Card -->
+                <div class="menu-group-card" style="--order: 2;">
+                    <div class="menu-group-label">Project Portfolio</div>
+                    <div class="menu-items-grid">
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('project-rc')" data-i18n="nav_rc"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('project-robot')" data-i18n="nav_robot"></button>
+                        <button class="menu-item-link" onclick="scrollToAndOpenModal('project-fridge')" data-i18n="nav_fridge"></button>
+                    </div>
+                </div>
 
-  <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <a href="index.html" class="footer-logo">
-            <span class="logo-grad">MCA</span>
-          </a>
-          <p class="footer-desc">
-            MCA는 기계, 전기, 전자 공학을 복합적으로 응용하여 통신 및 제어회로와 프로그램을 개발하고 자동화 시스템 구축 및 인공지능(AI)와 증강현실(AR)기술 등을 이용한 로봇을 제작하는 동아리로 미래지향적인 작품의 개발을 중점으로 활동하고 있는 동아리입니다.
-          </p>
+                <!-- Social & Contact Card -->
+                <div class="menu-group-card" style="--order: 3;">
+                    <div class="menu-group-label">Connect</div>
+                    <div class="menu-items-grid">
+                        <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="menu-item-link" data-i18n="nav_youtube"></a>
+                        <a href="mailto:jyoung0588@dongyang.ac.kr" class="menu-item-link" data-i18n="nav_email"></a>
+                        <a href="tel:010-4408-0588" class="menu-item-link" data-i18n="nav_phone"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                .nav-menu-bento {
+                    max-height: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    background: transparent;
+                    backdrop-filter: blur(25px);
+                    -webkit-backdrop-filter: blur(25px);
+                    margin-top: 0;
+                }
+                body.light-mode .nav-menu-bento {
+                    background: transparent;
+                }
+                .nav-menu-bento.active {
+                    max-height: 600px;
+                    opacity: 1;
+                    margin-top: 1.5rem;
+                }
+                .menu-group-card {
+                    background: var(--bg-bento);
+                    border: 1px solid var(--border-bento);
+                    border-radius: 20px;
+                    padding: 1.5rem;
+                    text-align: left;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .nav-menu-bento.active .menu-group-card {
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition-delay: calc(var(--order) * 0.1s + 0.2s);
+                }
+                .menu-group-card:hover {
+                    border-color: var(--border-highlight);
+                    background: var(--bg-bento-hover);
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                }
+                .menu-group-label {
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    color: var(--accent-primary);
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    margin-bottom: 1.2rem;
+                    opacity: 0.8;
+                }
+                .menu-items-grid {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .menu-item-link {
+                    width: 100%;
+                    padding: 0.8rem 1rem;
+                    border-radius: 12px;
+                    color: var(--text-primary);
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                    font-size: 1rem;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    text-align: left;
+                    font-family: inherit;
+                }
+                .menu-item-link i {
+                    width: 24px;
+                    font-size: 1.2rem;
+                    color: var(--accent-primary);
+                    text-align: center;
+                }
+                .menu-item-link:hover {
+                    background: rgba(59, 130, 246, 0.1);
+                    border-color: rgba(59, 130, 246, 0.2);
+                    transform: translateX(8px);
+                    color: var(--accent-primary);
+                }
+                body.light-mode .menu-group-card {
+                    background: rgba(255, 255, 255, 0.9);
+                    border-color: rgba(0, 0, 0, 0.05);
+                }
+            </style>
         </div>
-        
-        <div>
-          <h4 class="footer-nav-title">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">홈</a></li>
-            <li><a href="about.html">동아리 소개</a></li>
-            <li><a href="activities.html">주요 활동</a></li>
-            <li><a href="awards.html">수상 내역</a></li>
-            <li><a href="projects.html">프로젝트</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="footer-nav-title">Contact</h4>
-          <ul class="contact-list">
-            <li>
-              <i data-lucide="map-pin"></i>
-              <span>서울시 구로구 경인로 445 동양미래대학교 4호관 510호 (MCA 동아리실)</span>
-            </li>
-            <li>
-              <i data-lucide="phone"></i>
-              <span>로봇자동화공학부 사무실: 02-2610-1832</span>
-            </li>
-            <li>
-              <i data-lucide="mail"></i>
-              <span>mca.robotics.robot@gmail.com</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 MCA. All Rights Reserved. Designed by Antigravity.</p>
-        <div class="social-row">
-          <a href="https://github.com/jaeyoung04" target="_blank" class="social-btn" aria-label="Github">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.18-.35 6.5-1.56 6.5-7.16 0-1.54-.55-2.8-1.46-3.7.15-.37.64-1.75-.15-3.64 0 0-1.18-.38-3.87 1.4a13.3 13.3 0 0 0-7 0C6.18 2.5 5 2.88 5 2.88c-.79 1.89-.3 3.27-.15 3.64-1 1-1.46 2.16-1.46 3.7 0 5.6 3.32 6.8 6.5 7.16A4.8 4.8 0 0 0 8 18v4"/><path d="M4 20c-1.2 0-2-.5-3-1"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@금성골드스타" target="_blank" class="social-btn" aria-label="Youtube">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/j0._.dl/" target="_blank" class="social-btn" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('navMenu');
+                const hamburgerIcon = document.getElementById('hamburgerIcon');
+                
+                menu.classList.toggle('active');
+                hamburgerIcon.classList.toggle('is-active');
+            }
 
-  <script src="js/main.js?v=2"></script>
+            function closeMenu() {
+                const menu = document.getElementById('navMenu');
+                const hamburgerIcon = document.getElementById('hamburgerIcon');
+                menu.classList.remove('active');
+                hamburgerIcon.classList.remove('is-active');
+            }
+        </script>
+    </nav>
+
+    <main class="bento-container">
+        
+        <!-- Hero Box -->
+        <div id="hero" class="bento-card hero-bento">
+            <h1 data-i18n="hero_title">정밀 설계. <span class="text-cyan" style="color:#22d3ee;">지능형 제어.</span> <span class="text-gold" style="color:#fbbf24;">한계 돌파.</span></h1>
+            <p style="font-size: 1.2rem; max-width: 600px;" data-i18n="hero_subtitle">
+                기계적 메커니즘의 완벽함과 지능형 제어 역량을 겸비한<br><strong>Mechanical Solution Architect</strong>
+            </p>
+
+            <!-- Modal Expanded Content -->
+            <div class="modal-only" style="margin-top: 2.5rem; flex-direction: column; text-align: left; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; padding-top: 2rem; border-top: 1px solid rgba(11, 92, 213, 0.3);">
+                <h2 data-i18n="hero_modal_heading" style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.6rem; text-align: center; word-break: keep-all; width: 100%;">삼성전자 DX부문 기구개발 직무를 향한 비전</h2>
+                <p data-i18n="hero_modal_intro" style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem; text-align: center; margin-bottom: 3rem; font-weight: 500; word-break: keep-all; width: 100%;">
+                    단순한 외형 설계를 넘어, 사용자 경험(UX)을 극대화하는 혁신적인 하드웨어 솔루션을 설계하겠습니다.
+                </p>
+
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; width: 100%; justify-content: center;">
+                    <div style="flex: 1; min-width: 260px; background: rgba(125,125,125,0.05); padding: 1.8rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                        <div style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 data-i18n="hero_core1_title" style="margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--text-primary); font-weight: 700;">하드웨어-소프트웨어 융합 설계</h3>
+                        <p data-i18n="hero_core1_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                            기구부 설계에 그치지 않고, 센서와 제어 알고리즘을 결합하여 실제 구동 가능한 지능형 메커니즘을 구축해 온 경험은 삼성전자의 스마트 기기 개발에 직결되는 시스템적 사고 역량입니다.
+                        </p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 260px; background: rgba(125,125,125,0.05); padding: 1.8rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                        <div style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h3 data-i18n="hero_core2_title" style="margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--text-primary); font-weight: 700;">데이터 기반 수치/공차 최적화</h3>
+                        <p data-i18n="hero_core2_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                            조립 공차 데이터를 분석하고 부품 수치를 재설계하여 유격을 잡아내는 등 품질을 끌어올린 경험이 있습니다. 대량 양산을 목표로 하는 엄격한 기구가구 환경에서 빛을 발할 무기입니다.
+                        </p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 260px; background: rgba(125,125,125,0.05); padding: 1.8rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                        <div style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3 data-i18n="hero_core3_title" style="margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--text-primary); font-weight: 700;">다차원 협업 기반의 커뮤니케이션</h3>
+                        <p data-i18n="hero_core3_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                            다수의 로봇 프로젝트 팀장으로서 기계/SW/회로 파트 간 조율을 이끌었습니다. 디자인, 회로, 상품기획 등 유관 부서와의 유기적 소통이 필수적인 직무에서 완벽한 시너지를 창출해 내겠습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Box -->
+        <div id="profile" class="bento-card profile-bento" style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="profile-layout">
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 200px; height: 100%;">
+                    <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+                    <h2 data-i18n="profile_name">이재영 (Jaeyoung LEE)</h2>
+                    <p data-i18n="profile_role">Mechanical & Control Engineer</p>
+
+                    <div class="modal-only" style="margin-top: auto; padding-top: 2rem; width: 100%; display: flex; justify-content: center;">
+                        <div style="width: 100%; max-width: 380px; text-align: center; color: var(--text-secondary); background: rgba(0,0,0,0.03); padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid var(--border-bento); box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                            <div style="font-size: 0.8rem; letter-spacing: -0.5px; margin-bottom: 0.4rem;">2024.04.23 ~ 2025.10.22</div>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; font-size: 0.93rem; word-break: keep-all; line-height: 1.4;">
+                                <i class="fa-solid fa-medal" style="color: var(--accent-primary); flex-shrink: 0; margin-top: 0.15rem;"></i><span data-i18n="mil_title">지상작전사령부 대형차량운전병</span>
+                            </div>
+                            <div data-i18n="mil_desc" style="font-size: 0.85rem;">병장 만기전역</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-only edu-list" style="flex: 1; min-width: 220px;">
+                    <h3 data-i18n="edu_title" style="margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">학력 사항</h3>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_university">동양미래대학교 로봇공학과</span>
+                        <span class="edu-item-date">2023.03 ~ <span data-i18n="edu_present">현재</span></span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_highschool">울산공업고등학교 전자통신과</span>
+                        <span class="edu-item-date">2020.03 ~ 2023.02</span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_middle">이화중학교</span>
+                        <span class="edu-item-date">2017.02 ~ 2020.02</span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-item-title" data-i18n="edu_elementary">이화초등학교</span>
+                        <span class="edu-item-date">2011.03 ~ 2017.02</span>
+                    </div>
+                </div>
+
+                <div class="modal-only cert-list-container" style="flex: 1.8; min-width: 350px; flex-direction: column;">
+                    <h3 data-i18n="cert_section_title" style="margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">보유 자격 사항</h3>
+                    <div class="cert-list" style="margin-top: 0;">
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national">국가기술자격증</span>
+                            <span class="cert-title" data-i18n="cert_3d">3D프린터운용기능사</span>
+                            <span class="cert-date">2026.04.10 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national_base">국가자격증</span>
+                            <span class="cert-title" data-i18n="cert_bus">버스운전자격</span>
+                            <span class="cert-date">2025.05.09 <span data-i18n="cert_issue">발급</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national">국가기술자격증</span>
+                            <span class="cert-title" data-i18n="cert_electric">전기기능사</span>
+                            <span class="cert-date">2022.07.22 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_national">국가기술자격증</span>
+                            <span class="cert-title" data-i18n="cert_electronic">전자기능사</span>
+                            <span class="cert-date">2022.05.30 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_search">DIAT 인터넷정보검색 초급</span>
+                            <span class="cert-date">2017.02.10 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_reg">등록민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_gtq">GTQ(그래픽기술자격) 3급</span>
+                            <span class="cert-date">2016.12.16 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_media">DIAT 멀티미디어제작 고급</span>
+                            <span class="cert-date">2016.05.13 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_sheet">DIAT 스프레드시트 고급</span>
+                            <span class="cert-date">2014.12.12 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-badge" data-i18n="cert_type_private">공인민간자격증</span>
+                            <span class="cert-title" data-i18n="cert_diat_ppt">DIAT 프리젠테이션 중급</span>
+                            <span class="cert-date">2014.06.13 <span data-i18n="cert_pass">합격</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-only" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-bento); align-items: center; gap: 0.8rem; justify-content: center; width: 100%;">
+                <span class="badge" style="margin-left:0; white-space: nowrap;">TOEIC 650+</span>
+                <span data-i18n="vocation_global" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.4; word-break: keep-all;">글로벌 업무 역량 보유</span>
+            </div>
+        </div>
+
+        <div class="bento-card contact-bento">
+            <div class="contact-layout">
+                <a href="mailto:jyoung0588@dongyang.ac.kr" class="contact-link"><i class="fa-solid fa-envelope"></i> jyoung0588@dongyang.ac.kr</a>
+                <a href="tel:010-4408-0588" class="contact-link"><i class="fa-solid fa-phone"></i> 010-4408-0588</a>
+                <div class="social-links-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: -1rem; margin-top: 0.2rem;">
+                    <a href="https://www.youtube.com/@%EA%B8%88%EC%84%B1%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%83%80" target="_blank" class="contact-link" data-i18n="contact_youtube" style="margin-left:0;">
+                        <i class="fa-brands fa-youtube"></i> 금성골드스타
+                    </a>
+                    <a href="https://www.instagram.com/j0._.dl?igsh=MXZ6MWVkYzlnMmZhZw%3D%3D" target="_blank" class="contact-link" data-i18n="contact_insta" style="margin-left:0;">
+                        <i class="fa-brands fa-instagram"></i> 인스타그램
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Awards Box -->
+        <div id="awards" class="bento-card vocation-bento awards-bento">
+            <h2 data-i18n="awards_title">🏆 주요 수상 경력 <span class="badge">총 17건</span></h2>
+            
+            <!-- Preview Context (hidden in Modal) -->
+            <ul class="preview-list preview-only" style="margin-bottom: 1.5rem;">
+                <li><i class="fa-solid fa-trophy" style="color: #d4af37;"></i> <span data-i18n="awards_preview_1">2023 캡스톤디자인 경진대회 - 최우수상(1위)</span></li>
+                <li><i class="fa-solid fa-trophy" style="color: #d4af37;"></i> <span data-i18n="awards_preview_2">2022 국제로봇올림피아드 세계대회 - 금상(1위)</span></li>
+                <li><i class="fa-solid fa-medal" style="color: #c0c0c0;"></i> <span data-i18n="awards_preview_3">2022 국제로봇올림피아드 한국대회 본선 - 은상(2위)</span></li>
+                <li><i class="fa-solid fa-medal" style="color: #cd7f32;"></i> <span data-i18n="awards_preview_4">2022 울산광역시 기능경기대회 - 동상(3위)</span></li>
+            </ul>
+
+            <div class="preview-only more-link-container" style="text-align: center; margin-top: auto; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
+                <a href="javascript:void(0)" class="more-link" onclick="openModal(this.closest('.bento-card'))" style="text-decoration: none; color: var(--accent-primary); font-size: 0.95rem; font-weight: 500;">
+                    <span data-i18n="awards_more">외 14건 전체보기 (클릭)</span>
+                </a>
+            </div>
+
+            <!-- Timeline Detailed Context (hidden in Preview) -->
+            <div class="modal-only awards-timeline" style="width: 100%; padding: 1rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 1.2rem;">
+                    <!-- 2023 -->
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-calendar-check"></i> 2023
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="award-item-compact highlight" style="border-left: 3px solid #b8860b; padding-left: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2023.12.06</div>
+                                        <div data-i18n="awards_item_capstone" style="font-weight: 600; font-size: 0.95rem; color: #d4af37;">2023 캡스톤디자인 경진대회</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_walking_robot">보행로봇 부분</div>
+                                    </div>
+                                    <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);" data-i18n="rank_grand_1st">최우수상(1위)</span>
+                                </div>
+                            </div>
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2023.05.17</div>
+                                        <div data-i18n="awards_item_1" style="font-weight: 500; font-size: 0.95rem;">2023 강남 청소년 로봇인공지능 해커톤</div>
+                                    </div>
+                                    <span class="award-org" data-i18n="rank_encouragement" style="flex-shrink: 0;">장려상</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-calendar-check"></i> 2022
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="award-item-compact highlight" style="border-left: 3px solid #b8860b; padding-left: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2023.01.12 ~ 01.15</div>
+                                        <div data-i18n="awards_item_2" style="font-weight: 600; font-size: 0.95rem; color: #d4af37;">2022 국제로봇올림피아드 세계대회</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_cart">카트롤링볼</div>
+                                    </div>
+                                    <span class="award-org" style="color: #b8860b; background: rgba(212,175,55,0.15);" data-i18n="rank_gold_1st">금상(1위)</span>
+                                </div>
+                            </div>
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2023.01.12 ~ 01.15</div>
+                                        <div data-i18n="awards_item_2" style="font-weight: 500; font-size: 0.95rem;">2022 국제로봇올림피아드 세계대회</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_gathering">로봇게더링</div>
+                                    </div>
+                                    <span class="award-org" data-i18n="rank_achievement">성과상</span>
+                                </div>
+                            </div>
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2022.11.05</div>
+                                        <div data-i18n="awards_item_3" style="font-weight: 500; font-size: 0.95rem;">2022 창원 전국지능 로봇경진대회</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_transfer">트랜스퍼로봇(중~고등부)</div>
+                                    </div>
+                                    <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span>
+                                </div>
+                            </div>
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2022.08.15</div>
+                                        <div data-i18n="awards_item_4" style="font-weight: 500; font-size: 0.95rem;">2022 국제로봇올림피아드 한국대회 본선</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_creation">미션형창작</div>
+                                    </div>
+                                    <span class="award-org" data-i18n="rank_encouragement">장려상</span>
+                                </div>
+                            </div>
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2022.08.15</div>
+                                        <div data-i18n="awards_item_4" style="font-weight: 500; font-size: 0.95rem;">2022 국제로봇올림피아드 한국대회 본선</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_cart">카트롤링볼</div>
+                                    </div>
+                                    <span class="award-org" style="color: #666; background: rgba(160,160,160,0.15);" data-i18n="rank_silver">은상</span>
+                                </div>
+                            </div>
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2022.04.08</div>
+                                        <div data-i18n="awards_item_5" style="font-weight: 500; font-size: 0.95rem;">2022 울산광역시 기능경기대회</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_electronics">공업전자기기</div>
+                                    </div>
+                                    <span class="award-org" style="color: #a0522d; background: rgba(205,127,50,0.15);" data-i18n="rank_bronze_3rd">동상(3위)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2021 -->
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-calendar-check"></i> 2021
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="award-item-compact">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.2rem;">2021.11.21</div>
+                                        <div data-i18n="awards_item_6" style="font-weight: 500; font-size: 0.95rem;">2021 국제로봇올림피아드 한국대회 본선</div>
+                                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem;" data-i18n="part_iroc">로봇게더링</div>
+                                    </div>
+                                    <span class="award-org" data-i18n="rank_encouragement">장려상</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Records (2015~2019) -->
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-history"></i> 2015 ~ 2019
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_7">2019 창원전국지능 로봇경진대회</span>
+                                <span style="color: #666;" data-i18n="rank_silver">은상(2위)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_8">2019 국제로봇컨테스트 (IRC)</span>
+                                <span data-i18n="rank_encouragement">장려상</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_9">제17회 울산로봇경진대회</span>
+                                <span style="color: #666;" data-i18n="rank_silver">은상(2위)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_10">2018 국제로봇콘테스트</span>
+                                <span data-i18n="rank_encouragement">장려상</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_11">2018 창원 전국지능 로봇경진대회</span>
+                                <span style="color: #666;" data-i18n="rank_silver">은상(2위)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_12">2017 창원 전국지능 로봇경진대회</span>
+                                <span style="color: #a0522d;" data-i18n="rank_bronze_3rd">동상(3위)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_13">2017 제7회 국제프로그래밍로봇챌린지</span>
+                                <span style="color: #4ade80;" data-i18n="rank_science">과학상</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_14">2017 국제로봇컨테스트 (IRC)</span>
+                                <span data-i18n="rank_encouragement">장려상</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                                <span data-i18n="awards_item_15">2015 국제프로그래밍 로봇챌린지</span>
+                                <span style="color: #b8860b;" data-i18n="rank_gold_1st">금상(1위)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mechanism / Hypercube Box -->
+        <div id="project-rc" class="bento-card mechanism-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
+                <!-- Left: Photo -->
+                <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
+                    <img src="assets/rc_car_main.jpg" alt="3D 프린팅 RC카 메인" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="preview-only" style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02);">
+                    <div style="font-size: 0.85rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="rc_car_date">2026.01.27 ~ 2026.03.06</div>
+                    <h2 data-i18n="rc_car_title" style="margin-bottom: 0.5rem; font-size: 1.5rem; word-break: keep-all;">3D 프린팅 RC카 (차동기어 및 서스펜션)</h2>
+                    <h4 data-i18n="rc_car_subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400; font-size: 1rem;">고성능 메커니즘을 적용한 커스텀 RC카</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-gears" style="color: #fbbf24; font-size: 1.1rem;"></i>
+                            <span data-i18n="rc_car_feature1" style="font-size: 0.9rem;">차동 기어 시스템 설계 및 제작</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-truck-monster" style="color: #f87171; font-size: 1.1rem;"></i>
+                            <span data-i18n="rc_car_feature2" style="font-size: 0.9rem;">독립형 서스펜션(현가장치) 구현</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-cube" style="color: #38bdf8; font-size: 1.1rem;"></i>
+                            <span data-i18n="rc_car_feature3" style="font-size: 0.9rem;">전체 프레임 3D 프린팅 최적화</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-tower-broadcast" style="color: #4ade80; font-size: 1.1rem;"></i>
+                            <span data-i18n="rc_car_feature4" style="font-size: 0.9rem;">아두이노 기반 무선 조종 시스템</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Specific Context -->
+            <div class="modal-only" style="flex-direction: column; width: 100%; gap: 2rem; padding: 1rem;">
+                <!-- Modal Header -->
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; margin-bottom: 0.5rem;">
+                    <div style="font-size: 0.9rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="rc_car_date">2026.01.27 ~ 2026.03.06</div>
+                    <h2 data-i18n="rc_car_title" style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text-primary);">3D 프린팅 RC카 (차동기어 및 서스펜션)</h2>
+                    <p data-i18n="rc_car_subtitle" style="color: var(--text-secondary); font-size: 1.1rem;">차동 기어 시스템과 독립 현가장치를 활용한 고성능 RC카 설계</p>
+                </div>
+
+                <!-- Content Layout: Gallery (Left) + Video (Right) -->
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; align-items: stretch;">
+                    <!-- Gallery -->
+                    <div style="flex: 2; min-width: 320px; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+                        <!-- Image 1 -->
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); position: relative; background: rgba(0,0,0,0.2); aspect-ratio: 4/3; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="assets/rc_car_gear.jpg" alt="차동 기어 메커니즘" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 1rem 0.5rem 0.6rem; text-align: center; font-size: 0.85rem; color: #fff; font-weight: 500;" data-i18n="rc_car_img1">1. 차동 기어 메커니즘</div>
+                        </div>
+                        <!-- Image 2 -->
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); position: relative; background: rgba(0,0,0,0.2); aspect-ratio: 4/3; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="assets/rc_car_suspension.jpg" alt="독립 현가장치 및 조향" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 1rem 0.5rem 0.6rem; text-align: center; font-size: 0.85rem; color: #fff; font-weight: 500;" data-i18n="rc_car_img2">2. 독립 현가장치 및 조향 구조</div>
+                        </div>
+                        <!-- Image 3 -->
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); position: relative; background: rgba(0,0,0,0.2); aspect-ratio: 4/3; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="assets/rc_car_circuit.jpg" alt="제어 회로 및 배선" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 1rem 0.5rem 0.6rem; text-align: center; font-size: 0.85rem; color: #fff; font-weight: 500;" data-i18n="rc_car_img3">3. 제어 회로 및 하드웨어 배선</div>
+                        </div>
+                        <!-- Image 4 -->
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); position: relative; background: rgba(0,0,0,0.2); aspect-ratio: 4/3; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="assets/rc_car_main.jpg" alt="최종" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 1rem 0.5rem 0.6rem; text-align: center; font-size: 0.85rem; color: #fff; font-weight: 500;" data-i18n="rc_car_img4">4. 최종 주행 테스트</div>
+                        </div>
+                    </div>
+
+                    <!-- Video Area (Shorts) -->
+                    <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column;">
+                        <div class="youtube-card" onclick="window.open('https://youtube.com/shorts/wKejMKm1-X4', '_blank')" style="border-radius: var(--radius-lg); width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid var(--border-bento); margin: 0; flex: 1; position: relative; overflow: hidden; background: #000;">
+                            <img src="https://img.youtube.com/vi/wKejMKm1-X4/hqdefault.jpg" alt="Shorts Thumbnail" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+                            
+                            <!-- Central Play Icon -->
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                                <i class="fa-brands fa-youtube" style="font-size: 3rem; color: #ff0000; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));"></i>
+                            </div>
+
+                            <!-- Bottom Floating Caption (Matches Gallery Style) -->
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding: 1.2rem 0.5rem 0.8rem; text-align: center; pointer-events: none;">
+                                <h3 style="color: white; font-size: 1rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.8); font-weight: 600;">
+                                    <span data-i18n="rc_car_vid_title">주행 시연 영상</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description Block -->
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                    <h3 data-i18n="rc_car_detail_title" style="margin-bottom: 0.8rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">기구 설계 상세 설명</h3>
+                    <p data-i18n="rc_car_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                        차동 기어 시스템과 독립 현가장치를 3D 프린팅으로 직접 설계 및 제작한 RC카 프로젝트입니다. 동력 전달 효율과 주행 안정성을 최적화했습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multi-joint Robot Box -->
+        <div id="project-robot" class="bento-card mastery-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
+                <!-- Left: Photo -->
+                <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
+                    <img src="assets/multi_joint_robot.jpg" alt="다관절로봇" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="preview-only" style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02);">
+                    <div style="font-size: 0.85rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="robot_date">2021.09</div>
+                    <h2 data-i18n="robot_title" style="margin-bottom: 0.5rem; font-size: 1.5rem; word-break: keep-all;">미니서보 12개를 사용한 3D프린팅 다관절로봇</h2>
+                    <h4 data-i18n="robot_subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400; font-size: 1rem;">생체 모방형 4족 보행 메커니즘</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-gears" style="color: #60a5fa; font-size: 1.1rem;"></i>
+                            <span data-i18n="robot_feature1" style="font-size: 0.9rem;">12축 미니 서보 관절 제어</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-wave-square" style="color: #a855f7; font-size: 1.1rem;"></i>
+                            <span data-i18n="robot_feature2" style="font-size: 0.9rem;">역운동학(IK) 기반 보행 알고리즘</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-cube" style="color: #f472b6; font-size: 1.1rem;"></i>
+                            <span data-i18n="robot_feature3" style="font-size: 0.9rem;">전체 기구부 3D 프린팅 제작</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-microchip" style="color: #34d399; font-size: 1.1rem;"></i>
+                            <span data-i18n="robot_feature4" style="font-size: 0.9rem;">아두이노 기반 커스텀 제어 시스템</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Only Context (Details + Video) -->
+            <div class="modal-only" style="margin-top: 0.5rem; flex-direction: column; width: 100%; gap: 2rem; align-items: stretch; padding: 1rem;">
+                <!-- Modal Header -->
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; margin-bottom: 0.5rem;">
+                    <div style="font-size: 0.9rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="robot_date">2021.09</div>
+                    <h2 data-i18n="robot_title" style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text-primary);">미니서보 12개를 사용한 3D프린팅 다관절로봇</h2>
+                    <p data-i18n="robot_subtitle" style="color: var(--text-secondary); font-size: 1.1rem;">생체 모방형 4족 보행 메커니즘</p>
+                </div>
+
+                <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=q28LsOm2DeE', '_blank')" style="margin: 0 auto; max-width: 800px; width: 100%;">
+                    <img src="https://img.youtube.com/vi/q28LsOm2DeE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/q28LsOm2DeE/hqdefault.jpg'" alt="Video Thumbnail">
+                    <div class="overlay">
+                        <i class="fa-brands fa-youtube play-btn"></i>
+                        <h3 data-i18n="robot_vid_title">다관절로봇 구동 시연 영상</h3>
+                    </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                    <h3 data-i18n="robot_detail_title" style="margin-bottom: 0.8rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem;">로봇 상세 스펙 및 세부 설명</h3>
+                    <p data-i18n="robot_detail_desc" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                        미니서보 12개를 관절로 활용하고 아두이노 나노를 제어부로 사용하여 직접 3D 프린팅으로 외관을 제작한 4족 보행 다관절 로봇입니다. 
+                        동물들의 역운동학(Inverse Kinematics) 보행 메커니즘을 분석하여 알고리즘을 프로그래밍했으며, 
+                        다양한 동작 모션을 통해 부드럽고 유연한 움직임을 구현했습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Troubleshooting Log -->
+        <div id="project-fridge" class="bento-card log-bento" style="padding: 0; display: flex; flex-direction: column; cursor: pointer; overflow: hidden; height: 100%; min-height: 380px;" onclick="openModal(this)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; height: 100%; width: 100%;">
+                <!-- Left: Photo 1 -->
+                <div class="preview-only" style="width: 100%; height: 100%; overflow: hidden;">
+                    <img src="assets/fridge_1.png" alt="냉장고 본체" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="preview-only" style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: rgba(255,255,255,0.02);">
+                    <div style="font-size: 0.85rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="fridge_date">2022.09</div>
+                    <h2 data-i18n="fridge_title" style="margin-bottom: 0.3rem; font-size: 1.5rem; word-break: keep-all;">펠티어 스마트 미니 냉장고</h2>
+                    <h4 data-i18n="fridge_subtitle" style="color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400; font-size: 1rem;">정밀 온도 제어 및 모니터링 시스템</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-snowflake" style="color: #22d3ee; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature1" style="font-size: 0.9rem;">펠티어 소자(Peltier) 냉각 기술</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-temperature-low" style="color: #6366f1; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature2" style="font-size: 0.9rem;">영하 감지 온습도 센서 활용</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-microchip" style="color: #10b981; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature3" style="font-size: 0.9rem;">LCD 실시간 모니터링 시스템</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-fan" style="color: #f59e0b; font-size: 1.1rem;"></i>
+                            <span data-i18n="fridge_feature4" style="font-size: 0.9rem;">-10℃ 자동 팬 제어 알고리즘</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="modal-only" style="flex-direction: column; width: 100%; gap: 2.5rem; padding: 1rem;">
+                <!-- Modal Header -->
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; margin-bottom: -0.5rem;">
+                    <div style="font-size: 0.9rem; color: var(--accent-primary); margin-bottom: 0.5rem; font-weight: 500;" data-i18n="fridge_date">2022.09</div>
+                    <h2 data-i18n="fridge_title" style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text-primary);">펠티어 스마트 미니 냉장고</h2>
+                    <p data-i18n="fridge_subtitle" style="color: var(--text-secondary); font-size: 1.1rem;">정밀 온도 제어 및 모니터링 시스템</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Gallery -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_1.png" alt="이미지 1" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_2.png" alt="이미지 2" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_3.png" alt="이미지 3" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-bento); aspect-ratio: 4/3;">
+                            <img src="assets/fridge_4.png" alt="이미지 4" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento); height: 100%;">
+                            <h3 data-i18n="fridge_detail_title" style="margin-bottom: 1.5rem; color: var(--accent-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.5rem; font-size: 1.3rem;">시스템 설계 및 트러블슈팅</h3>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-circle-info" style="color: var(--accent-primary);"></i>
+                                    <span data-i18n="fridge_overview">프로젝트 개요</span>
+                                </h4>
+                                <p data-i18n="fridge_desc" style="font-size: 1rem; color: var(--text-primary); line-height: 1.8; opacity: 0.9;">
+                                    펠티어 소자와 아두이노를 결합하여 영하 10도까지 정밀 제어가 가능한 스마트 미니 냉장고입니다. 실시간 LCD 모니터링과 자동 온도 유지 로직을 구현했습니다.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 style="color: var(--text-primary); margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-gear" style="color: var(--accent-primary);"></i>
+                                    <span data-i18n="fridge_tech_trouble">핵심 기술 및 트러블슈팅</span>
+                                </h4>
+                                <p data-i18n="fridge_detail_desc" style="font-size: 1rem; color: var(--text-secondary); line-height: 1.8;">
+                                    냉각 효율 극대화 및 결빙 방지를 위해 -10도 도달 시 팬 속도를 조절하는 임계치 제어 알고리즘을 적용했습니다. 영하의 정밀한 온도 측정을 위해 전용 센서를 보정하여 사용했습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Board moved to separate page -->
+
+        <!-- YouTube Video Bento -->
+        <div class="bento-card youtube-bento">
+            <h2 data-i18n="youtube_title" style="margin-bottom: 0.5rem;">팀워크 및 프로젝트 메커니즘 시연</h2>
+            <p data-i18n="youtube_subtitle">팀원들과의 협업을 통해 부족함을 채우고 실제 구동 가능한 결과물을 완성했습니다.</p>
+            
+            <div class="preview-only youtube-grid" style="margin-top: 1.5rem;">
+                <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=0vKGd3Y2LE0', '_blank')">
+                    <img src="https://img.youtube.com/vi/0vKGd3Y2LE0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/0vKGd3Y2LE0/hqdefault.jpg'" alt="Video Thumbnail">
+                    <div class="overlay">
+                        <i class="fa-brands fa-youtube play-btn"></i>
+                        <h3 data-i18n="youtube_vid1">국제로봇올림피아드 출전작</h3>
+                    </div>
+                </div>
+                <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=DQcM5zhMhF0', '_blank')">
+                    <img src="https://img.youtube.com/vi/DQcM5zhMhF0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/DQcM5zhMhF0/hqdefault.jpg'" alt="Video Thumbnail">
+                    <div class="overlay">
+                        <i class="fa-brands fa-youtube play-btn"></i>
+                        <h3 data-i18n="youtube_vid2">8족 보행 로봇 설계 자체 제작기</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-only more-link-container" style="text-align: center; margin-top: 1.5rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
+                <a href="javascript:void(0)" class="more-link" onclick="openModal(this.closest('.bento-card'))" style="text-decoration: none; color: var(--accent-primary); font-size: 0.95rem; font-weight: 500;">
+                    <span data-i18n="youtube_more">외 8건 전체보기 (클릭)</span>
+                </a>
+            </div>
+
+            <!-- Modal Specific Expansive View with Sections -->
+            <div class="modal-only" style="margin-top: 1rem; flex-direction: column; width: 100%; gap: 1.5rem;">
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                    <h3 data-i18n="yt_sec_competition" style="margin-bottom: 1.2rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem; font-size: 1.15rem;">프로젝트 주행 및 대회 출전 기록</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;">
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=0vKGd3Y2LE0', '_blank')">
+                            <img src="https://img.youtube.com/vi/0vKGd3Y2LE0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/0vKGd3Y2LE0/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="youtube_vid1">국제로봇올림피아드 출전작</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=DQcM5zhMhF0', '_blank')">
+                            <img src="https://img.youtube.com/vi/DQcM5zhMhF0/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/DQcM5zhMhF0/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="youtube_vid2">8족 보행 로봇 설계 자체 제작기</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=SFlKGm2QdkI', '_blank')">
+                            <img src="https://img.youtube.com/vi/SFlKGm2QdkI/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/SFlKGm2QdkI/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_1">하드웨어 구동 테스트 1</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=5poKKr4eK8Q', '_blank')">
+                            <img src="https://img.youtube.com/vi/5poKKr4eK8Q/0.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/5poKKr4eK8Q/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_2">하드웨어 구동 테스트 2</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=Y0b1ZSGc-M4', '_blank')">
+                            <img src="https://img.youtube.com/vi/Y0b1ZSGc-M4/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Y0b1ZSGc-M4/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_3">시스템 제어 현장 실습</h3></div>
+                        </div>
+                        <div class="youtube-card" onclick="window.open('https://www.youtube.com/watch?v=SsaXY9K2THM', '_blank')">
+                            <img src="https://img.youtube.com/vi/SsaXY9K2THM/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/SsaXY9K2THM/hqdefault.jpg'" alt="Video Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_add_4">로봇 메커니즘 구동 테스트</h3></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-bento);">
+                    <h3 data-i18n="yt_sec_ev3" style="margin-bottom: 1.2rem; color: var(--text-primary); border-bottom: 2px solid var(--accent-primary); width: fit-content; padding-bottom: 0.3rem; font-size: 1.15rem;">EV3 로봇 알고리즘 실습 (Shorts)</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/cfWj8G2uGy4', '_blank')">
+                            <img src="https://img.youtube.com/vi/cfWj8G2uGy4/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/cfWj8G2uGy4/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_1">EV3 실습 1</h3></div>
+                        </div>
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/rv6OM1lERoY', '_blank')">
+                            <img src="https://img.youtube.com/vi/rv6OM1lERoY/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/rv6OM1lERoY/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_2">EV3 실습 2</h3></div>
+                        </div>
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/mivO0FKkqZE', '_blank')">
+                            <img src="https://img.youtube.com/vi/mivO0FKkqZE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/mivO0FKkqZE/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_3">EV3 실습 3</h3></div>
+                        </div>
+                        <div class="youtube-shorts-card" onclick="window.open('https://www.youtube.com/shorts/59NX_2Wjj1Y', '_blank')">
+                            <img src="https://img.youtube.com/vi/59NX_2Wjj1Y/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/59NX_2Wjj1Y/hqdefault.jpg'" alt="Shorts Thumbnail">
+                            <div class="overlay"><i class="fa-brands fa-youtube play-btn"></i><h3 data-i18n="yt_shorts_4">EV3 실습 4</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Essential Scripts linking to original app logic -->
+    <script src="js/i18n.js"></script>
+    <script>
+
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const isLight = document.body.classList.toggle('light-mode');
+            localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            updateThemeIcon(isLight);
+            // Re-initialize mermaid to swap diagram colors
+            initMermaid(isLight);
+        }
+
+        function updateThemeIcon(isLight) {
+            const icon = document.querySelector('#themeToggle i');
+            const textSpan = document.getElementById('themeText');
+            icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            if (textSpan) {
+                const key = isLight ? 'theme_light' : 'theme_dark';
+                textSpan.setAttribute('data-i18n', key);
+                if (typeof i18n !== 'undefined' && i18n[currentLang]) {
+                    textSpan.innerText = i18n[currentLang][key];
+                }
+            }
+        }
+
+        // Initialize Theme
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme !== 'dark') {
+                document.body.classList.add('light-mode');
+                updateThemeIcon(true);
+            }
+        })();
+
+
+        // Card Modal Expansion Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Welcome Modal Logic
+            const welcomeModal = document.getElementById('welcomeModal');
+            const dontShowCheckbox = document.getElementById('dontShowNav');
+            const startBtn = document.getElementById('startPortfolioBtn');
+
+            function shouldShowWelcomeModal() {
+                const hideUntil = localStorage.getItem('hideWelcomeModalUntil');
+                if (!hideUntil) return true;
+                return Date.now() > parseInt(hideUntil, 10);
+            }
+
+            if (welcomeModal && shouldShowWelcomeModal()) {
+                setTimeout(() => {
+                    welcomeModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }, 500);
+            }
+
+            if (startBtn) {
+                startBtn.addEventListener('click', () => {
+                    if (dontShowCheckbox.checked) {
+                        localStorage.setItem('hideWelcomeModalUntil', Date.now() + 24 * 60 * 60 * 1000);
+                    }
+                    welcomeModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'card-modal-overlay';
+            modalOverlay.innerHTML = `
+                <div class="card-modal-content">
+                    <button class="card-modal-close"><i class="fa-solid fa-xmark"></i></button>
+                    <div class="card-modal-body"></div>
+                </div>
+            `;
+            document.body.appendChild(modalOverlay);
+
+            const modalBody = modalOverlay.querySelector('.card-modal-body');
+            const closeBtn = modalOverlay.querySelector('.card-modal-close');
+
+            const closeCardModal = () => {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => { modalBody.innerHTML = ''; }, 400);
+            };
+
+            closeBtn.addEventListener('click', closeCardModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeCardModal();
+            });
+
+            document.querySelectorAll('.bento-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Prevent modal if clicking on links, buttons, or child interactive cards
+                    if(e.target.closest('a') || e.target.closest('button') || e.target.closest('.youtube-card')) return;
+                    
+                    openModal(card);
+                });
+            });
+
+            // Handle hash navigation on load
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const validIds = ['awards', 'project-rc', 'project-robot', 'project-fridge', 'hero', 'profile'];
+                if (validIds.includes(targetId)) {
+                    setTimeout(() => scrollToAndOpenModal(targetId), 800);
+                }
+            }
+        });
+
+        function openModal(card) {
+            const modalBody = document.querySelector('.card-modal-body');
+            const modalOverlay = document.querySelector('.card-modal-overlay');
+            if (modalBody && modalOverlay) {
+                modalBody.innerHTML = card.innerHTML;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function scrollToAndOpenModal(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                // 메뉴를 닫음
+                closeMenu();
+                
+                // 스크롤 없이 바로 모달 오픈
+                setTimeout(() => {
+                    openModal(element);
+                    if (history.replaceState) {
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    }
+                }, 300);
+            }
+        }
+    </script>
 </body>
 </html>
